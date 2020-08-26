@@ -1,0 +1,2 @@
+(this["webpackJsonphci-gu.github.io"]=this["webpackJsonphci-gu.github.io"]||[]).push([[0],[,,,function(e,t,n){e.exports=n(4)},function(e,t,n){"use strict";n.r(t);var i=n(0),o=n.n(i),c=n(2);n.n(c).a.render(o.a.createElement(o.a.StrictMode,null,o.a.createElement("div",null,"Hello world")),document.getElementById("root"))}],[[3,1,2]]]);
+//# sourceMappingURL=main.00dd9c4c.chunk.js.map
