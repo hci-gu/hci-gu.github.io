@@ -37,7 +37,11 @@ const Menu = () => {
     <Container>
       <Content>
         <Link to="/">Home</Link>
-        <a href="https://ait.gu.se/english/hci" target="_blank">
+        <a
+          href="https://ait.gu.se/english/hci"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           About
         </a>
         <a href="mailto:alexandra.weilenmann@ait.gu.se">Contact</a>

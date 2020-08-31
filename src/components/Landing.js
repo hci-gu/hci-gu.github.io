@@ -59,32 +59,32 @@ const Description = styled.div`
   }
 `
 
-const Image = styled.div`
-  > div {
-    position: relative;
-    width: 80%;
-    max-width: 400px;
+// const Image = styled.div`
+//   > div {
+//     position: relative;
+//     width: 80%;
+//     max-width: 400px;
 
-    :after {
-      content: '';
-      display: block;
-      padding-bottom: 100%;
-    }
-  }
+//     :after {
+//       content: '';
+//       display: block;
+//       padding-bottom: 100%;
+//     }
+//   }
 
-  > div > img {
-    position: absolute;
-    right: -75%;
-    top: 0px;
-    width: 150%;
-    height: 150%;
-    border-radius: 50%;
-    background-image: url('/img/division_team_gbg.jpg');
-    background-size: cover;
-    background-position: center;
-    border: 2px solid black;
-  }
-`
+//   > div > img {
+//     position: absolute;
+//     right: -75%;
+//     top: 0px;
+//     width: 150%;
+//     height: 150%;
+//     border-radius: 50%;
+//     background-image: url('/img/division_team_gbg.jpg');
+//     background-size: cover;
+//     background-position: center;
+//     border: 2px solid black;
+//   }
+// `
 
 const Landing = () => {
   return (
@@ -115,17 +115,17 @@ const Landing = () => {
             education, and collaboration at the University of Gothenburg.
             <br></br>
             <br></br>
-            <a href="https://ait.gu.se/english/hci" target="_blank">
+            <a
+              href="https://ait.gu.se/english/hci"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Read more about the division
             </a>
             <br></br>
             <br></br>
             We're currently looking for interns for a digital internship.{' '}
-            <Link to="/internship">
-              <a href="https://ait.gu.se/english/hci" target="_blank">
-                Read more
-              </a>
-            </Link>
+            <Link to="/internship">Read more</Link>
           </p>
         </Description>
         {/* <Image>
