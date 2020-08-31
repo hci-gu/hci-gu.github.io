@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   height: 44px;
+
+  border-bottom: 1px solid black;
 `
 
 const Content = styled.div`
   display: flex;
   justify-content: center;
   font-size: 24px;
+  line-height: 44px;
 
   > a {
     width: 80px;
@@ -19,7 +22,7 @@ const Content = styled.div`
     text-decoration: none;
     color: black;
 
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 
     margin-left: 100px;
     :nth-child(1) {

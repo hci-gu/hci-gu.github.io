@@ -63,6 +63,17 @@ const Repositories = () => {
           />
         ))}
       </Grid>
+      <h2>Publications</h2>
+      <p>
+        To see publications made by our division you can go{' '}
+        <a
+          href="https://ait.gu.se/english/hci/publications"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          here.
+        </a>
+      </p>
     </Container>
   )
 }
