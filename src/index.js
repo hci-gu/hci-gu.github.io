@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from './App'
 import Repositories from './components/Repositories'
 import Landing from './components/Landing'
-import Internship from './components/Internship'
-import Menu from './components/Menu'
+// import Internship from './components/Internship'
+// import Menu from './components/Menu'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,10 +19,10 @@ ReactDOM.render(
               return null
             }}
           ></Route>
-          <Route path="/internship">
+          {/* <Route path="/internship">
             <Menu />
             <Internship />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Landing />
             <Repositories />

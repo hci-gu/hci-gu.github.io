@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { mobile } from '../utils/layout'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   padding-top: 100px;
@@ -122,10 +122,10 @@ const Landing = () => {
             >
               Read more about the division
             </a>
-            <br></br>
+            {/* <br></br>
             <br></br>
             We're currently looking for interns for a digital internship.{' '}
-            <Link to="/internship">Read more</Link>
+            <Link to="/internship">Read more</Link> */}
           </p>
         </Description>
         {/* <Image>
