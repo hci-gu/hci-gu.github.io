@@ -67,7 +67,10 @@ const Menu = ({ links = true }) => {
     <Container>
       <Content>
         <Logo>
-          <img src="/img/gu_logo.jpg"></img>
+          <img
+            src="/img/gu_logo.jpg"
+            alt="Gothenburg university logotype"
+          ></img>
         </Logo>
         {links && <Link to="/">Home</Link>}
         {links && (
