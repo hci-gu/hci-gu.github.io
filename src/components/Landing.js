@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { mobile } from '../utils/layout'
+import { mobile, middleContent } from '../utils/layout'
 // import { Link } from 'react-router-dom'
 
 const Container = styled.div`
-  padding-top: 100px;
   /* border-bottom: 2px solid black; */
   overflow: hidden;
 
@@ -14,16 +13,13 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  margin: 0 auto;
-  width: 80%;
+  ${middleContent()}
 
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: space-between;
 
   ${mobile()} {
-    width: 100%;
-    padding: 1em;
     grid-template-columns: 1fr;
   }
 `
@@ -95,15 +91,15 @@ const Landing = () => {
         </Title>
         <Description>
           <p>
-            The purpose of the division is to contribute to a sustainable and
-            serene way of living with technology. In a world where IT is
-            constantly present, it is important to understand this presence and
-            how it affects us. Human-Computer Interaction (HCI) has often
-            focused on developing new artefacts to visualize and design a future
-            world of information technology. Now we already live with technology
-            around us, so our role as researchers and developers is instead to
-            enhance and embellish our ways of living with technology. Because
-            even though we are in the middle of digitalization and have almost
+            The purpose of our work is to contribute to a sustainable and serene
+            way of living with technology. In a world where IT is constantly
+            present, it is important to understand this presence and how it
+            affects us. Human-Computer Interaction (HCI) has often focused on
+            developing new artefacts to visualize and design a future world of
+            information technology. Now we already live with technology around
+            us, so our role as researchers and developers is instead to enhance
+            and embellish our ways of living with technology. Because even
+            though we are in the middle of digitalization and have almost
             endless possibilities of doing things with the help of IT, there is
             still a lot that does not work as we wish, and some that even makes
             it more difficult and causes stress. We want to understand and
@@ -122,6 +118,17 @@ const Landing = () => {
             >
               Read more about the division
             </a>
+            <br></br>
+            <br></br>
+            We are part of the{' '}
+            <a
+              href="https://ait.gu.se/english"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Department of Applied IT
+            </a>
+            , University of Gothenburg.
             {/* <br></br>
             <br></br>
             We're currently looking for interns for a digital internship.{' '}

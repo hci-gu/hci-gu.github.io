@@ -47,12 +47,10 @@ const Internship = () => {
         using computers for a long time – digital seniors.
         <br></br>
         <h2>The internship</h2>
-        We are currently looking for interns for Autumn 2020 for a duration of{' '}
-        <strong>_WEEKS_</strong> weeks with start date on{' '}
-        <strong>_DATE_</strong>. The internship will revolve around the theme
-        exploring technology, where you will pick an area to focus on and
-        together with our division explore it through experimenting and
-        developing applications within that space.
+        We are currently looking for interns for the Autumn 2020 semester. The
+        internship will revolve around the theme exploring technology, where you
+        will pick an area to focus on and together with our division explore it
+        through experimenting and developing applications within that space.
         <br></br>
         <br></br>
         The internship will provide opportunities to work together with our
@@ -118,17 +116,16 @@ const Internship = () => {
         close communication via Slack. We expect to recruit 3-5 interns, which
         means that there will be a small group that could have some internal
         collaboration as well, depending on interest and topics. Our working
-        language is English. This is an unpaid internship. Having finished the
-        agreed project, you will receive a certificate and you will be invited
-        as a co-author for any papers that stem from your work.
+        language is English. The internship is not an employment and is
+        therefore unpaid. Having finished the agreed project, you will receive a
+        certificate and you will be invited as a co-author for any papers that
+        stem from your work. At the division website, you will be presented as
+        an affiliated researcher.
         <br></br>
         <h2>Application</h2>
         To apply, please send your CV as well as a text of 1-2 pages describing
         why you want to work within one of our specified areas and an example of
-        something you would like to explore within it by <strong>
-          _DATE_
-        </strong>{' '}
-        to{' '}
+        something you would like to explore within it by to{' '}
         <a href="mailto:sebastian.andreasson@ait.gu.se">
           sebastian.andreasson@ait.gu.se
         </a>

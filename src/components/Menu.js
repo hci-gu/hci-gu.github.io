@@ -1,18 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { mobile, middleContent } from '../utils/layout'
+
+const MENU_HEIGHT = 64
 
 const Container = styled.div`
-  height: 44px;
+  height: ${MENU_HEIGHT * 2}px;
 
-  border-bottom: 1px solid black;
+  ${mobile()} {
+    height: ${MENU_HEIGHT}px;
+  }
+
+  margin-bottom: 10px;
 `
 
 const Content = styled.div`
+  ${middleContent({ padding: false })}
   display: flex;
-  justify-content: center;
   font-size: 24px;
-  line-height: 44px;
+  line-height: ${MENU_HEIGHT}px;
 
   > a {
     width: 80px;
@@ -21,8 +28,6 @@ const Content = styled.div`
     cursor: pointer;
     text-decoration: none;
     color: black;
-
-    /* border-bottom: 1px solid black; */
 
     margin-left: 100px;
     :nth-child(1) {
@@ -33,21 +38,48 @@ const Content = styled.div`
       opacity: 0.75;
     }
   }
+
+  ${mobile()} {
+    justify-content: space-around;
+
+    > a {
+      margin-left: 0px;
+    }
+  }
 `
 
-const Menu = () => {
+const Logo = styled.div`
+  width: ${MENU_HEIGHT * 2}px;
+  height: ${MENU_HEIGHT * 2}px;
+
+  > img {
+    height: 100%;
+  }
+
+  ${mobile()} {
+    width: ${MENU_HEIGHT}px;
+    height: ${MENU_HEIGHT}px;
+  }
+`
+
+const Menu = ({ links = true }) => {
   return (
     <Container>
       <Content>
-        <Link to="/">Home</Link>
-        <a
-          href="https://ait.gu.se/english/hci"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          About
-        </a>
-        <a href="mailto:alexandra.weilenmann@ait.gu.se">Contact</a>
+        <Logo>
+          <img src="/img/gu_logo.jpg"></img>
+        </Logo>
+        {links && <Link to="/">Home</Link>}
+        {links && (
+          <a
+            href="https://ait.gu.se/english/hci"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            About
+          </a>
+        )}
+        {links && <a href="mailto:alexandra.weilenmann@ait.gu.se">Contact</a>}
       </Content>
     </Container>
   )

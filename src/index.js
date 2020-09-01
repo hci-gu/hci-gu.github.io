@@ -5,7 +5,8 @@ import App from './App'
 import Repositories from './components/Repositories'
 import Landing from './components/Landing'
 // import Internship from './components/Internship'
-// import Menu from './components/Menu'
+import Menu from './components/Menu'
+import Footer from './components/Footer'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,11 +25,13 @@ ReactDOM.render(
             <Internship />
           </Route> */}
           <Route path="/">
+            <Menu links={false} />
             <Landing />
             <Repositories />
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </App>
   </React.StrictMode>,
   document.getElementById('root')

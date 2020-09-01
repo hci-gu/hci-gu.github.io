@@ -2,30 +2,25 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { ReactTinyLink } from 'react-tiny-link'
-import { mobile } from '../utils/layout'
+import { mobile, middleContent } from '../utils/layout'
 
 const api = axios.create({
   baseURL: 'https://api.github.com',
 })
 
 const Container = styled.div`
-  width: 80%;
-  margin: 0 auto;
+  ${middleContent()}
+
   margin-top: 50px;
   > h2 {
     font-size: 48px;
-  }
-
-  ${mobile()} {
-    width: 100%;
-    padding: 1em;
   }
 `
 
 const Grid = styled.div`
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
 
   ${mobile()} {
