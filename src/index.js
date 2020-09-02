@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from './App'
 import Repositories from './components/Repositories'
 import Landing from './components/Landing'
-// import Internship from './components/Internship'
+import Internship from './components/Internship'
 import Menu from './components/Menu'
 import Footer from './components/Footer'
 
@@ -20,10 +20,10 @@ ReactDOM.render(
               return null
             }}
           ></Route>
-          {/* <Route path="/internship">
-            <Menu />
+          <Route path="/internship">
+            <Menu links={false} />
             <Internship />
-          </Route> */}
+          </Route>
           <Route path="/">
             <Menu links={false} />
             <Landing />

@@ -66,12 +66,14 @@ const Menu = ({ links = true }) => {
   return (
     <Container>
       <Content>
-        <Logo>
-          <img
-            src="/img/gu_logo.jpg"
-            alt="Gothenburg university logotype"
-          ></img>
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <img
+              src="/img/gu_logo.jpg"
+              alt="Gothenburg university logotype"
+            ></img>
+          </Logo>
+        </Link>
         {links && <Link to="/">Home</Link>}
         {links && (
           <a

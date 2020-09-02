@@ -22,15 +22,15 @@ const Internship = () => {
   return (
     <Container>
       <p>
-        <h2>HCI Digital internship </h2>
+        <h2>Digital internship for HCI students</h2>
         The division of HCI at University of Gothenburg is opening up
         applications for digital internships!
         <br></br>
         <br></br>
-        The purpose of the division is to contribute to a sustainable and serene
-        way of living with technology. In a world where IT is constantly
-        present, it is important to understand this presence and how it affects
-        us. Human-Computer Interaction (HCI) has often focused on developing new
+        The purpose of our work is to contribute to a sustainable and serene way
+        of living with technology. In a world where IT is constantly present, it
+        is important to understand this presence and how it affects us.
+        Human-Computer Interaction (HCI) has often focused on developing new
         artefacts to visualize and design a future world of information
         technology. Now we already live with technology around us, so our role
         as researchers and developers is instead to enhance and embellish our
@@ -38,19 +38,22 @@ const Internship = () => {
         of digitalization and have almost endless possibilities of doing things
         with the help of IT, there is still a lot that does not work as we wish,
         and some that even makes it more difficult and causes stress. We want to
-        understand and influence this development. The division started in the
-        summer of 2019 and is currently expanding, focusing on becoming an
-        important player within research, education, and collaboration at the
-        University of Gothenburg. A big focus area for the division is health
-        and well-being, an example of a project here is ”Digital seniors” which
-        focuses on the growing group of older people who have been actively
-        using computers for a long time – digital seniors.
+        understand and influence this development.
+        <br></br>
+        <br></br>
+        The division started in the summer of 2019 and is currently expanding,
+        focusing on becoming an important player within research, education, and
+        collaboration at the University of Gothenburg. The main focus area for
+        the division is health and well-being, an example of a project here is
+        ”Digital seniors” which focuses on the growing group of older people who
+        have been actively using computers for a long time.
         <br></br>
         <h2>The internship</h2>
-        We are currently looking for interns for the Autumn 2020 semester. The
-        internship will revolve around the theme exploring technology, where you
-        will pick an area to focus on and together with our division explore it
-        through experimenting and developing applications within that space.
+        We are currently looking for student interns for the Autumn 2020
+        semester. The internship will revolve around the theme exploring
+        technology, where you will pick an area to focus on and together with
+        our division explore it through experimenting and developing
+        applications within that space.
         <br></br>
         <br></br>
         The internship will provide opportunities to work together with our
@@ -71,18 +74,17 @@ const Internship = () => {
           </li>
           <li>Conduct research, collect and analyze data </li>
         </ul>
-        For the division, the internship is a way to both further explore
-        different technologies, as well as dive deeper into our focus areas. Our
-        main focus area is health and well-being. We want to explore ways of
-        understanding how technology affects our well-being. This includes
-        mindfulness, physical health, etc. One area we want to explore connected
-        to this is hydroponics and gardening, and how it connects to how we live
-        with technology. Gardening is associated both to health in terms of
-        therapeutics, but also as a way of living a healthy life. To this we are
-        interested both in how technology (sensors and automation) alter this
-        experience, as well as how we may take inspiration from gardening
-        practices and experiences into the design of digital technology. As for
-        technologies we are interested in:
+        For the division, the HCI student internship is a way to both further
+        explore different technologies, as well as dive deeper into our focus
+        areas. Our main focus area is health and well-being. We want to explore
+        ways of understanding how technology affects our well-being. This
+        includes mindfulness, movement, physical health, etc. One area we want
+        to explore connected to this is hydroponics and gardening, and how it
+        connects to how we live with technology and how it affects our
+        wellbeing. To this we are interested both in how technology (sensors and
+        automation) alters this experience, as well as how we may take
+        inspiration from gardening practices and experiences into the design of
+        digital technology. As for technologies we are interested in:
         <br></br>
         <ul>
           <li>
@@ -100,11 +102,10 @@ const Internship = () => {
           </li>
         </ul>
         If any of these focus areas sound interesting please state in your
-        application why and what you would want to focus on in any of these
-        areasthem.
+        application why and what you would want to focus on in any of them.
         <br></br>
         <h2>Requirements</h2>
-        We are looking for self-driven interns who are interested in exploring
+        We are looking for self-driven students who are interested in exploring
         technology and learning along the way. Programming knowledge is required
         and some prior experience developing applications is a bonus. You must
         be fluent in spoken and written English.
@@ -112,20 +113,23 @@ const Internship = () => {
         <h2>Digital internship </h2>
         The division of HCI is currently working remote due to the Covid 19
         situation, and we have an established online work environment. The
-        entire internship will be done remotely with weekly Zoom meetings and
-        close communication via Slack. We expect to recruit 3-5 interns, which
-        means that there will be a small group that could have some internal
-        collaboration as well, depending on interest and topics. Our working
-        language is English. The internship is not an employment and is
+        entire internship will be done remotely, from your home university, with
+        weekly Zoom meetings and close communication via Slack. We expect to
+        recruit 3-5 interns, which means that there will be a small group that
+        could have some internal collaboration as well, depending on interest
+        and topics. Our working language is English.
+        <br></br>
+        <br></br>
+        The internship is intended for students; it is not an employment and is
         therefore unpaid. Having finished the agreed project, you will receive a
         certificate and you will be invited as a co-author for any papers that
-        stem from your work. At the division website, you will be presented as
-        an affiliated researcher.
+        stem from your work. If you need course credits for this work, we can
+        discuss with your local university how to handle this issue
         <br></br>
         <h2>Application</h2>
         To apply, please send your CV as well as a text of 1-2 pages describing
         why you want to work within one of our specified areas and an example of
-        something you would like to explore within it by to{' '}
+        something you would like to explore within it to{' '}
         <a href="mailto:sebastian.andreasson@ait.gu.se">
           sebastian.andreasson@ait.gu.se
         </a>
