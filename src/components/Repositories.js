@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { ReactTinyLink } from 'react-tiny-link'
 import { mobile, middleContent } from '../utils/layout'
 
@@ -14,6 +15,7 @@ const Container = styled.div`
   margin-top: 50px;
   > h2 {
     font-size: 48px;
+    margin-bottom: 0;
   }
 `
 
@@ -41,6 +43,11 @@ const Repositories = () => {
 
   return (
     <Container>
+      <h2>Digital internship</h2>
+      <p>
+        We're currently looking for students for a digital internship. You can
+        read more about it <Link to="/internship">here</Link>.
+      </p>
       <h2>Projects</h2>
       <p>
         Here you can find some of the projects we've worked on or are currently

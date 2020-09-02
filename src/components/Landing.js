@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { mobile, middleContent } from '../utils/layout'
-import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   /* border-bottom: 2px solid black; */
@@ -129,10 +128,6 @@ const Landing = () => {
               Department of Applied IT
             </a>
             , University of Gothenburg.
-            <br></br>
-            <br></br>
-            We're currently looking for interns for a digital internship.{' '}
-            <Link to="/internship">Read more</Link>
           </p>
         </Description>
         {/* <Image>
