@@ -112,7 +112,7 @@ const Landing = () => {
             <br></br>
             <br></br>
             <a
-              href="https://ait.gu.se/english/hci"
+              href="https://www.gu.se/en/applied-information-technology/division-of-human-computer-interaction"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -122,7 +122,7 @@ const Landing = () => {
             <br></br>
             We are part of the{' '}
             <a
-              href="https://ait.gu.se/english"
+              href="https://www.gu.se/en/applied-information-technology"
               target="_blank"
               rel="noopener noreferrer"
             >
