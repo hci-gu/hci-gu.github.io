@@ -123,8 +123,7 @@ const Internship = () => {
         The internship is intended for students; it is not an employment and is
         therefore unpaid. Having finished the agreed project, you will receive a
         certificate and you will be invited as a co-author for any papers that
-        stem from your work. If you need course credits for this work, we can
-        discuss with your local university how to handle this issue
+        stem from your work.
         <br></br>
         <h2>Application</h2>
         To apply, please send your CV as well as a text of 1-2 pages describing
