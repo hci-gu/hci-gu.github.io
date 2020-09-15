@@ -69,7 +69,7 @@ const Repositories = () => {
       <p>
         To see publications made by our division you can go{' '}
         <a
-          href="https://gup.ub.gu.se/publications/list?department_id=&person_id=85192%3B83530"
+          href="https://gup.ub.gu.se/publications/list?department_id=&person_id=83530%3B85192%3B899627"
           target="_blank"
           rel="noopener noreferrer"
         >
