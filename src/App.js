@@ -33,7 +33,7 @@ const App = ({ children }) => {
         <a href="mailto:me@sebastianandreasson.com">
           me@sebastianandreasson.com
         </a>{' '}
-        if you need to reach us.
+        if you need to contact us.
       </TempEmail>
     </Container>
   )
