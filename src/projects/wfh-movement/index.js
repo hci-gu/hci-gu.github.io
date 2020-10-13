@@ -72,16 +72,6 @@ const AppstoreBadges = styled.div`
   }
 `
 
-const GULogo = styled.div`
-  left: 0;
-  bottom: 0;
-  margin: 1rem;
-
-  > img {
-    width: 120px;
-  }
-`
-
 const ScreenShots = styled.div`
   width: 350px;
   height: 700px;
@@ -105,21 +95,6 @@ const ScreenShots = styled.div`
     > img:nth-of-type(2) {
       visibility: hidden;
     }
-  }
-`
-
-const Footer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-
-  border-top: 1px solid black;
-
-  > * {
-  }
-  > a {
-    margin-left: 50px;
-    color: black;
   }
 `
 
