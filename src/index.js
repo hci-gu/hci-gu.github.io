@@ -9,6 +9,8 @@ import Internship from './components/Internship'
 import Menu from './components/Menu'
 import Footer from './components/Footer'
 
+import WFHMovement from './projects/wfh-movement/index'
+
 ReactDOM.render(
   <React.StrictMode>
     <App>
@@ -27,6 +29,9 @@ ReactDOM.render(
           </Route>
           <Route path="/gottlab">
             <Gottlab />
+          </Route>
+          <Route path="/wfh-movement">
+            <WFHMovement />
           </Route>
           <Route path="/">
             <Menu links={false} />
