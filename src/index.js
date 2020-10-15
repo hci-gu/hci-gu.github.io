@@ -1,11 +1,6 @@
 import React from 'react'
 import { render } from 'react-snapshot'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from './App'
 import Repositories from './components/Repositories'
 import Landing from './components/Landing'
@@ -32,19 +27,18 @@ render(
             <Menu links={false} />
             <Internship />
           </Route>
+          <Route path="/#/wfh-movement/privacy-policy">
+            <WFHMovementPrivacy />
+          </Route>
+          <Route path="/#/wfh-movement">
+            <WFHMovement />
+          </Route>
           <Route path="/wfh-movement/privacy-policy">
             <WFHMovementPrivacy />
           </Route>
           <Route path="/wfh-movement">
             <WFHMovement />
           </Route>
-          <Route
-            exact
-            path="/"
-            render={({ location }) => (
-              <Redirect to={location.hash.replace('#', '')} />
-            )}
-          />
           <Route path="/">
             <Menu links={false} />
             <Landing />

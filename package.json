@@ -44,7 +44,9 @@
     "include": [
       "/about",
       "/wfh-movement",
-      "/wfh-movement/privacy-policy"
+      "/wfh-movement/privacy-policy",
+      "/#/wfh-movement",
+      "/#/wfh-movement/privacy-policy"
     ],
     "snapshotDelay": 300
   }
