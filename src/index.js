@@ -1,6 +1,11 @@
 import React from 'react'
 import { render } from 'react-snapshot'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 import App from './App'
 import Repositories from './components/Repositories'
 import Landing from './components/Landing'
@@ -10,6 +15,14 @@ import Footer from './components/Footer'
 
 import WFHMovement from './projects/wfh-movement/index'
 import WFHMovementPrivacy from './projects/wfh-movement/privacy'
+
+const Index = () => (
+  <>
+    <Menu links={false} />
+    <Landing />
+    <Repositories />
+  </>
+)
 
 render(
   <React.StrictMode>
@@ -39,11 +52,15 @@ render(
           <Route path="/wfh-movement">
             <WFHMovement />
           </Route>
-          <Route path="/">
-            <Menu links={false} />
-            <Landing />
-            <Repositories />
-          </Route>
+          <Route
+            path="/"
+            render={({ location }) => {
+              if (location.hash === '') {
+                return <Index />
+              }
+              return <Redirect to={location.hash.replace('#', '')} />
+            }}
+          />
         </Switch>
       </Router>
       <Footer />
