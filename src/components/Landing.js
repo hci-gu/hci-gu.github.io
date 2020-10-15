@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import { mobile, middleContent } from '../utils/layout'
 
 const Container = styled.div`
@@ -83,60 +84,102 @@ const Description = styled.div`
 
 const Landing = () => {
   return (
-    <Container>
-      <Content>
-        <Title>
-          <h1>Division of Human-Computer Interaction</h1>
-        </Title>
-        <Description>
-          <p>
-            The purpose of our work is to contribute to a sustainable and serene
-            way of living with technology. In a world where IT is constantly
-            present, it is important to understand this presence and how it
-            affects us. Human-Computer Interaction (HCI) has often focused on
-            developing new artefacts to visualize and design a future world of
-            information technology. Now we already live with technology around
-            us, so our role as researchers and developers is instead to enhance
-            and embellish our ways of living with technology. Because even
-            though we are in the middle of digitalization and have almost
-            endless possibilities of doing things with the help of IT, there is
-            still a lot that does not work as we wish, and some that even makes
-            it more difficult and causes stress. We want to understand and
-            influence this development.
-            <br></br>
-            <br></br>
-            The division started in the summer of 2019 and is currently
-            expanding, focusing on becoming an important player within research,
-            education, and collaboration at the University of Gothenburg.
-            <br></br>
-            <br></br>
-            <a
-              href="https://www.gu.se/en/applied-information-technology/division-of-human-computer-interaction"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read more about the division
-            </a>
-            <br></br>
-            <br></br>
-            We are part of the{' '}
-            <a
-              href="https://www.gu.se/en/applied-information-technology"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Department of Applied IT
-            </a>
-            , University of Gothenburg.
-          </p>
-        </Description>
-        {/* <Image>
+    <>
+      <Helmet>
+        <title>Division of Human-Computer Interaction</title>
+        <meta name="title" content="Division of Human-Computer Interaction" />
+        <meta
+          name="description"
+          content="Division of Human-Computer Interaction at Gothenburg University"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="hci-gu.github.io" />
+        <meta
+          property="og:title"
+          content="Division of Human-Computer Interaction"
+        />
+        <meta
+          property="og:description"
+          content="Division of Human-Computer Interaction at Gothenburg University"
+        />
+        <meta
+          property="og:image"
+          content="https://hci-gu.github.io/img/share.png"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://hci-gu.github.io/wfh-movement/"
+        />
+        <meta property="twitter:title" content="WFH movement" />
+        <meta
+          property="twitter:description"
+          content="Compare your movement patterns before and after working from home."
+        />
+        <meta
+          property="twitter:image"
+          content="https://hci-gu.github.io/img/wfh-movement/share.png"
+        />
+      </Helmet>
+      <Container>
+        <Content>
+          <Title>
+            <h1>Division of Human-Computer Interaction</h1>
+          </Title>
+          <Description>
+            <p>
+              The purpose of our work is to contribute to a sustainable and
+              serene way of living with technology. In a world where IT is
+              constantly present, it is important to understand this presence
+              and how it affects us. Human-Computer Interaction (HCI) has often
+              focused on developing new artefacts to visualize and design a
+              future world of information technology. Now we already live with
+              technology around us, so our role as researchers and developers is
+              instead to enhance and embellish our ways of living with
+              technology. Because even though we are in the middle of
+              digitalization and have almost endless possibilities of doing
+              things with the help of IT, there is still a lot that does not
+              work as we wish, and some that even makes it more difficult and
+              causes stress. We want to understand and influence this
+              development.
+              <br></br>
+              <br></br>
+              The division started in the summer of 2019 and is currently
+              expanding, focusing on becoming an important player within
+              research, education, and collaboration at the University of
+              Gothenburg.
+              <br></br>
+              <br></br>
+              <a
+                href="https://www.gu.se/en/applied-information-technology/division-of-human-computer-interaction"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read more about the division
+              </a>
+              <br></br>
+              <br></br>
+              We are part of the{' '}
+              <a
+                href="https://www.gu.se/en/applied-information-technology"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Department of Applied IT
+              </a>
+              , University of Gothenburg.
+            </p>
+          </Description>
+          {/* <Image>
           <div>
             <img></img>
           </div>
         </Image> */}
-      </Content>
-    </Container>
+        </Content>
+      </Container>
+    </>
   )
 }
 

@@ -27,10 +27,16 @@ render(
             <Menu links={false} />
             <Internship />
           </Route>
+          <Route path="/#/wfh-movement/privacy-policy">
+            <WFHMovementPrivacy />
+          </Route>
           <Route path="/wfh-movement/privacy-policy">
             <WFHMovementPrivacy />
           </Route>
           <Route path="/wfh-movement">
+            <WFHMovement />
+          </Route>
+          <Route path="/#/wfh-movement">
             <WFHMovement />
           </Route>
           <Route path="/">

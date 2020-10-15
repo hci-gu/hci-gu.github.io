@@ -15,7 +15,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-  margin-top: 200px;
+  margin-top: 150px;
   display: flex;
   justify-content: space-evenly;
 
@@ -64,7 +64,7 @@ const AppstoreBadges = styled.div`
   justify-content: center;
 
   > span {
-    font-weight: bold;
+    font-weight: 200;
     font-size: 20px;
   }
 
@@ -96,6 +96,22 @@ const ScreenShots = styled.div`
     > img:nth-of-type(2) {
       visibility: hidden;
     }
+  }
+`
+
+const Description = styled.div`
+  margin: 0 auto;
+  margin-top: 100px;
+
+  > h2 {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  > p {
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: justify;
   }
 `
 
@@ -187,6 +203,29 @@ const Landing = () => {
             ></img>
           </ScreenShots>
         </Wrapper>
+        <Description>
+          <h2>
+            Do you think that you are moving more or less since you began
+            working from home?
+          </h2>
+          <p>
+            By picking a date where you started working from home, you will be
+            able to explore whether your movement patterns have changed since
+            you started working from home. The app visualizes your movement in
+            the form of steps data from your phone, through Apple Health, Google
+            fitness or Garmin.
+            <br></br>
+            <br></br>
+            The Work From Home app was developed for research purposes by the
+            Division of Human Computer Interaction at the Department of Applied
+            Information Technology, University of Gothenburg, Sweden.
+            <br></br>
+            <br></br>
+            No data will be sent to our servers until you explicitly agree to
+            share your data. You can read more about our handling of data in the{' '}
+            <a href="/wfh-movement/privacy-policy">privacy policy</a>.
+          </p>
+        </Description>
       </Container>
     </>
   )
