@@ -59,6 +59,7 @@ const Repositories = () => {
             key={`Repo_${i}`}
             cardSize="large"
             showGraphic={true}
+            defaultMedia={`/img/projects/${repo.name}.png`}
             header={repo.name}
             maxLine={1}
             url={repo.html_url}

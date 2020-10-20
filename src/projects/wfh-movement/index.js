@@ -19,7 +19,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-  margin-top: 150px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-evenly;
 

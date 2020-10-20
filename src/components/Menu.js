@@ -40,8 +40,6 @@ const Content = styled.div`
   }
 
   ${mobile()} {
-    justify-content: space-around;
-
     > a {
       margin-left: 0px;
     }
@@ -54,11 +52,12 @@ const Logo = styled.div`
 
   > img {
     height: 100%;
+    padding: 20px 0;
   }
 
   ${mobile()} {
-    width: ${MENU_HEIGHT}px;
-    height: ${MENU_HEIGHT}px;
+    width: ${MENU_HEIGHT * 1.5}px;
+    height: ${MENU_HEIGHT * 1.5}px;
   }
 `
 
@@ -69,7 +68,7 @@ const Menu = ({ links = true }) => {
         <Link to="/">
           <Logo>
             <img
-              src="/img/gu_logo.jpg"
+              src="/img/gu_logo.png"
               alt="Gothenburg university logotype"
             ></img>
           </Logo>
