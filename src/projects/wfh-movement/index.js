@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
+import Faq from './faq'
+import Team from './team'
+import { mobile, tablet, smallLaptop } from '../../utils/layout'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -8,7 +11,7 @@ const Container = styled.div`
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
 
-  @media (max-width: 640px) {
+  ${mobile()} {
     width: 100%;
     padding: 1em;
   }
@@ -19,8 +22,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
 
-  @media (max-width: 1200px) {
-    margin-top: 100px;
+  ${tablet()} {
+    justify-content: center;
+  }
+
+  ${mobile()} {
+    margin-top: 0px;
     flex-direction: column;
   }
 `
@@ -37,6 +44,10 @@ const Title = styled.div`
     color: #131d29;
     margin-bottom: 0;
     letter-spacing: 1px;
+
+    ${tablet()} {
+      font-size: 48px;
+    }
   }
   h2 {
     margin: 0;
@@ -50,7 +61,7 @@ const Title = styled.div`
     width: 500px;
   }
 
-  @media (max-width: 640px) {
+  ${mobile()} {
     > p {
       width: 100%;
     }
@@ -82,18 +93,17 @@ const ScreenShots = styled.div`
     width: 100%;
   }
 
-  @media (max-width: 640px) {
-    margin: 0 auto;
-    width: 50%;
+  ${smallLaptop()} {
+    padding: 50px;
+    width: 225px;
+  }
+
+  ${tablet()} {
+    padding: 0;
+    width: 0;
     height: auto;
-    display: flex;
-    justify-items: center;
 
     > img {
-      position: inherit;
-    }
-
-    > img:nth-of-type(2) {
       visibility: hidden;
     }
   }
@@ -226,6 +236,8 @@ const Landing = () => {
             <a href="/wfh-movement/privacy-policy">privacy policy</a>.
           </p>
         </Description>
+        <Faq />
+        <Team />
       </Container>
     </>
   )

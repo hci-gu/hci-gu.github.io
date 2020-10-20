@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import Link from './Link'
 import { ReactTinyLink } from 'react-tiny-link'
 import { mobile, middleContent } from '../utils/layout'
 
@@ -68,13 +68,9 @@ const Repositories = () => {
       <h2>Publications</h2>
       <p>
         To see publications made by our division you can go{' '}
-        <a
-          href="https://gup.ub.gu.se/publications/list?department_id=&person_id=83530%3B85192%3B899627"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link href="https://gup.ub.gu.se/publications/list?department_id=&person_id=83530%3B85192%3B899627">
           here.
-        </a>
+        </Link>
       </p>
     </Container>
   )

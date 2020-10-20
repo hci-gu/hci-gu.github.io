@@ -40,6 +40,10 @@ const Content = styled.div`
     margin: 0;
     font-size: 44px;
   }
+
+  ${mobile()} {
+    width: 100%;
+  }
 `
 
 const Text = styled.div`

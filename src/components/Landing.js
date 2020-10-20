@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { mobile, middleContent } from '../utils/layout'
+import Link from './Link'
 
 const Container = styled.div`
   /* border-bottom: 2px solid black; */
@@ -54,33 +55,6 @@ const Description = styled.div`
     width: 100%;
   }
 `
-
-// const Image = styled.div`
-//   > div {
-//     position: relative;
-//     width: 80%;
-//     max-width: 400px;
-
-//     :after {
-//       content: '';
-//       display: block;
-//       padding-bottom: 100%;
-//     }
-//   }
-
-//   > div > img {
-//     position: absolute;
-//     right: -75%;
-//     top: 0px;
-//     width: 150%;
-//     height: 150%;
-//     border-radius: 50%;
-//     background-image: url('/img/division_team_gbg.jpg');
-//     background-size: cover;
-//     background-position: center;
-//     border: 2px solid black;
-//   }
-// `
 
 const Landing = () => {
   return (
@@ -152,31 +126,18 @@ const Landing = () => {
               Gothenburg.
               <br></br>
               <br></br>
-              <a
-                href="https://www.gu.se/en/applied-information-technology/division-of-human-computer-interaction"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.gu.se/en/applied-information-technology/division-of-human-computer-interaction">
                 Read more about the division
-              </a>
+              </Link>
               <br></br>
               <br></br>
               We are part of the{' '}
-              <a
-                href="https://www.gu.se/en/applied-information-technology"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://www.gu.se/en/applied-information-technology">
                 Department of Applied IT
-              </a>
+              </Link>
               , University of Gothenburg.
             </p>
           </Description>
-          {/* <Image>
-          <div>
-            <img></img>
-          </div>
-        </Image> */}
         </Content>
       </Container>
     </>
