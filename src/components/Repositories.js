@@ -43,10 +43,10 @@ const Repositories = () => {
 
   return (
     <Container>
-      <h2>Digital internship</h2>
+      <h2>WFH Movement</h2>
       <p>
-        We're currently looking for students for a digital internship. You can
-        read more about it <Link to="/internship">here</Link>.
+        Read more about the WFH Movement app{' '}
+        <Link to="/wfh-movement">here</Link>.
       </p>
       <h2>Projects</h2>
       <p>

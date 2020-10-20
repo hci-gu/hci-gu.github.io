@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from '../../components/Link'
 
 import faqList from './data/faq'
 
@@ -22,19 +23,28 @@ const FaqList = styled.ul`
   }
 `
 
-const FaqQuestionAndAnswer = ({ question, answer }) => (
-  <li>
-    <strong>{question}</strong>
-    <span>{answer}</span>
-  </li>
-)
+const FaqQuestionAndAnswer = ({ question, answer, replace, link, twitter }) => {
+  const parts = replace ? answer.split(replace) : [answer]
+  if (replace) parts.splice(1, 0, replace)
+  return (
+    <li key={`Faq_${question}`}>
+      <strong>{question}</strong>
+      <span>
+        {parts.map((part) => {
+          if (part === replace) {
+            return <Link {...link}>{replace}</Link>
+          }
+          return part
+        })}
+      </span>
+    </li>
+  )
+}
 
 const Faq = () => {
   return (
     <Container>
       <h1>FAQ</h1>
-      {/* <ul>{faqList.map(({ question }) => FaqQuestion(question))}</ul> */}
-
       <FaqList>{faqList.map(FaqQuestionAndAnswer)}</FaqList>
     </Container>
   )

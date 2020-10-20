@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const textForTeamMember = ({ name, twitter, link }, i) => {
   return (
-    <span>
+    <span key={`Team_${name}`}>
       {i > 0 && `, `}
       {i === 3 && ` and `}
       {!twitter && <Link href={link}>{name}</Link>}

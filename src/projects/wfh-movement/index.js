@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Faq from './faq'
 import Team from './team'
+import Link from '../../components/Link'
 import { mobile, tablet, smallLaptop } from '../../utils/layout'
 
 const Container = styled.div`
@@ -172,9 +173,9 @@ const Landing = () => {
               Compare your movement patterns before and after working from home.
               <br></br>
               <br></br>
-              Using this app you get a way to visualize steps data from sources
-              such as Apple Health, Google fitness and Garmin to get an idea of
-              how your movement patterns have changed after working from home.
+              Download the WFH app to visualize steps data from sources such as
+              Apple Health, Google fitness and Garmin, to get an idea of how
+              your movement patterns have changed after working from home.
             </p>
             <AppstoreBadges>
               <span>Get the app!</span>
@@ -219,11 +220,10 @@ const Landing = () => {
             working from home?
           </h2>
           <p>
-            By picking a date where you started working from home, you will be
-            able to explore whether your movement patterns have changed since
-            you started working from home. The app visualizes your movement in
-            the form of steps data from your phone, through Apple Health, Google
-            fitness or Garmin.
+            This app allows you to explore whether your movement patterns have
+            changed after Covid 19 and recommendations to work from home. The
+            app visualizes your movement in the form of steps data from your
+            phone, through Apple Health, Google fitness or Garmin.
             <br></br>
             <br></br>
             The Work From Home app was developed for research purposes by the
@@ -233,7 +233,8 @@ const Landing = () => {
             <br></br>
             No data will be sent to our servers until you explicitly agree to
             share your data. You can read more about our handling of data in the{' '}
-            <a href="/wfh-movement/privacy-policy">privacy policy</a>.
+            <Link to="/wfh-movement/privacy-policy">privacy policy</Link> and in
+            the FAQ.
           </p>
         </Description>
         <Faq />

@@ -23,6 +23,10 @@ export default [
     question: 'Who is responsible for this?',
     answer:
       'The app is a part of research conducted by researchers at the Division of Human-Computer Interaction at the Department of Applied IT at the University of Gothenburg. The developers are:  research engineer Sebastian Andreasson, Dr Vasiliki Mylonopoulou, Dr Mattias Rost and Prof. Alexandra Weilenmann. You can read more about us on our webpage: https://hci-gu.github.io/',
+    replace: 'https://hci-gu.github.io/',
+    link: {
+      to: '/',
+    },
   },
   {
     question:
@@ -39,6 +43,10 @@ export default [
     question: 'Can I get a copy of my data?',
     answer:
       'You can request to delete your data from within the app as long as it is installed on your device. You may also request a copy of your data by emailing sebastian.andreasson@ait.gu.se together with a unique identifier found on the settings screen of the app (24 characters). When you uninstall the app, this identifier is lost and we can no longer identify you in the dataset and it can therefore not be requested nor deleted.',
+    replace: 'sebastian.andreasson@ait.gu.se',
+    link: {
+      href: 'mailto:sebastian.andreasson@ait.gu.se',
+    },
   },
   {
     question: 'Why can I only see other people’s data?',
@@ -60,6 +68,11 @@ export default [
     question: 'I swim/cycle a lot, does this count as movement in the app?',
     answer:
       'The app only considers steps as movement because steps are recognised by the built in software on smartphones we carry these days. Since swimming and cycling does not incur steps, it is not considered in this app. Unfortunately, this can result in an inaccurate view of your overall movement. For a longer discussion about what movement is, contact @rrostt.',
+    replace: '@rrostt',
+    link: {
+      href: 'https://twitter.com/rrostt',
+      twitter: true,
+    },
   },
   {
     question: 'Can I be identified by the data I shared with you?',
