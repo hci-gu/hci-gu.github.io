@@ -30,13 +30,20 @@ const Grid = styled.div`
   }
 `
 
+const showRepos = [
+  'corona-movement',
+  'auto-transcriber',
+  'facebook-for-digital-seniors',
+  'smart-floorball-club',
+]
+
 const Repositories = () => {
   const [repos, setRepos] = useState([])
   useEffect(() => {
     const init = async () => {
       const res = await api.get(`/orgs/hci-gu/repos`)
       const repos = res.data
-      setRepos(repos.filter((r) => r.name !== 'hci-gu.github.io'))
+      setRepos(repos.filter((r) => showRepos.includes(r.name)))
     }
     init()
   }, [])
