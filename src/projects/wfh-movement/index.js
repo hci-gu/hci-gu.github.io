@@ -128,6 +128,7 @@ const Description = styled.div`
 `
 
 const MediaContainer = styled.div`
+  margin: 75px 0;
   > ul {
     > li {
       margin-top: 10px;
