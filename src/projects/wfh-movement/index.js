@@ -5,6 +5,7 @@ import Faq from './faq'
 import Team from './team'
 import Link from '../../components/Link'
 import { mobile, tablet, smallLaptop } from '../../utils/layout'
+import articles from './data/articles'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -126,6 +127,30 @@ const Description = styled.div`
   }
 `
 
+const MediaContainer = styled.div`
+  > ul {
+    > li {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+  }
+`
+
+const Media = () => {
+  return (
+    <MediaContainer>
+      <h1>WFH Movement in media</h1>
+      <ul>
+        {articles.map((a) => (
+          <li>
+            {`${a.website} - `} <Link href={a.link}>{a.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </MediaContainer>
+  )
+}
+
 const Landing = () => {
   return (
     <>
@@ -237,6 +262,7 @@ const Landing = () => {
             the FAQ.
           </p>
         </Description>
+        <Media />
         <Faq />
         <Team />
       </Container>
