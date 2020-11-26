@@ -1,5 +1,11 @@
 export default [
   {
+    name: 'Har hemarbete gjort oss mer stillasittande? – Ny app ska ge svar',
+    link:
+      'https://www.dn.se/ekonomi/har-hemarbete-gjort-oss-mer-stillasittande-ny-app-ska-ge-svar/',
+    website: 'Dagens Nyheter',
+  },
+  {
     name: 'Hemarbetet ändrar hur vi rör på oss – nu ska forskare undersöka hur',
     link:
       'https://computersweden.idg.se/2.2683/1.741385/corona-forskare-rorelsemonster',

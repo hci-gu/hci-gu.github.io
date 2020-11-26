@@ -1,5 +1,11 @@
 export default [
   {
+    question:
+      'Why do I have almost twice the amount of steps Apple Health says I have? ',
+    answer:
+      '[Updated 2020-11-26] We just found out about a bug with the implementation of Apple Health that causes users that have an additional tracker ( for example Apple Watch ) to have multiple sources uploaded at once. We are currently working on a fix for this that we hopefully can release in the coming days.',
+  },
+  {
     question: 'What does the app do? ',
     answer:
       'The app visualizes your movement in the form of steps data from your phone, through Apple Health, Google Fitness or Garmin Connect. By picking a date where you started working from home, you will be able to explore whether your movement patterns have changed since you started working from home.',
