@@ -1,74 +1,26 @@
 import React from 'react'
 import { render } from 'react-snapshot'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { createClient, Provider } from 'urql'
+import 'antd/dist/antd.less'
 import App from './App'
-import Repositories from './components/Repositories'
-import Landing from './components/Landing'
-import Internship from './components/Internship'
-import Menu from './components/Menu'
-import Footer from './components/Footer'
 
-import WFHMovement from './projects/wfh-movement/index'
-import WFHMovementPrivacy from './projects/wfh-movement/privacy'
-
-const Index = () => (
-  <>
-    <Menu links={false} />
-    <Landing />
-    <Repositories />
-  </>
-)
+console.log(process.env)
+const client = createClient({
+  url: 'https://graphql.contentful.com/content/v1/spaces/j07xal62e1un',
+  fetchOptions: () => {
+    return {
+      headers: {
+        authorization: `Bearer ${process.env.REACT_APP_CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
+      },
+    }
+  },
+})
 
 render(
   <React.StrictMode>
-    <App>
-      <Router>
-        <Switch>
-          <Route
-            path="/about"
-            component={() => {
-              window.location.href = 'https://ait.gu.se/english/hci'
-              return null
-            }}
-          ></Route>
-          <Route path="/internship">
-            <Menu links={false} />
-            <Internship />
-          </Route>
-          <Route path="/#/wfh-movement/privacy-policy">
-            <Menu links={false} />
-            <WFHMovementPrivacy />
-          </Route>
-          <Route path="/#/wfh-movement">
-            <Menu links={false} />
-            <WFHMovement />
-          </Route>
-          <Route path="/wfh-movement/privacy-policy">
-            <Menu links={false} />
-            <WFHMovementPrivacy />
-          </Route>
-          <Route path="/wfh-movement">
-            <Menu links={false} />
-            <WFHMovement />
-          </Route>
-          <Route
-            path="/"
-            render={({ location }) => {
-              if (location.hash === '') {
-                return <Index />
-              }
-              return <Redirect to={location.hash.replace('#', '')} />
-            }}
-          />
-        </Switch>
-      </Router>
-      <Footer />
-    </App>
+    <Provider value={client}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )

@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
-import Faq from './faq'
 import Team from './team'
 import Link from '../../components/Link'
 import { mobile, tablet, smallLaptop } from '../../utils/layout'
 import articles from './data/articles'
+import Project from '../Project'
 
 const Container = styled.div`
   margin: 0 auto;
   width: 75%;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
 
   ${mobile()} {
     width: 100%;
@@ -240,31 +239,8 @@ const Landing = () => {
             ></img>
           </ScreenShots>
         </Wrapper>
-        <Description>
-          <h2>
-            Do you think that you are moving more or less since you began
-            working from home?
-          </h2>
-          <p>
-            This app allows you to explore whether your movement patterns have
-            changed after Covid 19 and recommendations to work from home. The
-            app visualizes your movement in the form of steps data from your
-            phone, through Apple Health, Google fitness or Garmin.
-            <br></br>
-            <br></br>
-            The Work From Home app was developed for research purposes by the
-            Division of Human Computer Interaction at the Department of Applied
-            Information Technology, University of Gothenburg, Sweden.
-            <br></br>
-            <br></br>
-            No data will be sent to our servers until you explicitly agree to
-            share your data. You can read more about our handling of data in the{' '}
-            <Link to="/wfh-movement/privacy-policy">privacy policy</Link> and in
-            the FAQ.
-          </p>
-        </Description>
+        <Project id="7KTLMwpXTnYG9r2HHBUcjQ" />
         <Media />
-        <Faq />
         <Team />
       </Container>
     </>
