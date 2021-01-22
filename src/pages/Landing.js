@@ -49,7 +49,6 @@ const Description = styled.div`
 `
 
 const Landing = ({ content }) => {
-  console.log('contet', content)
   return (
     <>
       <Helmet>

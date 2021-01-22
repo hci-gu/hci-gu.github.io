@@ -9,7 +9,10 @@
     "postbuild": "react-snap"
   },
   "reactSnap": {
-    "source": "build"
+    "source": "build",
+    "puppeteerArgs": [
+      "--disable-web-security"
+    ]
   },
   "repository": {
     "type": "git",
@@ -55,15 +58,5 @@
     "craco-less": "^1.17.1",
     "react-snap": "^1.23.0",
     "resize-observer-polyfill": "^1.5.1"
-  },
-  "reactSnapshot": {
-    "include": [
-      "/about",
-      "/wfh-movement",
-      "/wfh-movement/privacy-policy",
-      "/#/wfh-movement",
-      "/#/wfh-movement/privacy-policy"
-    ],
-    "snapshotDelay": 300
   }
 }
