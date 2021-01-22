@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
 import { Divider } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useMeasure } from '../../utils/hooks'
-import { mobile, tablet, laptop } from '../../utils/layout'
+import { tablet, renderRichText } from '../../utils/layout'
 
 const Container = styled.div`
   margin-top: 100px;
@@ -77,7 +76,7 @@ const FAQItem = ({ question, answer }) => {
         <strong>{question}</strong>
       </Question>
       <Answer style={{ height }}>
-        <div {...bind}>{documentToReactComponents(answer.json)}</div>
+        <div {...bind}>{renderRichText(answer)}</div>
       </Answer>
       <Divider style={{ marginBottom: 0, marginTop: 10 }} />
     </ItemContainer>

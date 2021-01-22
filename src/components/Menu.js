@@ -7,7 +7,6 @@ import { useRecoilState } from 'recoil'
 import { availableLocales, localeAtom } from '../state'
 
 const MENU_HEIGHT = 64
-
 const Container = styled.div`
   height: ${MENU_HEIGHT * 2}px;
 
@@ -42,7 +41,7 @@ const Logo = styled.div`
   }
 `
 
-const Menu = ({ links = true }) => {
+const Menu = () => {
   const [locale, setLocale] = useRecoilState(localeAtom)
   return (
     <Container>
@@ -67,7 +66,7 @@ const Menu = ({ links = true }) => {
                 <span>
                   {name.split(' ').map((s, i) => (
                     <span
-                      style={{ paddingRight: i == 0 ? 10 : 0 }}
+                      style={{ paddingRight: i === 0 ? 10 : 0 }}
                       key={`${s}_i`}
                     >
                       {s}

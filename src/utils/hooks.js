@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import { sizes } from './layout'
 import ResizeObserver from 'resize-observer-polyfill'
@@ -8,10 +9,10 @@ export const useMeasure = () => {
   const [ro] = useState(
     () => new ResizeObserver(([entry]) => set(entry.contentRect))
   )
-  useEffect(() => {
+  React.useEffect(() => {
     if (ref.current) ro.observe(ref.current)
     return () => ro.disconnect()
-  }, [])
+  }, [ro])
   return [{ ref }, bounds]
 }
 
@@ -24,7 +25,6 @@ export const useViewPort = () => {
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
-  // Return the width so we can use it in our components
   return { width }
 }
 

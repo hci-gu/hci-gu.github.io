@@ -15,3 +15,13 @@ export const localeAtom = atom({
   key: 'locale',
   default: availableLocales[0],
 })
+
+export const contentAtom = atom({
+  key: 'content',
+  default: null,
+})
+
+export const projectAtom = atom({
+  key: 'project',
+  default: null,
+})

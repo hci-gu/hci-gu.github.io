@@ -1,7 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { tablet, mobile, laptop, smallLaptop } from '../../utils/layout'
+import {
+  tablet,
+  mobile,
+  laptop,
+  smallLaptop,
+  renderRichText,
+} from '../../utils/layout'
 import { useLayoutBreakpoint } from '../../utils/hooks'
 
 const Container = styled.div`
@@ -128,9 +133,9 @@ const SectionMobile = ({ section }) => {
         image={section.backgroundImage ? section.backgroundImage.url : null}
       >
         <h2>{section.title}</h2>
-        <img src={section.image.url}></img>
+        <img src={section.image.url} alt={section.title}></img>
       </ContentMobile>
-      <div>{documentToReactComponents(section.description.json, {})}</div>
+      <div>{renderRichText(section.description)}</div>
     </ContainerMobile>
   )
 }
@@ -148,8 +153,8 @@ const Section = ({ section }) => {
     >
       <h2>{section.title}</h2>
       <Content alignLeft={section.alignImageLeft}>
-        <img src={section.image.url}></img>
-        <div>{documentToReactComponents(section.description.json, {})}</div>
+        <img src={section.image.url} alt={section.title}></img>
+        <div>{renderRichText(section.description)}</div>
       </Content>
     </Container>
   )

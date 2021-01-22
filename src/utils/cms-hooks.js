@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import { useQuery } from 'urql'
-import { useRecoilValue } from 'recoil'
-import { localeAtom } from '../state'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { contentAtom, localeAtom, projectAtom } from '../state'
 
 const ProjectQuery = `
 query ($id: String!, $locale: String!) {
@@ -68,22 +69,51 @@ export const useProject = (id) => {
     query: ProjectQuery,
     variables: { id, locale: locale.value },
   })
+  const [project, setProject] = useRecoilState(projectAtom)
+  const { data } = result
 
-  const { data, fetching, error } = result
+  useEffect(() => {
+    if (data) setProject(data.project)
+  }, [data, setProject])
 
-  if (!data || fetching || error) return null
-  return data.project
+  return project
 }
 
-export const useGenericContent = (id) => {
+const WebContentQuery = `
+query($id:String!, $locale: String!) {
+  webContent(id: $id, locale: $locale) {
+   	title
+    introduction {
+      json
+    }
+    footerTitle
+    footerContent {
+      json
+    }
+    sectionsCollection {
+      items {
+        title
+        description {
+          json
+        }
+      }
+    }
+  }
+}
+`
+
+export const useGenericContent = (id = '5BaRlonhLZbVN59DVybNWF') => {
   const locale = useRecoilValue(localeAtom)
   const [result] = useQuery({
-    query: ProjectQuery,
+    query: WebContentQuery,
     variables: { id, locale: locale.value },
   })
+  const [content, setContent] = useRecoilState(contentAtom)
+  const { data } = result
 
-  const { data, fetching, error } = result
+  useEffect(() => {
+    if (data) setContent(data.webContent)
+  }, [data, setContent])
 
-  if (!data || fetching || error) return null
-  return data.project
+  return content
 }

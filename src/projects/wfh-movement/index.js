@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { mobile, tablet, smallLaptop } from '../../utils/layout'
+import { mobile, tablet, smallLaptop, renderRichText } from '../../utils/layout'
 import Project from '../Project'
-import Meta from './data/meta'
+import Meta from './meta'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -120,7 +119,7 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
       <Title>
         <h1>{name}</h1>
         <h2>{subHeading}</h2>
-        <div>{documentToReactComponents(introduction.json)}</div>
+        <div>{renderRichText(introduction)}</div>
         <AppstoreBadges>
           <span>{callToAction}</span>
           <a

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { mobile, tablet } from '../../utils/layout'
-import Link from '../Link'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -66,10 +65,13 @@ const Article = ({ article }) => {
   return (
     <ArticleContainer>
       <div>
-        <img src={article.publisherLogo.url} />
+        <img
+          src={article.publisherLogo.url}
+          alt={`${article.publisher} logo`}
+        />
       </div>
       <span>{article.publisher}</span>
-      <a href={article.link} target="_blank">
+      <a href={article.link} target="_blank" rel="noopener noreferrer">
         {article.title}
       </a>
     </ArticleContainer>

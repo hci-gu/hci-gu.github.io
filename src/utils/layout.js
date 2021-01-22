@@ -1,3 +1,7 @@
+import React from 'react'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
+
 export const sizes = {
   mobile: 640,
   tablet: 940,
@@ -18,3 +22,19 @@ export const middleContent = ({ padding = true } = {}) => `
     ${padding && 'padding: 1em;'} 
   }
 `
+
+export const renderRichText = (richText) => {
+  const Text = ({ children }) => <p>{children}</p>
+
+  const options = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    },
+    renderText: (text) =>
+      text
+        .split('\n')
+        .flatMap((text, i) => [i > 0 && <br key={`${text}_${i}`} />, text]),
+  }
+
+  return documentToReactComponents(richText.json, options)
+}
