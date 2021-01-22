@@ -15,7 +15,6 @@ import Footer from './components/Footer'
 
 import WFHMovement from './projects/wfh-movement/index'
 import WFHMovementPrivacy from './projects/wfh-movement/privacy'
-import Project from './projects/Project'
 
 const Container = styled.div`
   /* padding-bottom: 100px; */
@@ -52,9 +51,6 @@ const App = ({ children }) => {
           <Route path="/wfh-movement">
             <Menu links={false} />
             <WFHMovement />
-          </Route>
-          <Route path="/project/:id">
-            <Project />
           </Route>
           <Route
             path="/"

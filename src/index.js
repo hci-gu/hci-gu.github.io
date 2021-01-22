@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-snapshot'
+import { RecoilRoot } from 'recoil'
 import { createClient, Provider } from 'urql'
 import 'antd/dist/antd.less'
 import App from './App'
@@ -19,7 +20,9 @@ const client = createClient({
 render(
   <React.StrictMode>
     <Provider value={client}>
-      <App />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

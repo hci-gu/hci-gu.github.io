@@ -21,6 +21,7 @@ const Container = styled.div`
   padding: 5% 10%;
 
   > h2 {
+    margin-top: 20px;
     font-size: 30px;
     font-weight: 600;
   }
@@ -58,7 +59,7 @@ const Content = styled.div`
     min-width: 300px;
   }
 
-  > p {
+  > div {
     width: 50%;
     font-size: 1.2em;
   }
@@ -81,7 +82,7 @@ const Content = styled.div`
     > img {
       width: 50%;
     }
-    > p {
+    > div {
       width: 100%;
     }
   }
@@ -95,7 +96,7 @@ const Section = ({ section }) => {
       <h2>{section.title}</h2>
       <Content alignLeft={section.alignImageLeft}>
         <img src={section.image.url}></img>
-        <p>{documentToReactComponents(section.description.json, {})}</p>
+        <div>{documentToReactComponents(section.description.json, {})}</div>
       </Content>
     </Container>
   )

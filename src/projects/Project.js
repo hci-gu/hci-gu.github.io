@@ -1,17 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useQuery } from 'urql'
-import { useParams } from 'react-router-dom'
 import Section from '../components/projects/Section'
-import { mobile, tablet, smallLaptop } from '../utils/layout'
 import FAQ from '../components/projects/FAQ'
+import { useRecoilValue } from 'recoil'
+import { localeAtom } from '../state'
+import Articles from '../components/projects/Articles'
+import Team from '../components/projects/Team'
 
 const Container = styled.div``
 
 const ProjectQuery = `
-query ($id: String!) {
-  project(id: $id) {
+query ($id: String!, $locale: String!) {
+  project(id: $id, locale: $locale) {
     name
+    subHeading
+    introduction {
+      json
+    }
+    callToAction
     sectionsCollection {
       items {
         title
@@ -40,6 +47,23 @@ query ($id: String!) {
         }
       }
     }
+    articlesCollection {
+      items {
+        title
+        publisher
+        publisherLogo {
+          url
+        }
+        link
+      }
+    }
+    teamCollection {
+      items {
+        name
+        twitter
+        website
+      }
+    }
   }
 }
 `
@@ -54,18 +78,22 @@ const Sections = ({ sections }) => {
   )
 }
 
-const Project = ({ id }) => {
+const Project = ({ id, intro }) => {
+  const locale = useRecoilValue(localeAtom)
   const [result] = useQuery({
     query: ProjectQuery,
-    variables: { id },
+    variables: { id, locale: locale.value },
   })
 
   const { data, fetching, error } = result
 
   return (
     <Container>
+      {data && intro(data.project)}
       {data && <Sections sections={data.project.sectionsCollection.items} />}
       {data && <FAQ faq={data.project.faqCollection.items} />}
+      {data && <Articles articles={data.project.articlesCollection.items} />}
+      {data && <Team team={data.project.teamCollection.items} />}
     </Container>
   )
 }

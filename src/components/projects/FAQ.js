@@ -33,7 +33,9 @@ const SectionContainer = styled.div`
 `
 
 const ItemContainer = styled.div`
+  margin-top: 10px;
   padding: 10px;
+  padding-bottom: 0;
 `
 
 const Question = styled.div`
@@ -50,8 +52,8 @@ const Question = styled.div`
 `
 
 const Answer = styled(animated.div)`
-  padding: 20px 10px;
-  padding-bottom: 0;
+  padding: 10px 10px;
+  padding-bottom: 0px;
 
   overflow: hidden;
 `
@@ -61,7 +63,7 @@ const FAQItem = ({ question, answer }) => {
   const [bind, { height: viewHeight }] = useMeasure()
   const { height } = useSpring({
     from: { height: 0 },
-    to: { height: isOpen ? viewHeight : 0 },
+    to: { height: isOpen ? viewHeight + 20 : 0 },
   })
   return (
     <ItemContainer>
