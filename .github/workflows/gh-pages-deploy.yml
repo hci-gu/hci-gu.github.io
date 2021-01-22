@@ -27,7 +27,7 @@ jobs:
           value: ${{secrets.CONTENTFUL_ACCESS_TOKEN}}
       - name: Build
         run: |
-          npm build
+          npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
