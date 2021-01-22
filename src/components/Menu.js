@@ -1,15 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Select } from 'antd'
 import { mobile, middleContent } from '../utils/layout'
+import { useRecoilState } from 'recoil'
+import { availableLocales, localeAtom } from '../state'
 
 const MENU_HEIGHT = 64
-
 const Container = styled.div`
   height: ${MENU_HEIGHT * 2}px;
 
   ${mobile()} {
     height: ${MENU_HEIGHT}px;
+    padding: 0 20px;
   }
 
   margin-bottom: 10px;
@@ -18,32 +21,9 @@ const Container = styled.div`
 const Content = styled.div`
   ${middleContent({ padding: false })}
   display: flex;
+  justify-content: space-between;
   font-size: 24px;
   line-height: ${MENU_HEIGHT}px;
-
-  > a {
-    width: 80px;
-    font-weight: 500;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-
-    margin-left: 100px;
-    :nth-child(1) {
-      margin-left: 0;
-    }
-
-    :hover {
-      opacity: 0.75;
-    }
-  }
-
-  ${mobile()} {
-    > a {
-      margin-left: 0px;
-    }
-  }
 `
 
 const Logo = styled.div`
@@ -61,7 +41,8 @@ const Logo = styled.div`
   }
 `
 
-const Menu = ({ links = true }) => {
+const Menu = () => {
+  const [locale, setLocale] = useRecoilState(localeAtom)
   return (
     <Container>
       <Content>
@@ -73,17 +54,29 @@ const Menu = ({ links = true }) => {
             ></img>
           </Logo>
         </Link>
-        {links && <Link to="/">Home</Link>}
-        {links && (
-          <a
-            href="https://ait.gu.se/english/hci"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div>
+          <Select
+            defaultValue={locale.value}
+            onChange={(val) =>
+              setLocale(availableLocales.find((locale) => locale.value === val))
+            }
           >
-            About
-          </a>
-        )}
-        {links && <a href="mailto:alexandra.weilenmann@ait.gu.se">Contact</a>}
+            {availableLocales.map(({ name, value }) => (
+              <Select.Option value={value} key={`Locale_${value}`}>
+                <span>
+                  {name.split(' ').map((s, i) => (
+                    <span
+                      style={{ paddingRight: i === 0 ? 10 : 0 }}
+                      key={`${s}_i`}
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </span>
+              </Select.Option>
+            ))}
+          </Select>
+        </div>
       </Content>
     </Container>
   )

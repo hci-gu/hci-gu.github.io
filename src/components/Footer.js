@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { mobile, tablet } from '../utils/layout'
+import { renderRichText, tablet } from '../utils/layout'
 
 const Container = styled.div`
   border-top: 2px solid black;
@@ -17,7 +17,7 @@ const Container = styled.div`
   ${tablet()} {
     background-position-x: -200px;
   }
-  ${mobile()} {
+  ${tablet()} {
     height: 400px;
   }
 `
@@ -37,49 +37,22 @@ const Content = styled.div`
   background-color: rgba(17, 17, 29, 0.9);
 
   > h2 {
+    color: #fff;
     margin: 0;
     font-size: 44px;
   }
 
-  ${mobile()} {
+  ${tablet()} {
     width: 100%;
   }
 `
 
-const Text = styled.div`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-
-  > strong {
-    font-size: 17px;
-  }
-
-  > span,
-  > a {
-    font-weight: 100;
-    color: #fff;
-  }
-`
-
-const Footer = () => {
+const Footer = ({ title, content }) => {
   return (
     <Container>
       <Content>
-        <h2>Get in touch</h2>
-        <Text>
-          <strong>Alexandra Weilenmann</strong>
-          <span>Head of Division</span>
-          <strong>E-mail: </strong>
-          <a href="mailto:alexandra.weilenmann@ait.gu.se">
-            alexandra.weilenmann@ait.gu.se
-          </a>
-        </Text>
-        <Text>
-          <strong>Hus Patricia</strong>
-          <span>Forskningsgången 6</span>
-          <span>417 56 Göteborg</span>
-        </Text>
+        <h2>{title}</h2>
+        {content && renderRichText(content)}
       </Content>
     </Container>
   )

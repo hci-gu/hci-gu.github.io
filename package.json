@@ -4,8 +4,12 @@
   "description": "Github pages organization site.",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && react-snapshot"
+    "start": "craco start",
+    "build": "craco build",
+    "postbuild": "react-snap"
+  },
+  "reactSnap": {
+    "source": "build"
   },
   "repository": {
     "type": "git",
@@ -15,15 +19,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
+    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
+    "antd": "^4.10.3",
     "axios": "^0.20.0",
+    "contentful": "^8.1.7",
     "github-api": "^3.3.0",
+    "graphql": "^15.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-spring": "^8.0.27",
     "react-tiny-link": "^3.6.0",
-    "styled-components": "^5.1.0"
+    "recoil": "^0.1.2",
+    "styled-components": "^5.1.0",
+    "urql": "^1.11.6"
   },
   "browserslist": {
     "production": [
@@ -38,7 +51,9 @@
     ]
   },
   "devDependencies": {
-    "react-snapshot": "^1.3.0"
+    "craco-less": "^1.17.1",
+    "react-snap": "^1.23.0",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "reactSnapshot": {
     "include": [
