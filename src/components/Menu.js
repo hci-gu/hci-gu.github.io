@@ -13,6 +13,7 @@ const Container = styled.div`
 
   ${mobile()} {
     height: ${MENU_HEIGHT}px;
+    padding: 0 20px;
   }
 
   margin-bottom: 10px;

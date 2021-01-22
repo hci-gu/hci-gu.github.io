@@ -1,72 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useQuery } from 'urql'
 import Section from '../components/projects/Section'
 import FAQ from '../components/projects/FAQ'
-import { useRecoilValue } from 'recoil'
-import { localeAtom } from '../state'
 import Articles from '../components/projects/Articles'
 import Team from '../components/projects/Team'
+import { useProject } from '../utils/cms-hooks'
 
 const Container = styled.div``
-
-const ProjectQuery = `
-query ($id: String!, $locale: String!) {
-  project(id: $id, locale: $locale) {
-    name
-    subHeading
-    introduction {
-      json
-    }
-    callToAction
-    sectionsCollection {
-      items {
-        title
-        description {
-          json
-        }
-        image {
-          url
-        }
-        backgroundImage {
-          url
-        }
-        alignImageLeft
-      }
-    }
-    faqCollection {
-      items {
-        title
-        faqItemsCollection {
-          items {
-            question
-            answer {
-              json
-            }
-          }
-        }
-      }
-    }
-    articlesCollection {
-      items {
-        title
-        publisher
-        publisherLogo {
-          url
-        }
-        link
-      }
-    }
-    teamCollection {
-      items {
-        name
-        twitter
-        website
-      }
-    }
-  }
-}
-`
 
 const Sections = ({ sections }) => {
   return (
@@ -79,21 +19,23 @@ const Sections = ({ sections }) => {
 }
 
 const Project = ({ id, intro }) => {
-  const locale = useRecoilValue(localeAtom)
-  const [result] = useQuery({
-    query: ProjectQuery,
-    variables: { id, locale: locale.value },
-  })
+  const project = useProject(id)
 
-  const { data, fetching, error } = result
-
+  if (!project) return <div></div>
+  console.log(project)
   return (
     <Container>
-      {data && intro(data.project)}
-      {data && <Sections sections={data.project.sectionsCollection.items} />}
-      {data && <FAQ faq={data.project.faqCollection.items} />}
-      {data && <Articles articles={data.project.articlesCollection.items} />}
-      {data && <Team team={data.project.teamCollection.items} />}
+      {intro(project)}
+      <Sections sections={project.sectionsCollection.items} />
+      <FAQ faq={project.faqCollection.items} />
+      <Articles
+        articles={project.articlesCollection.items}
+        title={project.articlesTitle}
+      />
+      <Team
+        team={project.teamCollection.items}
+        introduction={project.teamIntroduction}
+      />
     </Container>
   )
 }

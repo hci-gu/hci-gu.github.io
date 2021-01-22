@@ -5,6 +5,7 @@ import { Divider } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useMeasure } from '../../utils/hooks'
+import { mobile, tablet, laptop } from '../../utils/layout'
 
 const Container = styled.div`
   margin-top: 100px;
@@ -29,6 +30,10 @@ const SectionContainer = styled.div`
   > h2 {
     font-size: 24px;
     font-weight: 500;
+  }
+
+  ${tablet()} {
+    width: 100%;
   }
 `
 

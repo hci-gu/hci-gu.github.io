@@ -11,7 +11,7 @@ const Container = styled.div`
   min-height: 100vh;
   font-family: 'Poppins';
 
-  ${mobile()} {
+  ${tablet()} {
     width: 100%;
     padding: 1em;
   }
@@ -38,6 +38,7 @@ const Title = styled.div`
   align-items: center;
 
   > h1 {
+    margin-top: 50px;
     text-align: center;
     font-size: 64px;
     line-height: 64px;

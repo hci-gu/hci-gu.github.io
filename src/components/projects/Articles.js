@@ -76,10 +76,10 @@ const Article = ({ article }) => {
   )
 }
 
-const Articles = ({ articles }) => {
+const Articles = ({ articles, title }) => {
   return (
     <Container>
-      <h2>WFH Movement in the media</h2>
+      <h2>{title}</h2>
       <div>
         {articles.map((article, i) => (
           <Article article={article} key={`Article_${i}`} />

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from '../../components/Link'
+import { mobile, tablet } from '../../utils/layout'
 
 const Container = styled.div`
   margin-top: 50px;
@@ -11,6 +12,14 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${tablet()} {
+    margin: 50px auto;
+    width: 75%;
+  }
+  ${mobile()} {
+    width: 100%;
+  }
 `
 
 const textForTeamMember = ({ name, twitter, website }, i, length) => {
@@ -32,11 +41,11 @@ const textForTeamMember = ({ name, twitter, website }, i, length) => {
   )
 }
 
-const Team = ({ team }) => {
+const Team = ({ team, introduction }) => {
   return (
     <Container>
       <div>
-        The researchers are:{' '}
+        {introduction}{' '}
         {team.map((member, i) => textForTeamMember(member, i, team.length))}
       </div>
     </Container>

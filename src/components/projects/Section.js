@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { mobile, tablet, laptop } from '../../utils/layout'
+import { tablet, mobile, laptop, smallLaptop } from '../../utils/layout'
+import { useLayoutBreakpoint } from '../../utils/hooks'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -33,17 +34,6 @@ const Container = styled.div`
       font-size: 24px;
     }
   }
-
-  ${tablet()} {
-    padding: 0;
-    max-width: 100%;
-    height: auto;
-    background-image: none;
-
-    > h2 {
-      text-align: center;
-    }
-  }
 `
 
 const Content = styled.div`
@@ -68,27 +58,90 @@ const Content = styled.div`
     padding: 10px;
     > img {
       width: 30%;
+      min-width: auto;
     }
-    > p {
+    > div > p {
       width: 75%;
       padding: 10px;
-      font-size: 1em;
+      font-size: 0.8em;
     }
   }
-
-  ${tablet()} {
-    flex-direction: column;
-
-    > img {
-      width: 50%;
-    }
-    > div {
-      width: 100%;
+  ${smallLaptop()} {
+    > div > p {
+      font-size: 0.7em;
     }
   }
 `
 
+const ContainerMobile = styled.div`
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  ${tablet()} {
+    width: 75%;
+  }
+  ${mobile()} {
+    width: 100%;
+  }
+
+  > div > p {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+`
+
+const ContentMobile = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 250px;
+  padding: 0 40px;
+
+  ${({ alignLeft }) => alignLeft && `flex-direction: row-reverse;`}
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  ${({ image }) => image && `background-image: url("${image}");`}
+
+  > img {
+    height: 45%;
+  }
+
+  > h2 {
+    max-width: 40%;
+    font-size: 16px;
+  }
+`
+
+const SectionMobile = ({ section }) => {
+  return (
+    <ContainerMobile>
+      <ContentMobile
+        alignLeft={section.alignImageLeft}
+        image={section.backgroundImage ? section.backgroundImage.url : null}
+      >
+        <h2>{section.title}</h2>
+        <img src={section.image.url}></img>
+      </ContentMobile>
+      <div>{documentToReactComponents(section.description.json, {})}</div>
+    </ContainerMobile>
+  )
+}
+
 const Section = ({ section }) => {
+  const layout = useLayoutBreakpoint()
+
+  if (layout === 'mobile' || layout === 'tablet') {
+    return <SectionMobile section={section} />
+  }
+
   return (
     <Container
       image={section.backgroundImage ? section.backgroundImage.url : null}

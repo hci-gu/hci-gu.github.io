@@ -17,7 +17,7 @@ const Container = styled.div`
   ${tablet()} {
     background-position-x: -200px;
   }
-  ${mobile()} {
+  ${tablet()} {
     height: 400px;
   }
 `
@@ -41,7 +41,7 @@ const Content = styled.div`
     font-size: 44px;
   }
 
-  ${mobile()} {
+  ${tablet()} {
     width: 100%;
   }
 `
