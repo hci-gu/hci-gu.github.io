@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install
       - name: Add Contentful API key
-        uses: TickX/var-to-dotenv@v1.1.1
+        uses: TickX/var-to-dotenv@v1.1.4
         with:
           key: 'REACT_APP_CONTENTFUL_ACCESS_TOKEN'
           value: ${{secrets.CONTENTFUL_ACCESS_TOKEN}}
