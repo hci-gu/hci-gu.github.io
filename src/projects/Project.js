@@ -22,7 +22,6 @@ const Project = ({ id, intro }) => {
   const project = useProject(id)
 
   if (!project) return <div></div>
-  console.log(project)
   return (
     <Container>
       {intro(project)}
