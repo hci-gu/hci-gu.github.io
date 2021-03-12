@@ -164,14 +164,14 @@ const Landing = () => {
   return (
     <>
       <Meta
-        name="WFH Movement"
-        description="Compare your movement patterns before and after working from home."
-        shareImage="https://hci-gu.github.io/img/wfh-movement/share.png"
-        link="https://hci-gu.github.io/wfh-movement/"
+        name="SFH Movement"
+        description="Compare your movement patterns before and after studying from home."
+        shareImage="https://hci-gu.github.io/img/sfh-movement/share.png"
+        link="https://hci-gu.github.io/sfh-movement/"
       />
       <Container>
         <Project
-          id="7KTLMwpXTnYG9r2HHBUcjQ"
+          id="sw3NKWxaSum0MDkyydCp4"
           intro={(props) => <Introduction {...props} />}
         />
       </Container>

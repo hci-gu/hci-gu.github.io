@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import Landing from './pages/Landing'
 import Internship from './pages/Internship'
 import WFHMovement from './projects/wfh-movement/index'
+import SFHMovement from './projects/sfh-movement/index'
 import WFHMovementPrivacy from './projects/wfh-movement/privacy'
 import { useGenericContent } from './utils/cms-hooks'
 
@@ -43,6 +44,9 @@ const App = () => {
           </Route>
           <Route path="/wfh-movement">
             <WFHMovement />
+          </Route>
+          <Route path="/sfh-movement">
+            <SFHMovement />
           </Route>
           <Route
             path="/"
