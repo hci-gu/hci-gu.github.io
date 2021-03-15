@@ -128,7 +128,7 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
             rel="noopener noreferrer"
           >
             <img
-              src="/img/wfh-movement/google-play-badge.png"
+              src="/img/assets/google-play-badge.png"
               alt="Google play button"
             ></img>
           </a>
@@ -138,7 +138,7 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
             rel="noopener noreferrer"
           >
             <img
-              src="/img/wfh-movement/appstore-badge.png"
+              src="/img/assets/appstore-badge.png"
               alt="Appstore button"
               style={{ marginTop: 10 }}
             ></img>

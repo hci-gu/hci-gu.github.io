@@ -123,22 +123,22 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
         <AppstoreBadges>
           <span>{callToAction}</span>
           <a
-            href="https://play.google.com/store/apps/details?id=com.wfhmovement.app"
+            href="https://play.google.com/store/apps/details?id=com.wfhmovement.app.sfh"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="/img/wfh-movement/google-play-badge.png"
+              src="/img/assets/google-play-badge.png"
               alt="Google play button"
             ></img>
           </a>
           <a
-            href="https://apps.apple.com/us/app/id1518224904"
+            href="https://apps.apple.com/us/app/sfh-movement/id1556414814"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="/img/wfh-movement/appstore-badge.png"
+              src="/img/assets/appstore-badge.png"
               alt="Appstore button"
               style={{ marginTop: 10 }}
             ></img>
@@ -147,12 +147,12 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
       </Title>
       <ScreenShots>
         <img
-          src="/img/wfh-movement/screenshot_intro.png"
+          src="/img/sfh-movement/screenshot_intro.png"
           alt="screenshot of app intro"
         ></img>
         <img
           alt="screenshot of app step details"
-          src="/img/wfh-movement/screenshot.png"
+          src="/img/sfh-movement/screenshot.png"
           style={{ width: '70%', left: '60%', top: 220 }}
         ></img>
       </ScreenShots>
