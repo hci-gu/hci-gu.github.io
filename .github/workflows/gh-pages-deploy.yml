@@ -25,10 +25,19 @@ jobs:
         with:
           key: 'REACT_APP_CONTENTFUL_ACCESS_TOKEN'
           value: ${{secrets.CONTENTFUL_ACCESS_TOKEN}}
+      - name: Add Contentful key 1
+        uses: TickX/var-to-dotenv@v1.1.4
+        with:
           key: 'REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID'
           value: '72C8wbuNa19PpNOKGDOHG'
+      - name: Add Contentful key 2
+        uses: TickX/var-to-dotenv@v1.1.4
+        with:
           key: 'REACT_APP_CONTENTFUL_WFH_PROJECT_ID'
           value: '7KTLMwpXTnYG9r2HHBUcjQ'
+      - name: Add Contentful key 3
+        uses: TickX/var-to-dotenv@v1.1.4
+        with:
           key: 'REACT_APP_CONTENTFUL_SFH_PROJECT_ID'
           value: 'sw3NKWxaSum0MDkyydCp4'
       - name: Build
