@@ -171,7 +171,7 @@ const Landing = () => {
       />
       <Container>
         <Project
-          id="7KTLMwpXTnYG9r2HHBUcjQ"
+          id={process.env.REACT_APP_CONTENTFUL_WFH_PROJECT_ID}
           intro={(props) => <Introduction {...props} />}
         />
       </Container>

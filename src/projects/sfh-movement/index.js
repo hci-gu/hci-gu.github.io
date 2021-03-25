@@ -133,7 +133,7 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
             ></img>
           </a>
           <a
-            href="https://apps.apple.com/us/app/sfh-movement/id1556414814"
+            href="https://apps.apple.com/us/app/id1556414814"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -171,7 +171,7 @@ const Landing = () => {
       />
       <Container>
         <Project
-          id="sw3NKWxaSum0MDkyydCp4"
+          id={process.env.REACT_APP_CONTENTFUL_SFH_PROJECT_ID}
           intro={(props) => <Introduction {...props} />}
         />
       </Container>

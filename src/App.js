@@ -9,12 +9,12 @@ import styled from 'styled-components'
 
 import Menu from './components/Menu'
 import Footer from './components/Footer'
+import TextPage from './components/TextPage'
 
 import Landing from './pages/Landing'
 import Internship from './pages/Internship'
 import WFHMovement from './projects/wfh-movement/index'
 import SFHMovement from './projects/sfh-movement/index'
-import WFHMovementPrivacy from './projects/wfh-movement/privacy'
 import { useGenericContent } from './utils/cms-hooks'
 
 const Container = styled.div`
@@ -40,10 +40,17 @@ const App = () => {
             <Internship />
           </Route>
           <Route path="/wfh-movement/privacy-policy">
-            <WFHMovementPrivacy />
+            <TextPage
+              id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+            />
           </Route>
           <Route path="/wfh-movement">
             <WFHMovement />
+          </Route>
+          <Route path="/sfh-movement/privacy-policy">
+            <TextPage
+              id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+            />
           </Route>
           <Route path="/sfh-movement">
             <SFHMovement />

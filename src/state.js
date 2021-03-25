@@ -25,3 +25,8 @@ export const projectAtom = atom({
   key: 'project',
   default: null,
 })
+
+export const textPageAtom = atom({
+  key: 'text-page',
+  default: null,
+})

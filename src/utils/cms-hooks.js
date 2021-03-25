@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useQuery } from 'urql'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { contentAtom, localeAtom, projectAtom } from '../state'
+import { contentAtom, localeAtom, projectAtom, textPageAtom } from '../state'
 
 const ProjectQuery = `
 query ($id: String!, $locale: String!) {
@@ -116,4 +116,31 @@ export const useGenericContent = (id = '5BaRlonhLZbVN59DVybNWF') => {
   }, [data, setContent])
 
   return content
+}
+
+const TextPageQuery = `
+query($id:String!, $locale: String!) {
+  textPage(id: $id, locale: $locale) {
+   	name
+    content {
+      json
+    }
+  }
+}
+`
+
+export const useTextPage = (id) => {
+  const locale = useRecoilValue(localeAtom)
+  const [result] = useQuery({
+    query: TextPageQuery,
+    variables: { id, locale: locale.value },
+  })
+  const [textPage, setTextPage] = useRecoilState(textPageAtom)
+  const { data } = result
+
+  useEffect(() => {
+    if (data) setTextPage(data.textPage)
+  }, [data, setTextPage])
+
+  return textPage
 }

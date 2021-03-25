@@ -25,6 +25,12 @@ jobs:
         with:
           key: 'REACT_APP_CONTENTFUL_ACCESS_TOKEN'
           value: ${{secrets.CONTENTFUL_ACCESS_TOKEN}}
+          key: 'REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID'
+          value: '72C8wbuNa19PpNOKGDOHG'
+          key: 'REACT_APP_CONTENTFUL_WFH_PROJECT_ID'
+          value: '7KTLMwpXTnYG9r2HHBUcjQ'
+          key: 'REACT_APP_CONTENTFUL_SFH_PROJECT_ID'
+          value: 'sw3NKWxaSum0MDkyydCp4'
       - name: Build
         run: |
           npm run build
