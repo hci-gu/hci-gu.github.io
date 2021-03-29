@@ -165,7 +165,7 @@ const Landing = () => {
     <>
       <Meta
         name="SFH Movement"
-        description="Compare your movement patterns before and after studying from home."
+        description="Rör du dig mer eller mindre sedan du började studera hemifrån?"
         shareImage="https://hci-gu.github.io/img/sfh-movement/share.png"
         link="https://hci-gu.github.io/sfh-movement/"
       />
