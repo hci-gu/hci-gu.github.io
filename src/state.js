@@ -30,3 +30,8 @@ export const textPageAtom = atom({
   key: 'text-page',
   default: null,
 })
+
+export const appademiContentAtom = atom({
+  key: 'appademi-content',
+  default: null,
+})

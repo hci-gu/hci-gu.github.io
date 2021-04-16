@@ -1,7 +1,13 @@
 import { useEffect } from 'react'
 import { useQuery } from 'urql'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { contentAtom, localeAtom, projectAtom, textPageAtom } from '../state'
+import {
+  contentAtom,
+  localeAtom,
+  projectAtom,
+  textPageAtom,
+  appademiContentAtom,
+} from '../state'
 
 const ProjectQuery = `
 query ($id: String!, $locale: String!) {
@@ -143,4 +149,66 @@ export const useTextPage = (id) => {
   }, [data, setTextPage])
 
   return textPage
+}
+
+const AppademiQuery = `
+query($id: String!, $locale:String!) {
+  appademin(id:$id, locale: $locale) {
+    title
+    introduction {
+      json
+    }
+    callToAction
+    sectionsCollection {
+      items {
+        title
+        displayAsSteps
+        featuresCollection {
+          items {
+            title
+            description {
+              json
+            }
+          }
+        }
+      }
+    }
+    team {
+      title
+      subtitle
+      description {
+        json
+      }
+      membersCollection {
+        items {
+          name
+          role
+          image {
+            url
+          }
+        }
+      }
+    }
+    backgroundTitle
+    background {
+      json
+    }
+  }
+}
+`
+
+export const useAppedemiContent = (id) => {
+  const locale = useRecoilValue(localeAtom)
+  const [result] = useQuery({
+    query: AppademiQuery,
+    variables: { id, locale: locale.value },
+  })
+  const [content, setContent] = useRecoilState(appademiContentAtom)
+  const { data } = result
+
+  useEffect(() => {
+    if (data) setContent(data.appademin)
+  }, [data, setContent])
+
+  return content
 }

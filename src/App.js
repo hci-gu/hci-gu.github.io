@@ -16,6 +16,7 @@ import Internship from './pages/Internship'
 import WFHMovement from './projects/wfh-movement/index'
 import SFHMovement from './projects/sfh-movement/index'
 import { useGenericContent } from './utils/cms-hooks'
+import Appademin from './pages/Appademin'
 
 const Container = styled.div`
   /* padding-bottom: 100px; */
@@ -54,6 +55,9 @@ const App = () => {
           </Route>
           <Route path="/sfh-movement">
             <SFHMovement />
+          </Route>
+          <Route path="/appademin">
+            <Appademin id={process.env.REACT_APP_CONTENTFUL_APPADEMIN_ID} />
           </Route>
           <Route
             path="/"
