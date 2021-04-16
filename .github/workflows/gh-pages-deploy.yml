@@ -40,6 +40,11 @@ jobs:
         with:
           key: 'REACT_APP_CONTENTFUL_SFH_PROJECT_ID'
           value: 'sw3NKWxaSum0MDkyydCp4'
+      - name: Add Contentful Appademin
+        uses: TickX/var-to-dotenv@v1.1.4
+        with:
+          key: 'REACT_APP_CONTENTFUL_APPADEMIN_ID'
+          value: '1e2oEtgX80ZRIyYdbacVkO'
       - name: Build
         run: |
           npm run build
