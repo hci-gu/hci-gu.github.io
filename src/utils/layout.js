@@ -12,6 +12,8 @@ export const sizes = {
   largeDesktop: 2560,
 }
 
+export const isMobile = () => window.innerWidth <= sizes.mobile
+
 export const mobile = () => `@media (max-width: ${sizes.mobile}px)`
 export const tablet = () => `@media (max-width: ${sizes.tablet}px)`
 export const smallLaptop = () => `@media (max-width: ${sizes.smallLaptop}px)`

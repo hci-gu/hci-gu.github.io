@@ -26,6 +26,7 @@ const Container = styled.div`
 
     ${tablet()} {
       font-size: 38px;
+      text-align: center;
     }
   }
 
@@ -50,6 +51,10 @@ const Content = styled.div`
 
   ${desktop()} {
     grid-row-gap: 150px;
+  }
+
+  ${tablet()} {
+    grid-row-gap: 100px;
   }
 `
 

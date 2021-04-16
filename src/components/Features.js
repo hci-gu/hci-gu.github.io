@@ -43,6 +43,10 @@ const Feature = styled.div`
     display: flex;
     flex-direction: column;
 
+    ${tablet()} {
+      margin-left: 16px;
+    }
+
     > span {
       font-size: 24px;
       font-weight: bold;
@@ -51,6 +55,10 @@ const Feature = styled.div`
     > p {
       font-size: 16px;
       color: rgba(24, 25, 31, 0.5);
+
+      ${mobile()} {
+        font-size: 14px;
+      }
     }
   }
 `

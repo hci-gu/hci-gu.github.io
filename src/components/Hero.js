@@ -1,13 +1,7 @@
 import { Button } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
-import {
-  mobile,
-  desktop,
-  tablet,
-  renderRichText,
-  largeLaptop,
-} from '../utils/layout'
+import { desktop, tablet, renderRichText, largeLaptop } from '../utils/layout'
 import HeroBackground from './HeroBackground'
 
 const Container = styled.div``
@@ -27,6 +21,11 @@ const Content = styled.div`
     ${largeLaptop()} {
       margin-top: 60px;
     }
+
+    ${tablet()} {
+      width: 100%;
+      margin-top: 0;
+    }
   }
 
   ${tablet()} {
@@ -37,11 +36,23 @@ const Content = styled.div`
 const Title = styled.h1`
   font-size: 72px;
   font-weight: 800;
+
+  ${tablet()} {
+    font-size: 38px;
+    text-align: center;
+  }
 `
 
 const Description = styled.div`
   font-weight: 300;
   font-size: 22px;
+
+  ${tablet()} {
+    margin: 0 auto;
+    width: 90%;
+    text-align: justify;
+    font-size: 14px;
+  }
 `
 
 const CTAButton = styled(Button)`
@@ -52,6 +63,11 @@ const CTAButton = styled(Button)`
   height: 62px;
   font-size: 20px;
   border-radius: 8px;
+
+  ${tablet()} {
+    align-self: center;
+    height: 48px;
+  }
 `
 
 const Phone = styled.img`
@@ -62,8 +78,8 @@ const Phone = styled.img`
     height: 640px;
   }
 
-  ${mobile()} {
-    visibility: hidden;
+  ${tablet()} {
+    display: none;
   }
 `
 

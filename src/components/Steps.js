@@ -1,14 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Steps } from 'antd'
-import { renderRichText } from '../utils/layout'
+import { isMobile, renderRichText } from '../utils/layout'
 const { Step } = Steps
 
 const Container = styled.div`
-  > h1 {
-    font-size: 48px;
-  }
-
   > div {
     margin-top: 50px;
   }
@@ -30,7 +26,12 @@ const StepsContainer = ({ title, featuresCollection }) => {
     <Container>
       <h2>{title}</h2>
       <div>
-        <Steps current={-1} progressDot={customDot} style={{ marignTop: 25 }}>
+        <Steps
+          current={-1}
+          progressDot={customDot}
+          style={{ marignTop: 25 }}
+          direction={isMobile() ? 'vertical' : 'horizontal'}
+        >
           {featuresCollection.items.map((f) => (
             <Step
               key={`Step_${f.title}`}

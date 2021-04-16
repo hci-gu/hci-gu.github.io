@@ -35,6 +35,15 @@ const Description = styled.div`
   p {
     margin: 24px 64px;
     font-size: 18px;
+
+    ${tablet()} {
+      margin: 8px 16px;
+      font-size: 14px;
+    }
+  }
+
+  ${tablet()} {
+    width: 100%;
   }
 `
 

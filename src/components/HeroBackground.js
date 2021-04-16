@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { tablet } from '../utils/layout'
 
 const Root = styled.div`
   position: absolute;
@@ -7,6 +8,8 @@ const Root = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
+  user-select: none;
+  pointer-events: none;
   overflow: hidden;
 `
 
@@ -22,6 +25,11 @@ const Container = styled.div`
 
   background-color: rgba(242, 247, 255, 0.6);
   opacity: 0.9;
+
+  ${tablet()} {
+    width: 400vw;
+    height: 80vh;
+  }
 `
 
 const BoxContainer = styled.div`
@@ -34,6 +42,10 @@ const Box = styled.div`
   width: 420px;
   height: 60px;
   position: absolute;
+
+  ${tablet()} {
+    width: 200px;
+  }
 `
 
 const Blob = styled.div`
@@ -43,6 +55,11 @@ const Blob = styled.div`
   position: absolute;
   z-index: -1;
   filter: blur(30px);
+
+  ${tablet()} {
+    width: 100px;
+    height: 100px;
+  }
 `
 
 const HeroBackground = () => {
