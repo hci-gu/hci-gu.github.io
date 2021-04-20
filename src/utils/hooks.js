@@ -51,12 +51,13 @@ export const useUpdatePageTypeOnNavigation = () => {
   const location = useLocation()
 
   useEffect(() => {
-    switch (location.pathname) {
-      case '/appademin':
+    const path = location.pathname.split('/').join('')
+    switch (path) {
+      case 'appademin':
         setPageType('appademi')
         break
-      case '/wfh-movement':
-      case '/sfh-movement':
+      case 'wfh-movement':
+      case 'sfh-movement':
         setPageType('project')
         break
       default:
