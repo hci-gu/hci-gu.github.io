@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Steps } from 'antd'
-import { isMobile, renderRichText } from '../utils/layout'
+import { mobile, renderRichText } from '../utils/layout'
 import { useLayoutBreakpoint } from '../utils/hooks'
 const { Step } = Steps
 
@@ -9,9 +9,12 @@ const Container = styled.div`
   > div {
     margin-top: 50px;
 
-    ${isMobile()} {
+    ${mobile()} {
       > div {
-        justify-content: center;
+        align-items: center;
+        > div {
+          width: 50%;
+        }
       }
     }
   }
@@ -24,6 +27,10 @@ const Dot = styled.div`
   height: 18px;
   background-color: #1b4079;
   border-radius: 50%;
+
+  ${mobile()} {
+    margin-top: 10px;
+  }
 `
 
 const customDot = (dot, { status, index }) => <Dot></Dot>

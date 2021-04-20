@@ -31,6 +31,14 @@ const Content = styled.div`
   ${tablet()} {
     flex-direction: column;
   }
+
+  a {
+    align-self: flex-end;
+
+    ${tablet()} {
+      align-self: center;
+    }
+  }
 `
 
 const Title = styled.h1`
@@ -56,7 +64,6 @@ const Description = styled.div`
 `
 
 const CTAButton = styled(Button)`
-  align-self: flex-end;
   background-color: #1b4079;
   color: white;
   width: 196px;
@@ -65,7 +72,6 @@ const CTAButton = styled(Button)`
   border-radius: 8px;
 
   ${tablet()} {
-    align-self: center;
     height: 48px;
   }
 
