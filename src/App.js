@@ -8,7 +8,6 @@ import {
 import styled from 'styled-components'
 
 import Menu from './components/Menu'
-import Footer from './components/Footer'
 import TextPage from './components/TextPage'
 
 import Landing from './pages/Landing'
@@ -28,48 +27,49 @@ const App = () => {
   return (
     <Container>
       <Router>
-        <Menu links={false} />
-        <Switch>
-          <Route
-            path="/about"
-            component={() => {
-              window.location.href = 'https://ait.gu.se/english/hci'
-              return null
-            }}
-          ></Route>
-          <Route path="/internship">
-            <Internship />
-          </Route>
-          <Route path="/wfh-movement/privacy-policy">
-            <TextPage
-              id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+        <>
+          <Menu links={false} />
+          <Switch>
+            <Route
+              path="/about"
+              component={() => {
+                window.location.href = 'https://ait.gu.se/english/hci'
+                return null
+              }}
+            ></Route>
+            <Route path="/internship">
+              <Internship />
+            </Route>
+            <Route path="/wfh-movement/privacy-policy">
+              <TextPage
+                id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+              />
+            </Route>
+            <Route path="/wfh-movement">
+              <WFHMovement />
+            </Route>
+            <Route path="/sfh-movement/privacy-policy">
+              <TextPage
+                id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+              />
+            </Route>
+            <Route path="/sfh-movement">
+              <SFHMovement />
+            </Route>
+            <Route path="/appademin">
+              <Appademin id={process.env.REACT_APP_CONTENTFUL_APPADEMIN_ID} />
+            </Route>
+            <Route
+              path="/"
+              render={({ location }) => {
+                if (location.hash === '') {
+                  return <Landing content={content} />
+                }
+                return <Redirect to={location.hash.replace('#', '')} />
+              }}
             />
-          </Route>
-          <Route path="/wfh-movement">
-            <WFHMovement />
-          </Route>
-          <Route path="/sfh-movement/privacy-policy">
-            <TextPage
-              id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
-            />
-          </Route>
-          <Route path="/sfh-movement">
-            <SFHMovement />
-          </Route>
-          <Route path="/appademin">
-            <Appademin id={process.env.REACT_APP_CONTENTFUL_APPADEMIN_ID} />
-          </Route>
-          <Route
-            path="/"
-            render={({ location }) => {
-              if (location.hash === '') {
-                return <Landing content={content} />
-              }
-              return <Redirect to={location.hash.replace('#', '')} />
-            }}
-          />
-        </Switch>
-        <Footer />
+          </Switch>
+        </>
       </Router>
     </Container>
   )

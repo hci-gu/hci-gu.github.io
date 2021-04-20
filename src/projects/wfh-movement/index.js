@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { mobile, tablet, smallLaptop, renderRichText } from '../../utils/layout'
 import Project from '../Project'
 import Meta from '../../components/Meta'
+import Footer from '../../components/Footer'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -175,6 +176,7 @@ const Landing = () => {
           intro={(props) => <Introduction {...props} />}
         />
       </Container>
+      <Footer />
     </>
   )
 }

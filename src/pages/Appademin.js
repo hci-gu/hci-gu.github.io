@@ -14,6 +14,7 @@ import Team from '../components/Team'
 import Features from '../components/Features'
 import { useAppedemiContent } from '../utils/cms-hooks'
 import Meta from '../components/Meta'
+import Footer from '../components/Footer'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -64,8 +65,6 @@ const Appademin = ({ id }) => {
 
   if (!content) return null
 
-  console.log(content.meta)
-
   return (
     <>
       {content.meta && (
@@ -92,6 +91,7 @@ const Appademin = ({ id }) => {
           </Background>
         </Content>
       </Container>
+      <Footer />
     </>
   )
 }

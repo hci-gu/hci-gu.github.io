@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import { mobile, middleContent, renderRichText } from '../utils/layout'
 import LandingSection from '../components/LandingSection'
+import Footer from '../components/Footer'
 
 const Container = styled.div`
   overflow: hidden;
@@ -109,6 +110,7 @@ const Landing = ({ content }) => {
           preview
         </a>
       </Container>
+      <Footer />
     </>
   )
 }
