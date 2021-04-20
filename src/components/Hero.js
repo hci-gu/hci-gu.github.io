@@ -68,6 +68,10 @@ const CTAButton = styled(Button)`
     align-self: center;
     height: 48px;
   }
+
+  :hover {
+    background-color: #163564;
+  }
 `
 
 const Phone = styled.img`
@@ -83,7 +87,7 @@ const Phone = styled.img`
   }
 `
 
-const Hero = ({ title, introduction, callToAction }) => {
+const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
   return (
     <Container>
       <HeroBackground />
@@ -91,7 +95,9 @@ const Hero = ({ title, introduction, callToAction }) => {
         <div>
           <Title>{title}</Title>
           <Description>{renderRichText(introduction)}</Description>
-          <CTAButton>{callToAction}</CTAButton>
+          <a href={callToActionHref}>
+            <CTAButton>{callToAction}</CTAButton>
+          </a>
         </div>
         <Phone src="/img/assets/hero-phone.png" />
       </Content>

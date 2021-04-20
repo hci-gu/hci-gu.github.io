@@ -92,16 +92,18 @@ query($id:String!, $locale: String!) {
     introduction {
       json
     }
-    footerTitle
-    footerContent {
-      json
-    }
     sectionsCollection {
       items {
         title
         description {
           json
         }
+      }
+    }
+    footer {
+      title
+      content {
+        json
       }
     }
   }
@@ -159,6 +161,7 @@ query($id: String!, $locale:String!) {
       json
     }
     callToAction
+    callToActionHref
     sectionsCollection {
       items {
         title
@@ -192,6 +195,12 @@ query($id: String!, $locale:String!) {
     backgroundTitle
     background {
       json
+    }
+    footer {
+      title
+      content {
+        json
+      }
     }
   }
 }

@@ -2,6 +2,9 @@ import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import { sizes } from './layout'
 import ResizeObserver from 'resize-observer-polyfill'
+import { useRecoilState } from 'recoil'
+import { activePageTypeAtom } from '../state'
+import { useLocation } from 'react-router'
 
 export const useMeasure = () => {
   const ref = useRef()
@@ -41,4 +44,26 @@ export const useLayoutBreakpoint = () => {
     })
 
   return key
+}
+
+export const useUpdatePageTypeOnNavigation = () => {
+  const [, setPageType] = useRecoilState(activePageTypeAtom)
+  const location = useLocation()
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/appademin':
+        setPageType('appademi')
+        break
+      case '/wfh-movement':
+      case '/sfh-movement':
+        setPageType('project')
+        break
+      default:
+        setPageType(null)
+        break
+    }
+  }, [location, setPageType])
+
+  return null
 }

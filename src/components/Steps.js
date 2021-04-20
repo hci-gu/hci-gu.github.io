@@ -2,11 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import { Steps } from 'antd'
 import { isMobile, renderRichText } from '../utils/layout'
+import { useLayoutBreakpoint } from '../utils/hooks'
 const { Step } = Steps
 
 const Container = styled.div`
   > div {
     margin-top: 50px;
+
+    ${isMobile()} {
+      > div {
+        justify-content: center;
+      }
+    }
   }
 `
 
@@ -22,6 +29,8 @@ const Dot = styled.div`
 const customDot = (dot, { status, index }) => <Dot></Dot>
 
 const StepsContainer = ({ title, featuresCollection }) => {
+  const layout = useLayoutBreakpoint()
+
   return (
     <Container>
       <h2>{title}</h2>
@@ -30,7 +39,7 @@ const StepsContainer = ({ title, featuresCollection }) => {
           current={-1}
           progressDot={customDot}
           style={{ marignTop: 25 }}
-          direction={isMobile() ? 'vertical' : 'horizontal'}
+          direction={layout === 'mobile' ? 'vertical' : 'horizontal'}
         >
           {featuresCollection.items.map((f) => (
             <Step

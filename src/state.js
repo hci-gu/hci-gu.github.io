@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 
 export const availableLocales = [
   {
@@ -34,4 +34,30 @@ export const textPageAtom = atom({
 export const appademiContentAtom = atom({
   key: 'appademi-content',
   default: null,
+})
+
+const atoms = {
+  project: projectAtom,
+  text: textPageAtom,
+  appademi: appademiContentAtom,
+}
+
+export const activePageTypeAtom = atom({
+  key: 'active-page-type',
+  default: null,
+})
+
+export const footerContentSelector = selector({
+  key: 'footer-content',
+  get: ({ get }) => {
+    const content = get(contentAtom)
+    const pageType = get(activePageTypeAtom)
+
+    if (pageType) {
+      const page = get(atoms[pageType])
+
+      if (page && page.footer) return page.footer
+    }
+    return content && content.footer
+  },
 })

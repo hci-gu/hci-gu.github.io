@@ -66,11 +66,7 @@ const Appademin = ({ id }) => {
   return (
     <Container>
       <Content>
-        <Hero
-          title={content.title}
-          introduction={content.introduction}
-          callToAction={content.callToAction}
-        />
+        <Hero {...content} />
         {content.sectionsCollection.items.map((item) => {
           if (item.displayAsSteps) {
             return <StepsContainer {...item} key={`Feature_${item.title}`} />

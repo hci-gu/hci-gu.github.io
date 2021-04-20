@@ -97,8 +97,8 @@ const Team = ({ title, subtitle, description, membersCollection }) => {
         <Card>{renderRichText(description)}</Card>
       </Description>
       <People>
-        {membersCollection.items.map((p) => (
-          <Person {...p} />
+        {membersCollection.items.map((p, i) => (
+          <Person {...p} key={`Person_${i}`} />
         ))}
       </People>
     </Container>

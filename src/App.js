@@ -69,10 +69,7 @@ const App = () => {
             }}
           />
         </Switch>
-        <Footer
-          title={content ? content.footerTitle : ''}
-          content={content ? content.footerContent : {}}
-        />
+        <Footer />
       </Router>
     </Container>
   )
