@@ -41,9 +41,10 @@ const Logo = styled.div`
   }
 `
 
-const showLanguagePickerForPath = (path) => {
+const showLanguagePickerForPath = (pathname) => {
+  const path = pathname.split('/').join('')
   switch (path) {
-    case '/appademin':
+    case 'appademin':
       return false
     default:
       return true

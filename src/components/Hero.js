@@ -72,6 +72,8 @@ const CTAButton = styled(Button)`
   :hover {
     background-color: #163564;
   }
+
+  border: none;
 `
 
 const Phone = styled.img`
