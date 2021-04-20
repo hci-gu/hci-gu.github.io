@@ -81,7 +81,6 @@ const featureItem = ({ title, description, graphic }) => {
 }
 
 const Features = ({ title, featuresCollection }) => {
-  console.log(featuresCollection)
   return (
     <Container>
       <h2>{title}</h2>

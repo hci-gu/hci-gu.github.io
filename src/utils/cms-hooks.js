@@ -199,6 +199,14 @@ query($id: String!, $locale:String!) {
     background {
       json
     }
+    meta {
+      name
+      description
+      link
+      shareImage {
+        url
+      }
+    }
     footer {
       title
       content {

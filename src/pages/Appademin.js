@@ -13,6 +13,7 @@ import StepsContainer from '../components/Steps'
 import Team from '../components/Team'
 import Features from '../components/Features'
 import { useAppedemiContent } from '../utils/cms-hooks'
+import Meta from '../components/Meta'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -63,23 +64,35 @@ const Appademin = ({ id }) => {
 
   if (!content) return null
 
+  console.log(content.meta)
+
   return (
-    <Container>
-      <Content>
-        <Hero {...content} />
-        {content.sectionsCollection.items.map((item) => {
-          if (item.displayAsSteps) {
-            return <StepsContainer {...item} key={`Feature_${item.title}`} />
-          }
-          return <Features {...item} key={`Feature_${item.title}`} />
-        })}
-        <Team {...content.team} />
-        <Background>
-          <h2>{content.backgroundTitle}</h2>
-          {renderRichText(content.background)}
-        </Background>
-      </Content>
-    </Container>
+    <>
+      {content.meta && (
+        <Meta
+          name={content.meta.name}
+          description={content.meta.description}
+          shareImage={content.meta.shareImage.url}
+          link={content.meta.link}
+        />
+      )}
+      <Container>
+        <Content>
+          <Hero {...content} />
+          {content.sectionsCollection.items.map((item) => {
+            if (item.displayAsSteps) {
+              return <StepsContainer {...item} key={`Feature_${item.title}`} />
+            }
+            return <Features {...item} key={`Feature_${item.title}`} />
+          })}
+          <Team {...content.team} />
+          <Background>
+            <h2>{content.backgroundTitle}</h2>
+            {renderRichText(content.background)}
+          </Background>
+        </Content>
+      </Container>
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Select } from 'antd'
 import { mobile, middleContent } from '../utils/layout'
 import { useRecoilState } from 'recoil'
@@ -41,8 +41,19 @@ const Logo = styled.div`
   }
 `
 
+const showLanguagePickerForPath = (path) => {
+  switch (path) {
+    case '/appademin':
+      return false
+    default:
+      return true
+  }
+}
+
 const Menu = () => {
   const [locale, setLocale] = useRecoilState(localeAtom)
+  const location = useLocation()
+
   return (
     <Container>
       <Content>
@@ -54,29 +65,33 @@ const Menu = () => {
             ></img>
           </Logo>
         </Link>
-        <div>
-          <Select
-            defaultValue={locale.value}
-            onChange={(val) =>
-              setLocale(availableLocales.find((locale) => locale.value === val))
-            }
-          >
-            {availableLocales.map(({ name, value }) => (
-              <Select.Option value={value} key={`Locale_${value}`}>
-                <span>
-                  {name.split(' ').map((s, i) => (
-                    <span
-                      style={{ paddingRight: i === 0 ? 10 : 0 }}
-                      key={`${s}_i`}
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </span>
-              </Select.Option>
-            ))}
-          </Select>
-        </div>
+        {showLanguagePickerForPath(location.pathname) && (
+          <div>
+            <Select
+              defaultValue={locale.value}
+              onChange={(val) =>
+                setLocale(
+                  availableLocales.find((locale) => locale.value === val)
+                )
+              }
+            >
+              {availableLocales.map(({ name, value }) => (
+                <Select.Option value={value} key={`Locale_${value}`}>
+                  <span>
+                    {name.split(' ').map((s, i) => (
+                      <span
+                        style={{ paddingRight: i === 0 ? 10 : 0 }}
+                        key={`${s}_i`}
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </span>
+                </Select.Option>
+              ))}
+            </Select>
+          </div>
+        )}
       </Content>
     </Container>
   )
