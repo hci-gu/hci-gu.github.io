@@ -28,16 +28,6 @@ const Feature = styled.div`
   display: flex;
   justify-content: center;
 
-  > img {
-    width: 72px;
-    height: 72px;
-
-    ${tablet()} {
-      width: 60px;
-      height: 60px;
-    }
-  }
-
   > div {
     margin-left: 40px;
     display: flex;
@@ -63,10 +53,25 @@ const Feature = styled.div`
   }
 `
 
-const featureItem = ({ title, description }) => {
+const FeatureImage = styled.div`
+  width: 72px;
+  height: 72px;
+  padding: 18px;
+  background-color: #f4f5f7;
+  border-radius: 50%;
+
+  ${tablet()} {
+    width: 60px;
+    height: 60px;
+  }
+`
+
+const featureItem = ({ title, description, graphic }) => {
   return (
     <Feature key={`Feature_${title}`}>
-      <img src="/img/assets/feature-icon.png" alt={title} />
+      <FeatureImage>
+        <img src={graphic.url} alt={title} />
+      </FeatureImage>
       <div>
         <span>{title}</span>
         {renderRichText(description)}
@@ -76,6 +81,7 @@ const featureItem = ({ title, description }) => {
 }
 
 const Features = ({ title, featuresCollection }) => {
+  console.log(featuresCollection)
   return (
     <Container>
       <h2>{title}</h2>

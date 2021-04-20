@@ -166,11 +166,14 @@ query($id: String!, $locale:String!) {
       items {
         title
         displayAsSteps
-        featuresCollection {
+        featuresCollection (limit: 10) {
           items {
             title
             description {
               json
+            }
+            graphic {
+              url
             }
           }
         }
