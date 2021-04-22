@@ -192,6 +192,7 @@ query($id: String!, $locale:String!) {
           image {
             url
           }
+          website
         }
       }
     }
