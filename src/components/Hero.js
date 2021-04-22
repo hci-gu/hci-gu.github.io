@@ -3,30 +3,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { desktop, tablet, renderRichText, largeLaptop } from '../utils/layout'
 import HeroBackground from './HeroBackground'
+import Link from './Link'
 
 const Container = styled.div``
 
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
-
-  > div {
-    margin-top: 100px;
-    width: 60%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    ${largeLaptop()} {
-      margin-top: 60px;
-    }
-
-    ${tablet()} {
-      width: 100%;
-      margin-top: 0;
-    }
-  }
 
   ${tablet()} {
     flex-direction: column;
@@ -38,6 +21,24 @@ const Content = styled.div`
     ${tablet()} {
       align-self: center;
     }
+  }
+`
+
+const TextContent = styled.div`
+  margin-top: 100px;
+  width: 60%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  ${largeLaptop()} {
+    margin-top: 60px;
+  }
+
+  ${tablet()} {
+    width: 100%;
+    margin-top: 0;
   }
 `
 
@@ -82,6 +83,27 @@ const CTAButton = styled(Button)`
   border: none;
 `
 
+const Image = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ${tablet()} {
+    display: none;
+  }
+
+  > span {
+    font-size: 15px;
+    font-weight: 200;
+    margin-left: -10px;
+    margin-top: -32px;
+
+    ${desktop()} {
+      margin-top: -28px;
+    }
+  }
+`
+
 const Phone = styled.img`
   height: 850px;
   width: auto;
@@ -100,14 +122,20 @@ const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
     <Container>
       <HeroBackground />
       <Content>
-        <div>
+        <TextContent>
           <Title>{title}</Title>
           <Description>{renderRichText(introduction)}</Description>
           <a href={callToActionHref}>
             <CTAButton>{callToAction}</CTAButton>
           </a>
-        </div>
-        <Phone src="/img/assets/hero-phone.png" />
+        </TextContent>
+        <Image src="/img/assets/hero-phone.png">
+          <Phone src="/img/assets/hero-phone.png" />
+          <span>
+            App utvecklad av Appademin, läs mer{' '}
+            <Link to="/wfh-movement">här</Link>.
+          </span>
+        </Image>
       </Content>
     </Container>
   )
