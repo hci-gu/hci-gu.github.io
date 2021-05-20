@@ -77,11 +77,15 @@ const PersonContainer = styled.div`
   }
 `
 
-const Person = ({ name, role, image }) => {
+const Person = ({ name, role, image, website }) => {
   return (
-    <PersonContainer>
-      <Avatar size={56} src={image.url}></Avatar>
-      <span>{name}</span>
+  <PersonContainer>
+      <a href={website}>
+        <Avatar size={56} src={image.url}></Avatar>
+      </a>
+      <a href={website}>
+        <span>{name}</span>
+      </a>
       <span>{role}</span>
     </PersonContainer>
   )
