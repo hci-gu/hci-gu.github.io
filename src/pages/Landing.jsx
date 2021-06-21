@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import CanvasRoot from '../canvas'
 import Team from '../components/Team'
 import ProjectShowcase from '../components/ProjectShowcase'
+import Initiative from '../components/Initiative'
 
 const Container = styled.div`
   overflow: hidden;
@@ -21,6 +22,8 @@ const Content = styled.div`
 `
 
 const Header = styled.div`
+  width: 100%;
+  overflow: hidden;
   display: flex;
 
   > div {
@@ -78,8 +81,17 @@ const Projects = styled.div`
   }
 `
 
+const Initiatives = styled.div`
+  margin: 25px auto;
+  margin-bottom: 75px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 50px;
+`
+
 const Bubble = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: #3ccc39;
   opacity: 0.75;
   width: 700px;
@@ -89,6 +101,10 @@ const Bubble = styled.div`
   border-radius: 350px;
   z-index: -1;
 `
+
+const BubbleContainer = () => {
+  return <Bubble />
+}
 
 const Landing = ({ content }) => {
   return (
@@ -143,9 +159,14 @@ const Landing = ({ content }) => {
                   {renderRichText(content.introduction)}
                 </Description>
               </div>
-              <Bubble />
+              <BubbleContainer />
               <CanvasRoot />
             </Header>
+
+            <Initiatives>
+              <Initiative title="Appademin" align="left" />
+              <Initiative title="Gôttlab" align="right" />
+            </Initiatives>
 
             <Projects>
               <h1>{content.projectsTitle}</h1>
