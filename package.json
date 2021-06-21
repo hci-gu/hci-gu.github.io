@@ -4,8 +4,9 @@
   "description": "Github pages organization site.",
   "main": "index.js",
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
     "postbuild": "react-snap"
   },
   "reactSnap": {
@@ -34,7 +35,6 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
     "react-spring": "^8.0.27",
     "react-tiny-link": "^3.6.0",
     "recoil": "^0.1.2",
@@ -54,9 +54,9 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^5.9.0",
-    "craco-less": "^1.17.1",
+    "less": "^4.1.1",
     "react-snap": "^1.23.0",
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "vite": "^2.3.8"
   }
 }
