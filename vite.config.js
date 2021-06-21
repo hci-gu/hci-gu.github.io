@@ -8,6 +8,9 @@ export default {
   server: {
     // open: true,
   },
+  build: {
+    outDir: 'build',
+  },
   resolve: {
     alias: [
       // { find: '@', replacement: path.resolve(__dirname, 'src') },
