@@ -78,6 +78,18 @@ const Projects = styled.div`
   }
 `
 
+const Bubble = styled.div`
+  position: absolute;
+  background-color: #3ccc39;
+  opacity: 0.75;
+  width: 700px;
+  height: 650px;
+  top: -150px;
+  right: -200px;
+  border-radius: 350px;
+  z-index: -1;
+`
+
 const Landing = ({ content }) => {
   return (
     <>
@@ -131,6 +143,7 @@ const Landing = ({ content }) => {
                   {renderRichText(content.introduction)}
                 </Description>
               </div>
+              <Bubble />
               <CanvasRoot />
             </Header>
 
