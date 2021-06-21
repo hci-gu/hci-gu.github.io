@@ -23,6 +23,7 @@ const Container = styled.div`
 
 const App = () => {
   const content = useGenericContent()
+  console.log(content)
 
   return (
     <Container>

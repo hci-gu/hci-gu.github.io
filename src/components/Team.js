@@ -27,6 +27,13 @@ const Container = styled.div`
     font-size: 18px;
     margin-bottom: 24px;
   }
+
+  > h2 {
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 800;
+    margin: 0;
+  }
 `
 
 const Description = styled.div`
@@ -79,7 +86,7 @@ const PersonContainer = styled.div`
 
 const Person = ({ name, role, image, website }) => {
   return (
-  <PersonContainer>
+    <PersonContainer>
       <a href={website}>
         <Avatar size={56} src={image.url}></Avatar>
       </a>

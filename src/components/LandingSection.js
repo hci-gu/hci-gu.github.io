@@ -4,12 +4,12 @@ import { renderRichText } from '../utils/layout'
 import Repositories from './Repositories'
 
 const Container = styled.div`
+  margin: 25px auto;
   display: flex;
   flex-direction: column;
 
   > h2 {
-    font-size: 36px;
-    font-weight: bold;
+    font-size: 48px;
   }
 `
 
@@ -22,7 +22,7 @@ const LandingSection = ({ title, description }) => {
     <Container>
       <h2>{title}</h2>
       {renderRichText(description)}
-      {title === 'Projekt' || title === 'Projects' ? renderProjects() : null}
+      {/* <Team > */}
     </Container>
   )
 }
