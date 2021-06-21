@@ -10,11 +10,13 @@ const client = createClient({
   fetchOptions: () => {
     return {
       headers: {
-        authorization: `Bearer ${process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN}`,
+        authorization: `Bearer ${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}`,
       },
     }
   },
 })
+
+console.log(import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN)
 
 const Root = () => {
   return (

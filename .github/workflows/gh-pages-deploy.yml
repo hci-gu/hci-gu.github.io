@@ -23,27 +23,27 @@ jobs:
       - name: Add Contentful API key
         uses: TickX/var-to-dotenv@v1.1.4
         with:
-          key: 'REACT_APP_CONTENTFUL_ACCESS_TOKEN'
+          key: 'VITE_CONTENTFUL_ACCESS_TOKEN'
           value: ${{secrets.CONTENTFUL_ACCESS_TOKEN}}
       - name: Add Contentful key WFH Privacy Policy
         uses: TickX/var-to-dotenv@v1.1.4
         with:
-          key: 'REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID'
+          key: 'VITE_CONTENTFUL_WFH_PRIVACY_POLICY_ID'
           value: '72C8wbuNa19PpNOKGDOHG'
       - name: Add Contentful WFH Project Page
         uses: TickX/var-to-dotenv@v1.1.4
         with:
-          key: 'REACT_APP_CONTENTFUL_WFH_PROJECT_ID'
+          key: 'VITE_CONTENTFUL_WFH_PROJECT_ID'
           value: '7KTLMwpXTnYG9r2HHBUcjQ'
       - name: Add Contentful SFH Project page
         uses: TickX/var-to-dotenv@v1.1.4
         with:
-          key: 'REACT_APP_CONTENTFUL_SFH_PROJECT_ID'
+          key: 'VITE_CONTENTFUL_SFH_PROJECT_ID'
           value: 'sw3NKWxaSum0MDkyydCp4'
       - name: Add Contentful Appademin
         uses: TickX/var-to-dotenv@v1.1.4
         with:
-          key: 'REACT_APP_CONTENTFUL_APPADEMIN_ID'
+          key: 'VITE_CONTENTFUL_APPADEMIN_ID'
           value: '1e2oEtgX80ZRIyYdbacVkO'
       - name: Build
         run: |

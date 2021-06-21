@@ -172,7 +172,7 @@ const Landing = () => {
       />
       <Container>
         <Project
-          id={process.env.REACT_APP_CONTENTFUL_SFH_PROJECT_ID}
+          id={import.meta.env.VITE_CONTENTFUL_SFH_PROJECT_ID}
           intro={(props) => <Introduction {...props} />}
         />
       </Container>

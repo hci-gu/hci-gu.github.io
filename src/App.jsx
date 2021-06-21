@@ -43,7 +43,7 @@ const App = () => {
             </Route>
             <Route path="/wfh-movement/privacy-policy">
               <TextPage
-                id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+                id={import.meta.env.VITE_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
               />
             </Route>
             <Route path="/wfh-movement">
@@ -51,14 +51,14 @@ const App = () => {
             </Route>
             <Route path="/sfh-movement/privacy-policy">
               <TextPage
-                id={process.env.REACT_APP_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
+                id={import.meta.env.VITE_CONTENTFUL_WFH_PRIVACY_POLICY_ID}
               />
             </Route>
             <Route path="/sfh-movement">
               <SFHMovement />
             </Route>
             <Route path="/appademin">
-              <Appademin id={process.env.REACT_APP_CONTENTFUL_APPADEMIN_ID} />
+              <Appademin id={import.meta.env.VITE_CONTENTFUL_APPADEMIN_ID} />
             </Route>
             <Route
               path="/"
