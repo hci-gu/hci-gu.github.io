@@ -130,6 +130,19 @@ query($id:String!, $locale: String!) {
         }
       }
     }
+    initiativesCollection {
+      items {
+        title
+        description {
+          json
+        }
+        linkTo
+        color
+        image {
+          url
+        }
+      }
+    }
     footer {
       title
       content {

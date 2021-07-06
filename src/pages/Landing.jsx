@@ -10,8 +10,6 @@ import ProjectShowcase from '../components/ProjectShowcase'
 import Initiative from '../components/Initiative'
 
 const Container = styled.div`
-  overflow: hidden;
-
   ${mobile()} {
     padding-top: 0;
   }
@@ -23,7 +21,6 @@ const Content = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  overflow: hidden;
   display: flex;
 
   > div {
@@ -67,7 +64,11 @@ const Projects = styled.div`
   margin: 25px auto;
   margin-bottom: 75px;
   > h1 {
-    font-size: 48px;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+
+    color: #18191f;
   }
 
   > div {
@@ -87,18 +88,18 @@ const Initiatives = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 50px;
+  grid-row-gap: 75px;
 `
 
 const Bubble = styled.div`
-  position: fixed;
-  background-color: #3ccc39;
+  position: absolute;
+  background-color: #1b4079;
   opacity: 0.75;
-  width: 700px;
-  height: 650px;
+  width: 500px;
+  height: 800px;
   top: -150px;
   right: -200px;
-  border-radius: 350px;
+  border-radius: 50%;
   z-index: -1;
 `
 
@@ -164,8 +165,14 @@ const Landing = ({ content }) => {
             </Header>
 
             <Initiatives>
-              <Initiative title="Appademin" align="left" />
-              <Initiative title="Gôttlab" align="right" />
+              {content.initiativesCollection.items &&
+                content.initiativesCollection.items.map((initiative, i) => (
+                  <Initiative
+                    {...initiative}
+                    align={i % 2 === 0 ? 'left' : 'right'}
+                    key={`Initiative_${i}`}
+                  />
+                ))}
             </Initiatives>
 
             <Projects>

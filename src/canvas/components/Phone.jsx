@@ -47,7 +47,7 @@ export default function Phone() {
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group
             rotation={[Math.PI / 2, 0, 0]}
-            scale={[-1.05 / 1.4, -2.2 / 1.4, -0.09 / 1.4]}
+            scale={[-1.05 / 1.5, -2.2 / 1.5, -0.09 / 1.5]}
           >
             <mesh
               geometry={nodes.Cube_Camera_0.geometry}
