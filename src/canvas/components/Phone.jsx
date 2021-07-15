@@ -6,16 +6,29 @@ import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF, useTexture } from '@react-three/drei'
+import { useLayoutEffect } from 'react'
+
+const SCALE = 1
 
 export default function Phone() {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/models/smart_phone/scene.gltf')
+  const { scene, nodes, materials } = useGLTF('/models/smart_phone/scene.gltf')
   const texture = useTexture('/models/smart_phone/screen.png')
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    scene.traverse(
+      (obj) =>
+        obj.type === 'Mesh' && (obj.receiveShadow = obj.castShadow = true)
+    )
+    Object.assign(materials.Screen, {
+      roughness: 0.35,
+      metalness: 1,
+      emissive: new THREE.Color('#000'),
+      envMapIntensity: 0.5,
+    })
     materials['Screen'].map = texture
     materials['Screen'].needsUpdate = true
-  }, [])
+  }, [scene, nodes, materials])
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
@@ -26,12 +39,12 @@ export default function Phone() {
     )
     group.current.rotation.y = THREE.MathUtils.lerp(
       group.current.rotation.y,
-      Math.sin(t / 4) / 10,
+      Math.sin(t / 4) / 25,
       0.1
     )
     group.current.rotation.z = THREE.MathUtils.lerp(
       group.current.rotation.z,
-      Math.sin(t / 4) / 20,
+      Math.sin(t / 4) / 50,
       0.1
     )
     group.current.position.y = THREE.MathUtils.lerp(
@@ -42,12 +55,12 @@ export default function Phone() {
   })
 
   return (
-    <group ref={group} position={[0, 0.5, -0.4]} castShadow receiveShadow>
-      <group rotation={[-Math.PI / 5, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
+    <group ref={group} position={[0, 1, 0]} castShadow receiveShadow>
+      <group rotation={[Math.PI / 8, 0, 0]}>
+        <group rotation={[-Math.PI / 2, 0, 0]}>
           <group
             rotation={[Math.PI / 2, 0, 0]}
-            scale={[-1.05 / 1.5, -2.2 / 1.5, -0.09 / 1.5]}
+            scale={[-1.05 / SCALE, -2.2 / SCALE, -0.09 / SCALE]}
           >
             <mesh
               geometry={nodes.Cube_Camera_0.geometry}
@@ -68,4 +81,4 @@ export default function Phone() {
   )
 }
 
-useGLTF.preload('/models/phone/scene.gltf')
+useGLTF.preload('/models/smart_phone/scene.gltf')

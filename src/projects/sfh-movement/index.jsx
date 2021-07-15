@@ -4,6 +4,7 @@ import { mobile, tablet, smallLaptop, renderRichText } from '../../utils/layout'
 import Project from '../Project'
 import Meta from '../../components/Meta'
 import Footer from '../../components/Footer'
+import AppDownload from '../../components/projects/AppDownload'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -73,22 +74,6 @@ const Title = styled.div`
   }
 `
 
-const AppstoreBadges = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  > span {
-    font-weight: 300;
-    font-size: 20px;
-  }
-
-  > a > img {
-    width: 200px;
-  }
-`
-
 const ScreenShots = styled.div`
   width: 350px;
   height: 700px;
@@ -121,30 +106,11 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
         <h1>{name}</h1>
         <h2>{subHeading}</h2>
         <div>{renderRichText(introduction)}</div>
-        <AppstoreBadges>
-          <span>{callToAction}</span>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.wfhmovement.app.sfh"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/img/assets/google-play-badge.png"
-              alt="Google play button"
-            ></img>
-          </a>
-          <a
-            href="https://apps.apple.com/us/app/id1556414814"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/img/assets/appstore-badge.png"
-              alt="Appstore button"
-              style={{ marginTop: 10 }}
-            ></img>
-          </a>
-        </AppstoreBadges>
+        <AppDownload
+          title={callToAction}
+          googlePlay="https://play.google.com/store/apps/details?id=com.wfhmovement.app.sfh"
+          appstore="https://apps.apple.com/us/app/id1556414814"
+        />
       </Title>
       <ScreenShots>
         <img

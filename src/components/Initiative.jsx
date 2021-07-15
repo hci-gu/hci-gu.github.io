@@ -1,23 +1,34 @@
 import React from 'react'
+import { useRecoilValue } from 'recoil'
 import styled from 'styled-components'
-import { renderRichText } from '../utils/layout'
+import { localeAtom } from '../state'
+import { mobile, renderRichText, smallLaptop } from '../utils/layout'
 
 const Container = styled.div`
+  margin-bottom: 50px;
   display: grid;
 
   grid-template-columns: 1fr 1fr;
 
   ${({ align }) => align === 'right' && `direction: rtl;`}
+
+  ${mobile()} {
+    margin-bottom: 0;
+    grid-template-columns: 1fr;
+  }
 `
 
-const ImageContainer = styled.div``
+const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const Bubble = styled.div`
   position: relative;
   background-color: ${({ color }) => color};
-  height: 100%;
-  min-height: 400px;
-  width: 400px;
+  min-height: 450px;
+  width: 450px;
 
   border-radius: 50%;
   display: flex;
@@ -28,10 +39,31 @@ const Bubble = styled.div`
     margin-right: 20px;
     width: auto;
     max-width: 90%;
-    max-height: 400px;
+    max-height: 350px;
     right: 0;
     border-radius: 40px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.4));
+  }
+
+  ${smallLaptop()} {
+    min-height: 400px;
+    width: 400px;
+
+    > img {
+      max-width: 90%;
+      max-height: 325px;
+    }
+  }
+
+  ${mobile()} {
+    margin: 20px;
+    min-height: 270px;
+    width: 80%;
+
+    > img {
+      max-width: 70%;
+      max-height: 225px;
+    }
   }
 `
 
@@ -47,6 +79,11 @@ const TextContainer = styled.div`
     text-transform: uppercase;
 
     color: #4d7c8a;
+
+    ${mobile()} {
+      font-size: 12px;
+      line-height: 14px;
+    }
   }
 
   > h2 {
@@ -55,6 +92,11 @@ const TextContainer = styled.div`
     line-height: 54px;
 
     color: #18191f;
+
+    ${mobile()} {
+      font-size: 32px;
+      line-height: 40px;
+    }
   }
 
   > p {
@@ -62,6 +104,11 @@ const TextContainer = styled.div`
     line-height: 32px;
 
     color: #18191f;
+
+    ${mobile()} {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
   > a {
     font-weight: bold;
@@ -74,6 +121,11 @@ const TextContainer = styled.div`
     align-items: center;
     > svg {
       margin-left: 10px;
+    }
+
+    ${mobile()} {
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 `
@@ -101,6 +153,8 @@ const Initiative = ({
   image,
   description,
 }) => {
+  const locale = useRecoilValue(localeAtom)
+
   return (
     <Container align={align}>
       <ImageContainer>
@@ -113,7 +167,7 @@ const Initiative = ({
         <h2>{title}</h2>
         <p>{renderRichText(description)}</p>
         <a href={linkTo}>
-          Read more <Arrow />
+          {locale == 'en' ? 'Read more' : 'Läs mer'} <Arrow />
         </a>
       </TextContainer>
     </Container>

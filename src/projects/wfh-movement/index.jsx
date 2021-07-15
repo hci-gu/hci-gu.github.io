@@ -4,6 +4,7 @@ import { mobile, tablet, smallLaptop, renderRichText } from '../../utils/layout'
 import Project from '../Project'
 import Meta from '../../components/Meta'
 import Footer from '../../components/Footer'
+import AppDownload from '../../components/projects/AppDownload'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -121,30 +122,11 @@ const Introduction = ({ name, subHeading, introduction, callToAction }) => {
         <h1>{name}</h1>
         <h2>{subHeading}</h2>
         <div>{renderRichText(introduction)}</div>
-        <AppstoreBadges>
-          <span>{callToAction}</span>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.wfhmovement.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/img/assets/google-play-badge.png"
-              alt="Google play button"
-            ></img>
-          </a>
-          <a
-            href="https://apps.apple.com/us/app/id1518224904"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/img/assets/appstore-badge.png"
-              alt="Appstore button"
-              style={{ marginTop: 10 }}
-            ></img>
-          </a>
-        </AppstoreBadges>
+        <AppDownload
+          title={callToAction}
+          googlePlay="https://play.google.com/store/apps/details?id=com.wfhmovement.app"
+          appstore="https://apps.apple.com/us/app/id1518224904"
+        />
       </Title>
       <ScreenShots>
         <img

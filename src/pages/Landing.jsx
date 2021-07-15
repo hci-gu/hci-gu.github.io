@@ -21,10 +21,11 @@ const Content = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-  > div {
-    width: 50%;
+  ${tablet()} {
+    grid-template-columns: 1fr;
   }
 `
 
@@ -46,6 +47,7 @@ const Title = styled.div`
   ${mobile()} {
     font-size: 1rem;
     line-height: 2rem;
+    text-align: center;
   }
 `
 
@@ -69,6 +71,12 @@ const Projects = styled.div`
     line-height: 54px;
 
     color: #18191f;
+
+    ${mobile()} {
+      text-align: center;
+      font-size: 36px;
+      line-height: 50px;
+    }
   }
 
   > div {
@@ -95,8 +103,8 @@ const Bubble = styled.div`
   position: absolute;
   background-color: #1b4079;
   opacity: 0.75;
-  width: 500px;
-  height: 800px;
+  width: 45vw !important;
+  height: 45vw !important;
   top: -150px;
   right: -200px;
   border-radius: 50%;
@@ -104,7 +112,8 @@ const Bubble = styled.div`
 `
 
 const BubbleContainer = () => {
-  return <Bubble />
+  return null
+  // return <Bubble />
 }
 
 const Landing = ({ content }) => {

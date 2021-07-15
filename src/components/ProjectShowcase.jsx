@@ -34,13 +34,19 @@ const Image = styled.div`
     height: 480px;
   }
   ${mobile()} {
-    height: 380px;
+    height: 280px;
   }
 
   > div {
     left: 25%;
     width: 50%;
     height: 80%;
+
+    ${mobile()} {
+      left: 22%;
+      width: 56%;
+    }
+
     ${({ platform }) =>
       platform === 'Laptop' &&
       `
@@ -54,6 +60,10 @@ const Image = styled.div`
       }
       ${tablet()} {
         width: 66%;
+      }
+      ${mobile()} {
+        left: 22%;
+        width: 90%;
       }
     `};
 

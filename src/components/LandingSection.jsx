@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { renderRichText } from '../utils/layout'
+import { mobile, renderRichText } from '../utils/layout'
 import Repositories from './Repositories'
 
 const Container = styled.div`
@@ -9,7 +9,16 @@ const Container = styled.div`
   flex-direction: column;
 
   > h2 {
-    font-size: 48px;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+    color: #18191f;
+
+    ${mobile()} {
+      font-size: 36px;
+      line-height: 50px;
+      text-align: center;
+    }
   }
 `
 
