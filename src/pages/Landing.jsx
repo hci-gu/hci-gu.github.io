@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
-import { mobile, middleContent, renderRichText, tablet } from '../utils/layout'
+import {
+  mobile,
+  middleContent,
+  renderRichText,
+  tablet,
+  smallLaptop,
+} from '../utils/layout'
 import LandingSection from '../components/LandingSection'
 import Footer from '../components/Footer'
 import CanvasRoot from '../canvas'
@@ -23,6 +29,10 @@ const Header = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  ${smallLaptop()} {
+    grid-template-columns: 400px 1fr;
+  }
 
   ${tablet()} {
     grid-template-columns: 1fr;
@@ -54,11 +64,28 @@ const Title = styled.div`
 const Description = styled.div`
   width: 600px;
   padding: 20px 0;
-  color: rgb(25, 25, 25);
-  text-align: justify;
+
+  > div {
+    color: rgb(25, 25, 25);
+    text-align: justify;
+  }
+
+  ${smallLaptop()} {
+    width: 100%;
+  }
+`
+
+const LongDescription = styled.div`
+  ${mobile()} {
+    display: none;
+  }
+`
+
+const ShortDescription = styled.div`
+  display: none;
 
   ${mobile()} {
-    width: 100%;
+    display: block;
   }
 `
 
@@ -97,23 +124,65 @@ const Initiatives = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 75px;
+
+  ${mobile()} {
+    grid-row-gap: 25px;
+  }
 `
 
-const Bubble = styled.div`
+const MobilePromoContainer = styled.div`
+  position: relative;
+  display: none;
+  width: 100%;
+
+  ${mobile()} {
+    display: flex;
+  }
+
+  > img {
+    width: 150px;
+    margin: 0 auto;
+  }
+`
+
+const ImageBackground = styled.div`
+  overflow: hidden;
   position: absolute;
-  background-color: #1b4079;
-  opacity: 0.75;
-  width: 45vw !important;
-  height: 45vw !important;
-  top: -150px;
-  right: -200px;
-  border-radius: 50%;
-  z-index: -1;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+
+  > div {
+    position: absolute;
+    z-index: -1;
+    bottom: -50vw;
+    left: calc(50% - 37.5vw);
+    width: 75vw;
+    height: 75vw;
+    border-radius: 50%;
+    background-color: #96e2e6;
+  }
 `
 
-const BubbleContainer = () => {
-  return null
-  // return <Bubble />
+const FullWidthBorder = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: -10vw;
+  width: 120vw;
+
+  border-bottom: 1px solid black;
+`
+
+const MobilePromo = () => {
+  return (
+    <MobilePromoContainer>
+      <img src="/img/assets/landing-promo-mobile.png"></img>
+      <ImageBackground>
+        <div></div>
+      </ImageBackground>
+      <FullWidthBorder />
+    </MobilePromoContainer>
+  )
 }
 
 const Landing = ({ content }) => {
@@ -166,11 +235,16 @@ const Landing = ({ content }) => {
                   <h1>{content.title}</h1>
                 </Title>
                 <Description>
-                  {renderRichText(content.introduction)}
+                  <LongDescription>
+                    {renderRichText(content.introduction)}
+                  </LongDescription>
+                  <ShortDescription>
+                    {renderRichText(content.shortIntroduction)}
+                  </ShortDescription>
                 </Description>
               </div>
-              <BubbleContainer />
               <CanvasRoot />
+              <MobilePromo />
             </Header>
 
             <Initiatives>

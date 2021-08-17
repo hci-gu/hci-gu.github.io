@@ -7,11 +7,12 @@ import { useRecoilState } from 'recoil'
 import { availableLocales, localeAtom } from '../state'
 
 const MENU_HEIGHT = 64
+const MENU_HEIGHT_MOBILE = 44
 const Container = styled.div`
   height: ${MENU_HEIGHT * 2}px;
 
   ${mobile()} {
-    height: ${MENU_HEIGHT}px;
+    height: ${MENU_HEIGHT_MOBILE}px;
     padding: 0 20px;
   }
 
@@ -38,6 +39,10 @@ const Logo = styled.div`
   ${mobile()} {
     width: ${MENU_HEIGHT * 1.5}px;
     height: ${MENU_HEIGHT * 1.5}px;
+  }
+
+  ${mobile()} {
+    height: 50%;
   }
 `
 
@@ -69,6 +74,7 @@ const Menu = () => {
         {showLanguagePickerForPath(location.pathname) && (
           <div>
             <Select
+              size="small"
               defaultValue={locale.value}
               onChange={(val) =>
                 setLocale(
