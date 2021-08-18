@@ -63,6 +63,7 @@ const Bubble = styled.div`
     margin: 5px;
     max-width: 65px;
     max-height: 65px;
+    min-height: auto;
 
     > img {
       margin-top: 10px;
