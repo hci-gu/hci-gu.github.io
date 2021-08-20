@@ -1,13 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
-import { mobile, middleContent, renderRichText } from '../utils/layout'
+import { mobile, middleContent, renderRichText, tablet } from '../utils/layout'
 import LandingSection from '../components/LandingSection'
 import Footer from '../components/Footer'
+import CanvasRoot from '../canvas'
+import Team from '../components/Team'
+import ProjectShowcase from '../components/ProjectShowcase'
+import Initiative from '../components/Initiative'
 
 const Container = styled.div`
-  overflow: hidden;
-
   ${mobile()} {
     padding-top: 0;
   }
@@ -17,11 +19,21 @@ const Content = styled.div`
   ${middleContent()}
 `
 
+const Header = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  ${tablet()} {
+    grid-template-columns: 1fr;
+  }
+`
+
 const Title = styled.div`
   grid-column: 1 / -1;
   max-width: 1400px;
-  font-size: 56px;
-  line-height: 110px;
+  font-size: 36px;
+  line-height: 80px;
 
   font-weight: 900;
   color: #22223b;
@@ -35,6 +47,7 @@ const Title = styled.div`
   ${mobile()} {
     font-size: 1rem;
     line-height: 2rem;
+    text-align: center;
   }
 `
 
@@ -48,6 +61,60 @@ const Description = styled.div`
     width: 100%;
   }
 `
+
+const Projects = styled.div`
+  margin: 25px auto;
+  margin-bottom: 75px;
+  > h1 {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+
+    color: #18191f;
+
+    ${mobile()} {
+      text-align: center;
+      font-size: 36px;
+      line-height: 50px;
+    }
+  }
+
+  > div {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+
+    ${tablet()} {
+      grid-template-columns: 1fr;
+    }
+  }
+`
+
+const Initiatives = styled.div`
+  margin: 25px auto;
+  margin-bottom: 75px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 75px;
+`
+
+const Bubble = styled.div`
+  position: absolute;
+  background-color: #1b4079;
+  opacity: 0.75;
+  width: 45vw !important;
+  height: 45vw !important;
+  top: -150px;
+  right: -200px;
+  border-radius: 50%;
+  z-index: -1;
+`
+
+const BubbleContainer = () => {
+  return null
+  // return <Bubble />
+}
 
 const Landing = ({ content }) => {
   return (
@@ -93,15 +160,43 @@ const Landing = ({ content }) => {
       <Container>
         {content && (
           <Content>
+            <Header>
+              <div>
+                <Title>
+                  <h1>{content.title}</h1>
+                </Title>
+                <Description>
+                  {renderRichText(content.introduction)}
+                </Description>
+              </div>
+              <BubbleContainer />
+              <CanvasRoot />
+            </Header>
+
+            <Initiatives>
+              {content.initiativesCollection.items &&
+                content.initiativesCollection.items.map((initiative, i) => (
+                  <Initiative
+                    {...initiative}
+                    align={i % 2 === 0 ? 'left' : 'right'}
+                    key={`Initiative_${i}`}
+                  />
+                ))}
+            </Initiatives>
+
+            <Projects>
+              <h1>{content.projectsTitle}</h1>
+              <div>
+                {content.projectsCollection.items &&
+                  content.projectsCollection.items.map((p, i) => (
+                    <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
+                  ))}
+              </div>
+            </Projects>
+            {content.team && <Team {...content.team} />}
             <div>
-              <Title>
-                <h1>{content.title}</h1>
-              </Title>
-              <Description>{renderRichText(content.introduction)}</Description>
-            </div>
-            <div>
-              {content.sectionsCollection.items.map((section) => (
-                <LandingSection {...section} />
+              {content.sectionsCollection.items.map((section, i) => (
+                <LandingSection {...section} key={`Section_${i}`} />
               ))}
             </div>
           </Content>

@@ -16,8 +16,6 @@ const client = createClient({
   },
 })
 
-console.log(import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN)
-
 const Root = () => {
   return (
     <React.StrictMode>

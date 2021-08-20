@@ -100,6 +100,49 @@ query($id:String!, $locale: String!) {
         }
       }
     }
+    team {
+      title
+      subtitle
+      description {
+        json
+      }
+      membersCollection {
+        items {
+          name
+          role
+          image {
+            url
+          }
+          website
+        }
+      }
+    }
+    projectsTitle
+    projectsCollection {
+      items {
+        title
+        tags
+        platform
+        color
+        link
+        image {
+          url
+        }
+      }
+    }
+    initiativesCollection {
+      items {
+        title
+        description {
+          json
+        }
+        linkTo
+        color
+        image {
+          url
+        }
+      }
+    }
     footer {
       title
       content {
