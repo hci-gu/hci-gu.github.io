@@ -11,10 +11,12 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
 
   ${({ align }) => align === 'right' && `direction: rtl;`}
+  ${({ align }) => align === 'right' && `> * { direction: ltr; }`}
 
   ${mobile()} {
+    direction: ltr;
     margin-bottom: 0;
-    grid-template-columns: 1fr;
+    grid-template-columns: 80px 1fr;
   }
 `
 
@@ -22,6 +24,8 @@ const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  grid-row-start: span 2;
 `
 
 const Bubble = styled.div`
@@ -46,58 +50,32 @@ const Bubble = styled.div`
   }
 
   ${smallLaptop()} {
-    min-height: 400px;
-    width: 400px;
+    min-height: 225px;
+    width: 225px;
 
     > img {
       max-width: 90%;
-      max-height: 325px;
+      max-height: 200px;
     }
   }
 
   ${mobile()} {
-    margin: 20px;
-    min-height: 270px;
-    width: 80%;
+    margin: 5px;
+    max-width: 65px;
+    max-height: 65px;
+    min-height: auto;
 
     > img {
-      max-width: 70%;
-      max-height: 225px;
+      margin-top: 10px;
+      margin-right: 10px;
+      max-width: 80%;
+      border-radius: 8px;
     }
   }
 `
 
 const TextContainer = styled.div`
   ${({ align }) => align === 'right' && `direction: ltr;`}
-  > span {
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 18px;
-
-    text-align: center;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    color: #4d7c8a;
-
-    ${mobile()} {
-      font-size: 12px;
-      line-height: 14px;
-    }
-  }
-
-  > h2 {
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 54px;
-
-    color: #18191f;
-
-    ${mobile()} {
-      font-size: 32px;
-      line-height: 40px;
-    }
-  }
 
   > p {
     font-size: 18px;
@@ -105,9 +83,9 @@ const TextContainer = styled.div`
 
     color: #18191f;
 
-    ${mobile()} {
+    ${smallLaptop()} {
       font-size: 16px;
-      line-height: 20px;
+      line-height: 24px;
     }
   }
   > a {
@@ -127,6 +105,53 @@ const TextContainer = styled.div`
       font-size: 16px;
       line-height: 20px;
     }
+  }
+
+  ${mobile()} {
+    margin-top: 10px;
+    grid-column-start: span 2;
+  }
+`
+
+const TextHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  > span {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 18px;
+
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #4d7c8a;
+
+    ${mobile()} {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  > h2 {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+
+    color: #18191f;
+
+    ${mobile()} {
+      font-size: 32px;
+      line-height: 32px;
+      margin: 0;
+    }
+  }
+
+  ${mobile()} {
+    height: 80px;
   }
 `
 
@@ -162,10 +187,12 @@ const Initiative = ({
           <img src={image.url} />
         </Bubble>
       </ImageContainer>
-      <TextContainer align={align}>
+      <TextHeader>
         <span>Initiativ</span>
         <h2>{title}</h2>
-        <p>{renderRichText(description)}</p>
+      </TextHeader>
+      <TextContainer align={align}>
+        {renderRichText(description)}
         <a href={linkTo}>
           {locale == 'en' ? 'Read more' : 'Läs mer'} <Arrow />
         </a>

@@ -21,10 +21,10 @@ export default function Phone() {
         obj.type === 'Mesh' && (obj.receiveShadow = obj.castShadow = true)
     )
     Object.assign(materials.Screen, {
-      roughness: 0.35,
+      roughness: 0.15,
       metalness: 1,
       emissive: new THREE.Color('#000'),
-      envMapIntensity: 0.5,
+      envMapIntensity: 0.6,
     })
     materials['Screen'].map = texture
     materials['Screen'].needsUpdate = true

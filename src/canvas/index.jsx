@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import Phone from './components/Phone'
 import { MeshBasicMaterial } from 'three'
 import AppDownload from '../components/projects/AppDownload'
-import { tablet } from '../utils/layout'
+import { isSize, sizes, smallLaptop, tablet } from '../utils/layout'
 
 softShadows()
 
@@ -23,8 +23,8 @@ const Root = styled.div`
 
   > div {
     position: absolute;
-    left: -100px;
-    width: 150%;
+    /* left: -100px; */
+    width: 120%;
     height: 100%;
   }
 
@@ -35,7 +35,21 @@ const Root = styled.div`
 
 const CanvasHtml = styled.div`
   transform: scale(0.4);
+
+  * {
+    user-select: none;
+  }
+
+  ${smallLaptop()} {
+    display: none;
+  }
 `
+
+const billboardOffsetForScreen = () => {
+  if (isSize('laptopMedium')) return 1
+  else if (isSize('largeLaptop')) return 2
+  return 2.5
+}
 
 const CanvasRoot = () => {
   return (
@@ -55,7 +69,7 @@ const CanvasRoot = () => {
             minPolarAngle={Math.PI / 3.2}
           />
           <Billboard material={<MeshBasicMaterial />}>
-            <Html transform position={[2.5, -1, 0]}>
+            <Html transform position={[billboardOffsetForScreen(), -1, 0]}>
               <CanvasHtml>
                 <AppDownload
                   title={'Ladda ner appen!'}
@@ -65,15 +79,12 @@ const CanvasRoot = () => {
               </CanvasHtml>
             </Html>
           </Billboard>
-          {/* <Sphere args={[2, 25, 25]} position={[1, 2.5, 5]}>
-            <meshBasicMaterial attach="material" color="#1b4079" />
-          </Sphere> */}
           <Suspense fallback={null}>
             <Stage
               adjustCamera={false}
               environment="studio"
               preset="rembrandt"
-              intensity={0.5}
+              intensity={0.75}
               contactShadowOpacity={0}
               shadowBias={-0.0015}
             >

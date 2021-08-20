@@ -1,10 +1,4 @@
-// import * as path from 'path';
-import { UserConfig } from 'vite'
-// import vitePluginImp from 'vite-plugin-imp';
-
-// https://vitejs.dev/config/
 export default {
-  plugins: [],
   server: {
     host: '0.0.0.0',
   },

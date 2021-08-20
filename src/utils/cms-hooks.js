@@ -92,6 +92,9 @@ query($id:String!, $locale: String!) {
     introduction {
       json
     }
+    shortIntroduction {
+      json
+    }
     sectionsCollection {
       items {
         title
@@ -122,8 +125,6 @@ query($id:String!, $locale: String!) {
       items {
         title
         tags
-        platform
-        color
         link
         image {
           url
