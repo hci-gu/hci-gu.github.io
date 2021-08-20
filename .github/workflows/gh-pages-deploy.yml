@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: |
-          npm install
+          yarn
       - name: Add Contentful API key
         uses: TickX/var-to-dotenv@v1.1.4
         with:
