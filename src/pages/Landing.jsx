@@ -111,7 +111,7 @@ const Projects = styled.div`
     grid-gap: 20px;
     grid-template-columns: 1fr 1fr;
 
-    ${tablet()} {
+    ${mobile()} {
       grid-template-columns: 1fr;
     }
   }

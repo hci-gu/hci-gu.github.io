@@ -15,6 +15,7 @@ export const sizes = {
 
 export const isMobile = () => window.innerWidth <= sizes.mobile
 export const isLaptop = () => window.innerWidth <= sizes.laptop
+export const isSize = (key) => window.innerWidth <= sizes[key]
 
 export const mobile = () => `@media (max-width: ${sizes.mobile}px)`
 export const tablet = () => `@media (max-width: ${sizes.tablet}px)`
