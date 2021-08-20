@@ -7,13 +7,11 @@ import { useRecoilState } from 'recoil'
 import { availableLocales, localeAtom } from '../state'
 
 const MENU_HEIGHT = 64
-const MENU_HEIGHT_MOBILE = 44
 const Container = styled.div`
   height: ${MENU_HEIGHT * 2}px;
 
   ${mobile()} {
-    height: ${MENU_HEIGHT_MOBILE}px;
-    padding: 0 20px;
+    height: ${MENU_HEIGHT}px;
   }
 
   margin-bottom: 10px;
@@ -34,6 +32,11 @@ const Logo = styled.div`
   > img {
     height: 100%;
     padding: 20px 0;
+
+    ${mobile()} {
+      width: 54px;
+      height: auto;
+    }
   }
 
   ${mobile()} {
