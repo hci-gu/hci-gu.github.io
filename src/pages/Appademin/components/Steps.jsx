@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Steps } from 'antd'
-import { mobile, renderRichText } from '../utils/layout'
-import { useLayoutBreakpoint } from '../utils/hooks'
+import { mobile, renderRichText } from '../../../utils/layout'
+import { useLayoutBreakpoint } from '../../../utils/hooks'
 const { Step } = Steps
 
 const Container = styled.div`

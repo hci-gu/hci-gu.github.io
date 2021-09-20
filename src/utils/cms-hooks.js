@@ -223,6 +223,18 @@ query($id: String!, $locale:String!) {
         }
       }
     }
+    projectsTitle
+    projectsCollection {
+      items {
+        title
+        description {
+          json
+        }
+        image {
+          url
+        }
+      }
+    }
     team {
       title
       subtitle

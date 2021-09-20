@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { mobile, renderRichText, tablet } from '../utils/layout'
+import { mobile, renderRichText, tablet } from '../../../utils/layout'
 
 const Container = styled.div`
   > h1 {

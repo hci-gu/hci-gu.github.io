@@ -1,9 +1,14 @@
 import { Button } from 'antd'
 import React from 'react'
 import styled from 'styled-components'
-import { desktop, tablet, renderRichText, largeLaptop } from '../utils/layout'
+import {
+  desktop,
+  tablet,
+  renderRichText,
+  largeLaptop,
+} from '../../../utils/layout'
 import HeroBackground from './HeroBackground'
-import Link from './Link'
+import Link from '../../../components/Link'
 
 const Container = styled.div``
 
