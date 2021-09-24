@@ -230,6 +230,8 @@ query($id: String!, $locale:String!) {
         description {
           json
         }
+        device
+        link
         image {
           url
         }

@@ -41,6 +41,24 @@
       width: calc(100% - 80px) !important;
       margin-left: 40px !important;
     }
+    .ant-carousel .slick-list {
+      overflow: visible !important;
+      overflow-x: clip !important;
+      transform: perspective(0);
+      /* -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);*/
+    }
+    .carousel-dots > li > button {
+      margin-top: 70px !important;
+      background: #1b4079 !important;
+      height: 8px !important;
+      border-radius: 2px !important;
+    }
+    @media screen and (-webkit-min-device-pixel-ratio:0) { 
+      /* .ant-carousel .slick-list {
+        -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
+        -webkit-mask-position-x: -100;
+      } */
+    }
 
     .ant-steps-item-title {
       color: rgba(0, 0, 0, 1) !important;

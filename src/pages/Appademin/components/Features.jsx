@@ -32,6 +32,7 @@ const Feature = styled.div`
     margin-left: 40px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     ${tablet()} {
       margin-left: 16px;

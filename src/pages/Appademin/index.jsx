@@ -15,6 +15,7 @@ import Footer from '../../components/Footer'
 import Hero from './components/Hero'
 import StepsContainer from './components/Steps'
 import Features from './components/Features'
+import Projects from './components/Projects'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -60,26 +61,6 @@ const Content = styled.div`
   }
 `
 
-const Project = ({ title, description, image }) => {
-  return (
-    <div>
-      <h2>{title}</h2>
-      {renderRichText(description)}
-    </div>
-  )
-}
-
-const Projects = ({ title, projects }) => {
-  return (
-    <div>
-      <h1>{title}</h1>
-      {projects.map((project, i) => (
-        <Project key={`Project_${i}`} {...project} />
-      ))}
-    </div>
-  )
-}
-
 const Appademin = ({ id }) => {
   const content = useAppedemiContent(id)
 
@@ -104,10 +85,10 @@ const Appademin = ({ id }) => {
             }
             return <Features {...item} key={`Feature_${item.title}`} />
           })}
-          <Projects
+          {/* <Projects
             title={content.projectsTitle}
             projects={content.projectsCollection.items}
-          />
+          /> */}
           <Team {...content.team} />
           <Background>
             <h2>{content.backgroundTitle}</h2>

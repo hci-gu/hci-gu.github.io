@@ -28,7 +28,7 @@
     "@contentful/rich-text-react-renderer": "^15.2.0",
     "@react-three/drei": "^7.4.0",
     "@react-three/flex": "^0.6.1",
-    "antd": "^4.16.12",
+    "antd": "^4.16.13",
     "axios": "^0.21.1",
     "contentful": "^8.4.2",
     "github-api": "^3.4.0",
