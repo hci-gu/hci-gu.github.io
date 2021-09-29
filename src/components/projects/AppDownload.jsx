@@ -21,12 +21,6 @@ const AppDownload = ({ title, googlePlay, appstore }) => {
   return (
     <AppstoreBadges>
       <span>{title}</span>
-      <a href={googlePlay} target="_blank" rel="noopener noreferrer">
-        <img
-          src="/img/assets/google-play-badge.png"
-          alt="Google play button"
-        ></img>
-      </a>
       <a href={appstore} target="_blank" rel="noopener noreferrer">
         <img
           src="/img/assets/appstore-badge.png"
