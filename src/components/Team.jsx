@@ -2,7 +2,7 @@ import { Card } from 'antd'
 import Avatar from 'antd/lib/avatar/avatar'
 import React from 'react'
 import styled from 'styled-components'
-import { renderRichText, tablet } from '../utils/layout'
+import { mobile, renderRichText, tablet } from '../utils/layout'
 
 const Background = styled.div`
   position: absolute;
@@ -58,12 +58,16 @@ const People = styled.div`
   width: 100%;
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, auto);
   justify-items: center;
+  align-items: center;
 
   ${tablet()} {
     grid-gap: 16px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, auto);
+  }
+  ${mobile()} {
+    grid-template-columns: repeat(2, auto);
   }
 `
 
