@@ -189,12 +189,16 @@ var e=Object.defineProperty,t=Object.defineProperties,n=Object.getOwnPropertyDes
   width: 100%;
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, auto);
   justify-items: center;
+  align-items: center;
 
   ${le()} {
     grid-gap: 16px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, auto);
+  }
+  ${ie()} {
+    grid-template-columns: repeat(2, auto);
   }
 `,Ne=g.div`
   display: flex;
