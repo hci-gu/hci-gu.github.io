@@ -64,7 +64,7 @@ const useMovement = () => {
   const scaleX = spring({
     fps,
     from: -1.05,
-    to: width < 720 ? 1.05 : -0.9,
+    to: width < 720 ? -1.05 : -0.9,
     frame: secondaryMotion,
     config: baseSpringConfig,
   })
