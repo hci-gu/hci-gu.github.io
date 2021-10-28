@@ -5,6 +5,7 @@ import Project from '../Project'
 import Meta from '../../components/Meta'
 import Footer from '../../components/Footer'
 import AppDownload from '../../components/projects/AppDownload'
+import WFHMovementVideo from '../../components/remotion/wfh-movement'
 
 const Container = styled.div`
   margin: 0 auto;
@@ -153,9 +154,10 @@ const Landing = () => {
         link="https://hci-gu.github.io/wfh-movement/"
       />
       <Container>
+        <WFHMovementVideo />
         <Project
           id={import.meta.env.VITE_CONTENTFUL_WFH_PROJECT_ID}
-          intro={(props) => <Introduction {...props} />}
+          intro={(props) => <></>}
         />
       </Container>
       <Footer />
