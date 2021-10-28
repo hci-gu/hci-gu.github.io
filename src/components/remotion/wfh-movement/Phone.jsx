@@ -10,18 +10,6 @@ export default function Phone() {
   const { scene, nodes, materials } = useGLTF(`/models/smart_phone/scene.gltf`)
 
   const texture = useTexture(`/models/smart_phone/screen.png`)
-  const texture2 = useTexture(`/models/smart_phone/screen_2.png`)
-
-  //   useLayoutEffect(() => {
-  //     Object.assign(materials.Screen, {
-  //       roughness: 0.15,
-  //       metalness: 1,
-  //       emissive: new THREE.Color('#000'),
-  //       envMapIntensity: 0.15,
-  //     })
-  //     materials['Screen'].map = texture
-  //     materials['Screen'].needsUpdate = true
-  //   }, [scene, nodes, materials])
 
   useEffect(() => {}, [frame])
 
