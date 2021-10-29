@@ -58,7 +58,6 @@ const LineChart = () => {
             series: d.series === 'Före hemarbete' ? 'Before' : 'After',
           }))
         : data
-    console.log(updatedData)
     ref.current.changeData(updatedData)
     ref.current.render()
   }, [locale])
@@ -120,7 +119,7 @@ const LineChartAnimtedShort = () => {
 
   const opacity = interpolate(
     frame,
-    [0, 1 * fps, 7 * fps, 7.5 * fps],
+    [0, 1 * fps, 4 * fps, 4.5 * fps],
     [0, 1, 1, 0]
   )
   const top = interpolate(frame, [0, 60], [0, 60], {

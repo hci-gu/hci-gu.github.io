@@ -23,13 +23,13 @@ const DownloadTheApp = () => {
   const { fps } = useVideoConfig()
   return (
     <AbsoluteFill>
-      <Sequence from={0} durationInFrames={16 * fps}>
+      <Sequence from={0} durationInFrames={12 * fps}>
         <Root />
       </Sequence>
-      <Sequence from={0 * fps} durationInFrames={8 * fps}>
+      <Sequence from={0 * fps} durationInFrames={5 * fps}>
         <LineChartAnimtedShort />
       </Sequence>
-      <Sequence from={8 * fps} durationInFrames={16 * fps}>
+      <Sequence from={5 * fps} durationInFrames={12 * fps}>
         <Scene />
       </Sequence>
     </AbsoluteFill>

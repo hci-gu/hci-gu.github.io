@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import RemotionVideo from './RemotionVideo'
 import { useLayoutBreakpoint, useViewPort } from '../../../utils/hooks'
 
-const Container = styled.div``
+const Container = styled.div`
+  margin-bottom: 100px;
+`
 
 const widthForKey = (key, width) => {
   switch (key) {
@@ -28,7 +30,7 @@ const WFHMovementVideo = () => {
   useEffect(() => {
     if (ref.current) {
       ref.current.addEventListener('timeupdate', (e) => {
-        if (e.detail.frame >= 900) {
+        if (e.detail.frame >= 600) {
           ref.current.pause()
           setShowControls(true)
         }
@@ -43,7 +45,7 @@ const WFHMovementVideo = () => {
         controls={showControls}
         style={{ margin: '0 auto' }}
         autoPlay
-        durationInFrames={16 * 60}
+        durationInFrames={12 * 60}
         compositionWidth={widthForKey(key, width)}
         compositionHeight={720}
         fps={60}
