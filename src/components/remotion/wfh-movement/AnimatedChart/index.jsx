@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Line } from '@ant-design/charts'
 import styled from 'styled-components'
 import Heading from './Heading'
@@ -7,6 +7,8 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion'
 import data from './data.json'
 import theme from './theme.json'
 import { tablet } from '../../../../utils/layout'
+import { useRecoilValue } from 'recoil'
+import { localeAtom } from '../../../../state'
 
 const Container = styled.div`
   width: 100%;
@@ -45,6 +47,22 @@ const ChartWrapper = styled.div`
 `
 
 const LineChart = () => {
+  const locale = useRecoilValue(localeAtom)
+  const ref = useRef()
+
+  useEffect(() => {
+    const updatedData =
+      locale.value === 'en-US'
+        ? data.map((d) => ({
+            ...d,
+            series: d.series === 'Före hemarbete' ? 'Before' : 'After',
+          }))
+        : data
+    console.log(updatedData)
+    ref.current.changeData(updatedData)
+    ref.current.render()
+  }, [locale])
+
   const config = {
     theme,
     data,
@@ -84,13 +102,19 @@ const LineChart = () => {
     legend: true,
   }
 
-  return <Line {...config} />
+  return (
+    <Line
+      {...config}
+      onReady={(chart) => {
+        ref.current = chart
+      }}
+    />
+  )
 }
 
 const MemoizedLineChart = React.memo(LineChart)
 
 const LineChartAnimtedShort = () => {
-  const ref = useRef()
   const { fps } = useVideoConfig()
   const frame = useCurrentFrame()
 
@@ -99,7 +123,6 @@ const LineChartAnimtedShort = () => {
     [0, 1 * fps, 7 * fps, 7.5 * fps],
     [0, 1, 1, 0]
   )
-  const springOpacity = spring({ fps, from: 0, to: 1, frame: opacity })
   const top = interpolate(frame, [0, 60], [0, 60], {
     extrapolateRight: 'clamp',
   })
@@ -115,7 +138,7 @@ const LineChartAnimtedShort = () => {
       >
         <Heading />
         <ChartWrapper>
-          <MemoizedLineChart parentRef={ref} />
+          <MemoizedLineChart />
         </ChartWrapper>
       </Container>
     </>

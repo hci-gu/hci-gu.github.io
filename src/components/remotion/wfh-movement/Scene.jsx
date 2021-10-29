@@ -6,6 +6,7 @@ import {
 } from '@react-three/drei'
 import { ThreeCanvas } from '@remotion/three'
 import React, { Suspense, useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
 import {
   AbsoluteFill,
   continueRender,
@@ -17,6 +18,7 @@ import {
   useVideoConfig,
 } from 'remotion'
 import styled from 'styled-components'
+import { localeAtom } from '../../../state'
 import { mobile, tablet } from '../../../utils/layout'
 import Phone from './Phone'
 
@@ -62,8 +64,32 @@ const TextContainer = styled.div`
   }
 `
 
+const textsForLanguage = (lang = 'en') => {
+  switch (lang) {
+    case 'sv':
+      return (
+        <>
+          <h1>
+            Testa själv med appen<br></br> <strong>WFH Movement</strong>
+          </h1>
+          <h2>Och bidra till forskning</h2>
+        </>
+      )
+    default:
+      return (
+        <>
+          <h1>
+            Try it yourself with the<br></br> <strong>WFH Movement</strong>
+          </h1>
+          <h2>And contribute to research</h2>
+        </>
+      )
+  }
+}
+
 export const Text = () => {
   const frame = useCurrentFrame()
+  const locale = useRecoilValue(localeAtom)
   const opacity = interpolate(frame, [0, 160, 220], [0, 0, 1])
   const marginBottom = interpolate(frame, [0, 160, 220], [0, 0, 200], {
     extrapolateRight: 'clamp',
@@ -86,10 +112,8 @@ export const Text = () => {
         marginBottom: springMargin,
       }}
     >
-      <h1>
-        Testa själv med appen<br></br> <strong>WFH Movement</strong>
-      </h1>
-      <h2>Och bidra till forskning</h2>
+      {textsForLanguage(locale.value)}
+
       <a
         href="https://apps.apple.com/us/app/id1518224904"
         target="_blank"
@@ -105,13 +129,6 @@ export const SecondaryText = () => {}
 
 export const Scene = () => {
   const { width, height } = useVideoConfig()
-  const [handle] = useState(() => delayRender())
-
-  useEffect(() => {
-    setTimeout(() => {
-      continueRender(handle)
-    }, 1000)
-  }, [])
 
   return (
     <AbsoluteFill>
@@ -123,8 +140,6 @@ export const Scene = () => {
         dpr={[1, 2]}
       >
         <ambientLight intensity={0.6} />
-        {/* <directionalLight position={[-2, 1, 0]} intensity={0.6} />
-        <pointLight position={[-15, 15, 0]} intensity={0.15} /> */}
         <Phone />
         <ContactShadows
           rotation-x={Math.PI / 2}

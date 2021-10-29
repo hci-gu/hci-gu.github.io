@@ -1,6 +1,8 @@
 import React from 'react'
+import { useRecoilValue } from 'recoil'
 import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion'
 import styled from 'styled-components'
+import { localeAtom } from '../../../../state'
 import { tablet } from '../../../../utils/layout'
 
 const Container = styled.div`
@@ -34,7 +36,25 @@ const Container = styled.div`
   }
 `
 
+const textForLanguage = (lang = 'en') => {
+  switch (lang) {
+    case 'sv':
+      return (
+        <>
+          Har hemarbetet påverkat hur <br></br>mycket du rör på dig?
+        </>
+      )
+    default:
+      return (
+        <>
+          Has working from home affected <br></br>how much you move?
+        </>
+      )
+  }
+}
+
 const Heading = () => {
+  const locale = useRecoilValue(localeAtom)
   const { fps } = useVideoConfig()
   const frame = useCurrentFrame()
   const opacity = interpolate(
@@ -45,9 +65,7 @@ const Heading = () => {
 
   return (
     <Container>
-      <h1 style={{ opacity }}>
-        Har hemarbetet påverkat hur <br></br>mycket du rör på dig?
-      </h1>
+      <h1 style={{ opacity }}>{textForLanguage(locale.value)}</h1>
     </Container>
   )
 }
