@@ -9,6 +9,7 @@ import {
   smallLaptop,
 } from '../utils/layout'
 import LandingSection from '../components/LandingSection'
+import Education from '../components/Education'
 import Footer from '../components/Footer'
 import CanvasRoot from '../canvas'
 import Team from '../components/Team'
@@ -257,6 +258,14 @@ const Landing = ({ content }) => {
                   />
                 ))}
             </Initiatives>
+
+            {content.coursesCollection.items && (
+              <Education
+                title={content.educationTitle}
+                description={content.educationDescription}
+                courses={content.coursesCollection.items}
+              />
+            )}
 
             <Projects>
               <h1>{content.projectsTitle}</h1>

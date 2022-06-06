@@ -1,23 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-import { mobile, smallLaptop, tablet } from '../utils/layout'
+import {
+  laptop,
+  laptopMedium,
+  mobile,
+  renderRichText,
+  smallLaptop,
+  tablet,
+} from '../utils/layout'
 
 const Container = styled.div`
   width: 540px;
-  height: 460px;
 
   display: flex;
   flex-direction: column;
 
-  > img {
+  a > img {
     width: 100%;
     height: auto;
   }
 
-  :hover {
-    text-decoration: underline;
+  ${laptopMedium()} {
+    width: 450px;
   }
-
   ${smallLaptop()} {
     width: 100%;
     height: auto;
@@ -29,31 +34,36 @@ const Text = styled.div`
   display: flex;
   flex-direction: column;
 
-  > h3 {
+  a > h3 {
     font-size: 24px;
     font-weight: 600;
     margin: 0;
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 
-  > span {
-    margin-top: 5px;
+  > p {
     font-size: 16px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
   }
 `
 
-const ProjectShowcase = ({ title, link, image, tags }) => {
+const ProjectShowcase = ({ title, link, image, description, tags }) => {
   return (
-    <a href={link}>
-      <Container>
+    <Container>
+      <a href={link}>
         <img src={image.url}></img>
-        <Text>
+      </a>
+      <Text>
+        <a href={link}>
           <h3>{title}</h3>
-          <span>{tags.join(', ')}</span>
-        </Text>
-      </Container>
-    </a>
+        </a>
+        {description && renderRichText(description)}
+      </Text>
+    </Container>
   )
 }
 

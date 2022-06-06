@@ -8,7 +8,7 @@ const AppstoreBadges = styled.div`
   justify-content: center;
 
   > span {
-    font-weight: 300;
+    font-weight: 500;
     font-size: 20px;
   }
 

@@ -55,7 +55,7 @@ export default function Phone() {
   })
 
   return (
-    <group ref={group} position={[0, 1, 0]} castShadow receiveShadow>
+    <group ref={group} position={[0, 1, 0]}>
       <group rotation={[Math.PI / 8, 0, 0]}>
         <group rotation={[-Math.PI / 2, 0, 0]}>
           <group

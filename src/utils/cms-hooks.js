@@ -126,7 +126,26 @@ query($id:String!, $locale: String!) {
         title
         tags
         link
+        description {
+          json
+        }
         image {
+          url
+        }
+      }
+    }
+    educationTitle
+    educationDescription {
+      json
+    }
+    coursesCollection {
+      items {
+        name
+        points
+        description {
+          json
+        }
+        icon {
           url
         }
       }

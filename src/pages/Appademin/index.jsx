@@ -85,10 +85,10 @@ const Appademin = ({ id }) => {
             }
             return <Features {...item} key={`Feature_${item.title}`} />
           })}
-          {/* <Projects
+          <Projects
             title={content.projectsTitle}
             projects={content.projectsCollection.items}
-          /> */}
+          />
           <Team {...content.team} />
           <Background>
             <h2>{content.backgroundTitle}</h2>

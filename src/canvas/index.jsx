@@ -58,9 +58,8 @@ const CanvasRoot = () => {
         <Canvas
           camera={{ fov: 60, position: [-3.5, 3, -4.5] }}
           dpr={[1, 2]}
-          color="#000000"
+          shadows={false}
         >
-          {/* <color attach="background" args={['#101010']} /> */}
           <OrbitControls
             position={[0, 0, 0]}
             enablePan={false}
@@ -85,21 +84,15 @@ const CanvasRoot = () => {
               environment="studio"
               preset="rembrandt"
               intensity={0.75}
-              contactShadowOpacity={0}
-              shadowBias={-0.0015}
+              contactShadow={{
+                position: [0, -1.25, 0],
+                opacity: 0.3,
+                blur: 1.25,
+              }}
             >
               <Phone />
             </Stage>
           </Suspense>
-          <ContactShadows
-            rotation-x={Math.PI / 2}
-            position={[0, -2.5, 0]}
-            opacity={0.4}
-            width={20}
-            height={30}
-            blur={1.25}
-            far={10}
-          />
         </Canvas>
       </div>
     </Root>
