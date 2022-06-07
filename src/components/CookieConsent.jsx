@@ -1,8 +1,5 @@
 import React from 'react'
-import ReactCookieConsentComponent from 'react-cookie-consent'
-
-// @ts-ignore
-const ReactCookieConsent = ReactCookieConsentComponent.default
+import ReactCookieConsent from 'react-cookie-consent'
 
 const CookieConsent = () => {
   return (

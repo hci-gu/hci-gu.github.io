@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, hydrate } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 import { createClient, Provider } from 'urql'
 import 'antd/dist/antd.less'
@@ -30,9 +30,5 @@ const Root = () => {
   )
 }
 
-const rootElement = document.getElementById('root')
-if (rootElement.hasChildNodes()) {
-  hydrate(<Root />, rootElement)
-} else {
-  render(<Root />, rootElement)
-}
+const root = createRoot(document.getElementById('root'))
+root.render(<Root />)
