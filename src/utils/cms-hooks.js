@@ -73,7 +73,7 @@ export const useProject = (id) => {
   const locale = useRecoilValue(localeAtom)
   const [result] = useQuery({
     query: ProjectQuery,
-    variables: { id, locale: locale.value },
+    variables: { id, locale: locale ? locale.value : '' },
   })
   const [project, setProject] = useRecoilState(projectAtom)
   const { data } = result
@@ -192,7 +192,7 @@ export const useGenericContent = (id = '5BaRlonhLZbVN59DVybNWF') => {
   const locale = useRecoilValue(localeAtom)
   const [result] = useQuery({
     query: WebContentQuery,
-    variables: { id, locale: locale.value },
+    variables: { id, locale: locale ? locale.value : '' },
   })
   const [content, setContent] = useRecoilState(contentAtom)
   const { data } = result
@@ -219,7 +219,7 @@ export const useTextPage = (id) => {
   const locale = useRecoilValue(localeAtom)
   const [result] = useQuery({
     query: TextPageQuery,
-    variables: { id, locale: locale.value },
+    variables: { id, locale: locale ? locale.value : '' },
   })
   const [textPage, setTextPage] = useRecoilState(textPageAtom)
   const { data } = result
@@ -314,7 +314,7 @@ export const useAppedemiContent = (id) => {
   const locale = useRecoilValue(localeAtom)
   const [result] = useQuery({
     query: AppademiQuery,
-    variables: { id, locale: locale.value },
+    variables: { id, locale: locale ? locale.value : '' },
   })
   const [content, setContent] = useRecoilState(appademiContentAtom)
   const { data } = result

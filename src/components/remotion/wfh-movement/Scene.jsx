@@ -112,7 +112,7 @@ export const Text = () => {
         marginBottom: springMargin,
       }}
     >
-      {textsForLanguage(locale.value)}
+      {textsForLanguage(locale ? locale.value : '')}
 
       <a
         href="https://apps.apple.com/us/app/id1518224904"

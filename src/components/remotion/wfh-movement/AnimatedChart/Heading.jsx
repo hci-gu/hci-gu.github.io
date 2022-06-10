@@ -65,7 +65,7 @@ const Heading = () => {
 
   return (
     <Container>
-      <h1 style={{ opacity }}>{textForLanguage(locale.value)}</h1>
+      <h1 style={{ opacity }}>{textForLanguage(locale ? locale.value : '')}</h1>
     </Container>
   )
 }

@@ -76,10 +76,12 @@ const Menu = () => {
           <div>
             <Select
               size="small"
-              defaultValue={locale.value}
+              defaultValue={locale ? locale.value : ''}
               onChange={(val) =>
                 setLocale(
-                  availableLocales.find((locale) => locale.value === val)
+                  availableLocales.find((locale) =>
+                    locale ? locale.value : '' === val
+                  )
                 )
               }
             >

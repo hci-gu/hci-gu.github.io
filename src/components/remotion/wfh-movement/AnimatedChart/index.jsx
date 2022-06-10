@@ -51,13 +51,14 @@ const LineChart = () => {
   const ref = useRef()
 
   useEffect(() => {
-    const updatedData =
-      locale.value === 'en-US'
-        ? data.map((d) => ({
-            ...d,
-            series: d.series === 'Före hemarbete' ? 'Before' : 'After',
-          }))
-        : data
+    const updatedData = locale
+      ? locale.value
+      : '' === 'en-US'
+      ? data.map((d) => ({
+          ...d,
+          series: d.series === 'Före hemarbete' ? 'Before' : 'After',
+        }))
+      : data
     ref.current.changeData(updatedData)
     ref.current.render()
   }, [locale])
