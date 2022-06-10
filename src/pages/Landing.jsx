@@ -43,7 +43,7 @@ const Header = styled.div`
 const Title = styled.div`
   grid-column: 1 / -1;
   max-width: 1400px;
-  font-size: 36px;
+  font-size: 32px;
   line-height: 80px;
 
   font-weight: 900;
@@ -244,7 +244,7 @@ const Landing = ({ content }) => {
                   </ShortDescription>
                 </Description>
               </div>
-              <CanvasRoot />
+              <CanvasRoot buttonText={content.heroButtonText} />
               <MobilePromo />
             </Header>
 
@@ -273,6 +273,15 @@ const Landing = ({ content }) => {
                 {content.projectsCollection.items &&
                   content.projectsCollection.items.map((p, i) => (
                     <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
+                  ))}
+              </div>
+            </Projects>
+            <Projects>
+              <h1>{content.oldProjectsTitle}</h1>
+              <div>
+                {content.oldProjectsCollection.items &&
+                  content.oldProjectsCollection.items.map((p, i) => (
+                    <ProjectShowcase {...p} key={`OldProjectShowcase_${i}`} />
                   ))}
               </div>
             </Projects>

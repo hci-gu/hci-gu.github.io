@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
 import { Select } from 'antd'
 import { mobile, middleContent } from '../utils/layout'
-import { useRecoilState } from 'recoil'
-import { availableLocales, localeAtom } from '../state'
+import { availableLocales, useLocale } from '../state'
 
 const MENU_HEIGHT = 64
 const Container = styled.div`
@@ -58,7 +57,8 @@ const showLanguagePickerForPath = (pathname) => {
 }
 
 const Menu = () => {
-  const [locale, setLocale] = useRecoilState(localeAtom)
+  const [locale, setLocale] = useLocale()
+
   const location = useLocation()
 
   return (

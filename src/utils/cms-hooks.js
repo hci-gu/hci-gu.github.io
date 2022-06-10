@@ -95,6 +95,7 @@ query($id:String!, $locale: String!) {
     shortIntroduction {
       json
     }
+    heroButtonText
     sectionsCollection {
       items {
         title
@@ -122,6 +123,20 @@ query($id:String!, $locale: String!) {
     }
     projectsTitle
     projectsCollection {
+      items {
+        title
+        tags
+        link
+        description {
+          json
+        }
+        image {
+          url
+        }
+      }
+    }
+    oldProjectsTitle
+    oldProjectsCollection {
       items {
         title
         tags

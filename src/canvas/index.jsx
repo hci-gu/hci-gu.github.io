@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react'
+import { Button } from 'antd'
 import {
   Billboard,
   Html,
@@ -11,8 +12,7 @@ import { Canvas } from '@react-three/fiber'
 import styled from 'styled-components'
 import Phone from './components/Phone'
 import { MeshBasicMaterial } from 'three'
-import AppDownload from '../components/projects/AppDownload'
-import { isSize, sizes, smallLaptop, tablet } from '../utils/layout'
+import { isSize, smallLaptop, tablet } from '../utils/layout'
 
 softShadows()
 
@@ -45,13 +45,28 @@ const CanvasHtml = styled.div`
   }
 `
 
+const CTAButton = styled(Button)`
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid #1b4079;
+  color: #1b4079;
+  width: 164px;
+  height: 48px;
+  font-size: 12px;
+  border-radius: 8px;
+
+  :hover {
+    color: #163564;
+    border: 1px solid #163564;
+  }
+`
+
 const billboardOffsetForScreen = () => {
   if (isSize('laptopMedium')) return 1
   else if (isSize('largeLaptop')) return 2
   return 2.5
 }
 
-const CanvasRoot = () => {
+const CanvasRoot = ({ buttonText = '' }) => {
   return (
     <Root>
       <div>
@@ -68,13 +83,11 @@ const CanvasRoot = () => {
             minPolarAngle={Math.PI / 3.2}
           />
           <Billboard material={<MeshBasicMaterial />}>
-            <Html transform position={[billboardOffsetForScreen(), -1, 0]}>
+            <Html transform position={[billboardOffsetForScreen(), -1.5, 0]}>
               <CanvasHtml>
-                <AppDownload
-                  title={'Ladda ner appen!'}
-                  googlePlay="https://play.google.com/store/apps/details?id=com.wfhmovement.app"
-                  appstore="https://apps.apple.com/us/app/id1518224904"
-                />
+                <a href="/wfh-movement">
+                  <CTAButton>{buttonText}</CTAButton>
+                </a>
               </CanvasHtml>
             </Html>
           </Billboard>

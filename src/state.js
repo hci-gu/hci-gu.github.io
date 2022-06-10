@@ -1,4 +1,5 @@
-import { atom, selector } from 'recoil'
+import { useEffect } from 'react'
+import { atom, selector, useRecoilState } from 'recoil'
 
 export const availableLocales = [
   {
@@ -11,10 +12,33 @@ export const availableLocales = [
   },
 ]
 
+const getLocaleFromLocalStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem('locale'))
+  } catch (e) {}
+  return availableLocales[0]
+}
+
 export const localeAtom = atom({
   key: 'locale',
-  default: availableLocales[0],
+  default: getLocaleFromLocalStorage(),
 })
+
+export const useLocale = () => {
+  const [locale, setLocale] = useRecoilState(localeAtom)
+
+  useEffect(() => {
+    setLocale(getLocaleFromLocalStorage())
+  }, [])
+
+  return [
+    locale,
+    (updatedLocale) => {
+      localStorage.setItem('locale', JSON.stringify(updatedLocale))
+      setLocale(updatedLocale)
+    },
+  ]
+}
 
 export const contentAtom = atom({
   key: 'content',
