@@ -69,10 +69,8 @@
     function gtag() {
       dataLayer.push(arguments)
     }
-    if (import.meta.env.PROD) {
-      gtag('js', new Date())
-      gtag('config', 'UA-170320565-1')
-    }
+    gtag('js', new Date())
+    gtag('config', 'UA-170320565-1')
   </script>
 </head>
 
