@@ -79,8 +79,8 @@ const Menu = () => {
               defaultValue={locale ? locale.value : ''}
               onChange={(val) =>
                 setLocale(
-                  availableLocales.find((locale) =>
-                    locale ? locale.value : '' === val
+                  availableLocales.find(
+                    (locale) => locale && locale.value === val
                   )
                 )
               }

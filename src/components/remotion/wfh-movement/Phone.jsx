@@ -39,4 +39,4 @@ export default function Phone() {
   )
 }
 
-useGLTF.preload(`${URL}/models/smart_phone/scene.gltf`)
+useGLTF.preload(`/models/smart_phone/scene.gltf`)

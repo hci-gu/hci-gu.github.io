@@ -51,14 +51,13 @@ const LineChart = () => {
   const ref = useRef()
 
   useEffect(() => {
-    const updatedData = locale
-      ? locale.value
-      : '' === 'en-US'
-      ? data.map((d) => ({
-          ...d,
-          series: d.series === 'Före hemarbete' ? 'Before' : 'After',
-        }))
-      : data
+    const updatedData =
+      locale && locale.value === 'en-US'
+        ? data.map((d) => ({
+            ...d,
+            series: d.series === 'Före hemarbete' ? 'Before' : 'After',
+          }))
+        : data
     ref.current.changeData(updatedData)
     ref.current.render()
   }, [locale])
@@ -114,7 +113,7 @@ const LineChart = () => {
 
 const MemoizedLineChart = React.memo(LineChart)
 
-const LineChartAnimtedShort = () => {
+const LineChartAnimatedShort = () => {
   const { fps } = useVideoConfig()
   const frame = useCurrentFrame()
 
@@ -145,4 +144,4 @@ const LineChartAnimtedShort = () => {
   )
 }
 
-export default LineChartAnimtedShort
+export default LineChartAnimatedShort

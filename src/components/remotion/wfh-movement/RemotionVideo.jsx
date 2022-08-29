@@ -2,7 +2,7 @@ import React from 'react'
 import { AbsoluteFill, Composition, Sequence, useVideoConfig } from 'remotion'
 import styled from 'styled-components'
 import { tablet } from '../../../utils/layout'
-import LineChartAnimtedShort from './AnimatedChart'
+import LineChartAnimatedShort from './AnimatedChart'
 import { Scene } from './Scene'
 
 const Root = styled.div`
@@ -27,7 +27,7 @@ const DownloadTheApp = () => {
         <Root />
       </Sequence>
       <Sequence from={0 * fps} durationInFrames={5 * fps}>
-        <LineChartAnimtedShort />
+        <LineChartAnimatedShort />
       </Sequence>
       <Sequence from={5 * fps} durationInFrames={12 * fps}>
         <Scene />

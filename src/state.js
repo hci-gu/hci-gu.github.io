@@ -35,6 +35,7 @@ export const useLocale = () => {
     locale,
     (updatedLocale) => {
       localStorage.setItem('locale', JSON.stringify(updatedLocale))
+      console.log('updatedLocale', updatedLocale)
       setLocale(updatedLocale)
     },
   ]
