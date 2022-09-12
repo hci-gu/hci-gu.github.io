@@ -5302,7 +5302,6 @@ and limitations under the License.
     margin-left: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     ${vn()} {
       margin-left: 16px;
