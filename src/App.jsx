@@ -14,6 +14,7 @@ import Landing from './pages/Landing'
 import Internship from './pages/Internship'
 import WFHMovement from './projects/wfh-movement/index'
 import SFHMovement from './projects/sfh-movement/index'
+import RullaPa from './projects/rullapa/index'
 import { useGenericContent } from './utils/cms-hooks'
 import Appademin from './pages/Appademin'
 
@@ -57,6 +58,9 @@ const App = () => {
             </Route>
             <Route path="/sfh-movement">
               <SFHMovement />
+            </Route>
+            <Route path="/rulla-pa">
+              <RullaPa />
             </Route>
             <Route path="/appademin">
               <Appademin id={import.meta.env.VITE_CONTENTFUL_APPADEMIN_ID} />

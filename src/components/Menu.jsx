@@ -61,6 +61,10 @@ const Menu = () => {
 
   const location = useLocation()
 
+  if (location.pathname === '/rulla-pa') {
+    return null
+  }
+
   return (
     <Container>
       <Content>
