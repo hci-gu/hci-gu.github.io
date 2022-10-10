@@ -13,14 +13,17 @@ import Phone from './components/Phone'
 import SmartWatch from './components/Watch'
 import Page from './components/Page'
 import InitialPage from './components/InitialPage'
+import { useLayoutBreakpoint } from '../../utils/hooks'
 
 const Composition = () => {
+  const layout = useLayoutBreakpoint()
   const scroll = useScroll()
   const phone = useRef(null)
   const watch = useRef(null)
   const zoom = 2
 
   useFrame((_, delta) => {
+    if (layout === 'mobile') return
     if (!phone.current || !watch.current) return
     const r1 = scroll.range(0 / 8, 1 / 8)
     const r1_1 = scroll.range(2 / 8, 1 / 12)
@@ -91,7 +94,7 @@ const Composition = () => {
 
   return (
     <>
-      <Phone ref={phone} />
+      <Phone ref={phone} isMobile={layout === 'mobile'} />
       <SmartWatch ref={watch} />
     </>
   )
@@ -102,11 +105,17 @@ const Container = styled.div`
 `
 
 const Landing = () => {
+  const layout = useLayoutBreakpoint()
   return (
     <Container>
       <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 15], fov: 60 }}>
         <Environment preset="city" />
-        <ScrollControls damping={6} pages={8} distance={1.5}>
+        <ScrollControls
+          damping={6}
+          pages={8}
+          distance={1.5}
+          horizontal={layout === 'mobile'}
+        >
           <Composition />
           <Scroll html style={{ width: '100%', zIndex: 10 }}>
             <InitialPage />

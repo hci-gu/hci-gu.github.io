@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../../../utils/layout'
 
 const Container = styled.div`
   position: absolute;
@@ -28,6 +29,14 @@ const Container = styled.div`
     ${({ align }) => align === 'flex-end' && 'text-align: right;'}
     width: 40vw;
     font-weight: 200;
+  }
+
+  ${mobile()} {
+    align-items: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+
+    top: 75vh;
   }
 `
 

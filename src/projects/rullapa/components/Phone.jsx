@@ -65,7 +65,13 @@ function Phone(props, ref) {
   const { nodes, materials } = useGLTF('/models/iphone/model.gltf')
 
   return (
-    <group ref={ref} {...props} dispose={null} scale={2.4}>
+    <group
+      ref={ref}
+      {...props}
+      dispose={null}
+      scale={props.isMobile ? 3 : 2.4}
+      position={props.isMobile ? [-0.5, -1, 0] : []}
+    >
       <group position={[-0.18, 1.56, 0]} ref={phoneRef}>
         <mesh
           geometry={nodes.Circle038.geometry}
