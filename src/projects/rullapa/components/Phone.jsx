@@ -1,16 +1,18 @@
 import React, { forwardRef } from 'react'
-import { Html, useGLTF, useScroll } from '@react-three/drei'
+import { Box, PivotControls, useGLTF, useScroll } from '@react-three/drei'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import styled from 'styled-components'
+import { Html } from './Html'
 
 const IframeWrapper = styled.div`
   border-radius: 36px;
   backgroundcolor: white;
   width: 328px;
   height: 711px;
+  background-color: #fff;
   overflow: hidden;
 `
 
@@ -190,7 +192,6 @@ function Phone(props, ref) {
                 background: 'none',
                 width: '100%',
                 height: '100%',
-                // transformOrigin: 'top left',
               }}
             ></iframe>
           </IframeWrapper>

@@ -6,6 +6,7 @@ import {
   useScroll,
   Scroll,
   Environment,
+  PivotControls,
 } from '@react-three/drei'
 import styled from 'styled-components'
 import Phone from './components/Phone'
