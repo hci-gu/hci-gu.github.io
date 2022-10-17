@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
+  Link,
 } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -75,6 +76,7 @@ const App = () => {
               }}
             />
           </Switch>
+          <Link to="/rulla-pa" />
         </>
       </Router>
     </Container>

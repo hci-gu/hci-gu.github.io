@@ -14,16 +14,17 @@ import SmartWatch from './components/Watch'
 import Page from './components/Page'
 import InitialPage from './components/InitialPage'
 import { useLayoutBreakpoint } from '../../utils/hooks'
+import texts from './texts'
+import { PropertySafetyFilled } from '@ant-design/icons'
+import MobileLanding from './mobile'
 
 const Composition = () => {
-  const layout = useLayoutBreakpoint()
   const scroll = useScroll()
   const phone = useRef(null)
   const watch = useRef(null)
   const zoom = 2
 
   useFrame((_, delta) => {
-    if (layout === 'mobile') return
     if (!phone.current || !watch.current) return
     const r1 = scroll.range(0 / 8, 1 / 8)
     const r1_1 = scroll.range(2 / 8, 1 / 12)
@@ -94,7 +95,7 @@ const Composition = () => {
 
   return (
     <>
-      <Phone ref={phone} isMobile={layout === 'mobile'} />
+      <Phone ref={phone} />
       <SmartWatch ref={watch} />
     </>
   )
@@ -106,50 +107,25 @@ const Container = styled.div`
 
 const Landing = () => {
   const layout = useLayoutBreakpoint()
+
+  if (navigator.userAgent == 'ReactSnap') {
+    return <></>
+  }
+  if (layout === 'mobile') {
+    return <MobileLanding />
+  }
+
   return (
     <Container>
       <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 15], fov: 60 }}>
         <Environment preset="city" />
-        <ScrollControls
-          damping={6}
-          pages={8}
-          distance={1.5}
-          horizontal={layout === 'mobile'}
-        >
+        <ScrollControls damping={6} pages={8} distance={1.5}>
           <Composition />
           <Scroll html style={{ width: '100%', zIndex: 10 }}>
             <InitialPage />
-            <Page
-              page={1.2}
-              title="Se din rörelse"
-              text="Få en överblick över din dagliga rörelse och få tips på hur du kan
-              förbättra din hälsa."
-            />
-            <Page
-              page={2.25}
-              title="Med data från en smartklocka"
-              text="Puls och accelerometerdata"
-              align="center"
-              small
-            />
-            <Page
-              page={3.5}
-              title="Mät dina kalorier"
-              text="Se hur mycket du förbränner under en dag för att kunna hålla koll på din vikt."
-              align="flex-end"
-            />
-            <Page
-              page={4.5}
-              title="Upp och rulla"
-              text="Påminnelser om att röra sig om du varit stillasittande för länge."
-              align="flex-end"
-            />
-            <Page
-              page={5.5}
-              title="Träning & rörelse"
-              text="Få kåll på din träning samt vardagsmotion som bryter upp ditt stillasittande."
-              align="flex-end"
-            />
+            {texts.map((t, i) => (
+              <Page {...t} key={`PageText_${i}`} />
+            ))}
             <h2
               style={{
                 position: 'absolute',

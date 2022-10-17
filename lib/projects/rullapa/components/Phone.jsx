@@ -1,11 +1,10 @@
 import React, { forwardRef } from 'react'
-import { Box, PivotControls, useGLTF, useScroll } from '@react-three/drei'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import styled from 'styled-components'
 import { Html } from './Html'
+import { getIframeUrlForPage } from '../utils'
 
 const IframeWrapper = styled.div`
   border-radius: 36px;
@@ -16,62 +15,23 @@ const IframeWrapper = styled.div`
   overflow: hidden;
 `
 
-const GlassPane = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-`
-
-const firstPagePath = 'https://hci-gu.github.io/sci-project/#/'
-const secondPagePath = 'https://hci-gu.github.io/sci-project/#/demo'
-const thirdPagePath = 'https://hci-gu.github.io/sci-project/#/demo/calories'
-const fourthPagePath = 'https://hci-gu.github.io/sci-project/#/demo/sedentary'
-const fifthPagePath = 'https://hci-gu.github.io/sci-project/#/demo/activity'
-
 function Phone(props, ref) {
   const iframeRef = useRef()
   const scroll = useScroll()
   const phoneRef = useRef()
 
   useFrame(() => {
-    if (!iframeRef.current) return
-    const r1 = scroll.range(0 / 8, 1 / 8)
-    const r2 = scroll.range(2 / 8 + 1 / 12, 1 / 8)
-    const r3 = scroll.range(4 / 8, 1 / 8)
-    const r4 = scroll.range(5 / 8, 1 / 8)
-    const r5 = scroll.range(6 / 8, 0.5 / 8)
-    if (r1 < 0.75 && iframeRef.current.src == secondPagePath) {
-      iframeRef.current.src = firstPagePath
-    } else if (r1 > 0.75 && iframeRef.current.src == firstPagePath) {
-      iframeRef.current.src = secondPagePath
-    } else if (r2 < 0.5 && iframeRef.current.src == thirdPagePath) {
-      iframeRef.current.src = secondPagePath
-    } else if (r2 > 0.5 && iframeRef.current.src == secondPagePath) {
-      iframeRef.current.src = thirdPagePath
-    } else if (r3 < 0.5 && iframeRef.current.src == fourthPagePath) {
-      iframeRef.current.src = thirdPagePath
-    } else if (r3 > 0.5 && iframeRef.current.src == thirdPagePath) {
-      iframeRef.current.src = fourthPagePath
-    } else if (r4 < 0.5 && iframeRef.current.src == fifthPagePath) {
-      iframeRef.current.src = fourthPagePath
-    } else if (r4 > 0.5 && iframeRef.current.src == fourthPagePath) {
-      iframeRef.current.src = fifthPagePath
+    const page = Math.floor(scroll.offset * scroll.pages)
+    const nextPage = getIframeUrlForPage(page)
+    if (iframeRef.current.src !== nextPage) {
+      iframeRef.current.src = nextPage
     }
   })
 
   const { nodes, materials } = useGLTF('/models/iphone/model.gltf')
 
   return (
-    <group
-      ref={ref}
-      {...props}
-      dispose={null}
-      scale={props.isMobile ? 3 : 2.4}
-      position={props.isMobile ? [-0.5, -1, 0] : []}
-    >
+    <group ref={ref} {...props} dispose={null} scale={2.4}>
       <group position={[-0.18, 1.56, 0]} ref={phoneRef}>
         <mesh
           geometry={nodes.Circle038.geometry}
@@ -192,7 +152,7 @@ function Phone(props, ref) {
           <IframeWrapper>
             <iframe
               ref={iframeRef}
-              src={firstPagePath}
+              src={'https://hci-gu.github.io/sci-project/#/'}
               style={{
                 border: 'none',
                 background: 'none',
@@ -206,6 +166,7 @@ function Phone(props, ref) {
     </group>
   )
 }
+
 useGLTF.preload('/models/iphone/model.gltf')
 
 export default forwardRef(Phone)

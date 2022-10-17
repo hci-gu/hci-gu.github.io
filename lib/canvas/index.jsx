@@ -7,6 +7,7 @@ import {
   ContactShadows,
   Stage,
   softShadows,
+  Environment,
 } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import styled from 'styled-components'
@@ -47,16 +48,16 @@ const CanvasHtml = styled.div`
 
 const CTAButton = styled(Button)`
   background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid #1b4079;
-  color: #1b4079;
+  border: 2px solid #d5454f;
+  color: #d5454f;
   width: 164px;
   height: 48px;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 8px;
 
   :hover {
-    color: #163564;
-    border: 1px solid #163564;
+    color: #d5454f;
+    border: 1px solid #d5454f;
   }
 `
 
@@ -71,40 +72,29 @@ const CanvasRoot = ({ buttonText = '' }) => {
     <Root>
       <div>
         <Canvas
-          camera={{ fov: 60, position: [-3.5, 3, -4.5] }}
+          camera={{ fov: 60, position: [-1, 3, -4.5] }}
           dpr={[1, 2]}
           shadows={false}
         >
-          <OrbitControls
+          {/* <OrbitControls
             position={[0, 0, 0]}
             enablePan={false}
             enableZoom={false}
             maxPolarAngle={Math.PI / 3.2}
             minPolarAngle={Math.PI / 3.2}
-          />
-          <Billboard material={<MeshBasicMaterial />}>
+          /> */}
+          {/* <Billboard material={<MeshBasicMaterial />}>
             <Html transform position={[billboardOffsetForScreen(), -1.5, 0]}>
               <CanvasHtml>
-                <a href="/wfh-movement">
+                <a href="https://ryggmargsskadecentrum.se/livsstilsapp/">
                   <CTAButton>{buttonText}</CTAButton>
                 </a>
               </CanvasHtml>
             </Html>
-          </Billboard>
+          </Billboard> */}
+          <Environment preset="city" />
           <Suspense fallback={null}>
-            <Stage
-              adjustCamera={false}
-              environment="studio"
-              preset="rembrandt"
-              intensity={0.75}
-              contactShadow={{
-                position: [0, -1.25, 0],
-                opacity: 0.3,
-                blur: 1.25,
-              }}
-            >
-              <Phone />
-            </Stage>
+            <Phone />
           </Suspense>
         </Canvas>
       </div>

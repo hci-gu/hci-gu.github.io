@@ -1,0 +1,32 @@
+[
+  {
+    "page": 1.2,
+    "title": "Se din rörelse",
+    "text": "Få en överblick över din dagliga rörelse för att kunna fatta beslut om hur du kan förbättra din hälsa."
+  },
+  {
+    "page": 2.25,
+    "title": "Med data från en smartklocka",
+    "text": "Puls och accelerometerdata",
+    "align": "center",
+    "small": true
+  },
+  {
+    "page": 3.5,
+    "title": "Din förbränning",
+    "text": "Se hur många kalorier du förbränner under en dag för att kunna hålla koll på din vikt.",
+    "align": "flex-end"
+  },
+  {
+    "page": 4.5,
+    "title": "Upp och rulla",
+    "text": "Appen skickar påminnelser om att röra sig om du varit stillasittande för länge.",
+    "align": "flex-end"
+  },
+  {
+    "page": 5.5,
+    "title": "Träning & rörelse",
+    "text": "Få koll på din vardagsmotion som bryter upp ditt stillasittande och se dina träningspass.",
+    "align": "flex-end"
+  }
+]

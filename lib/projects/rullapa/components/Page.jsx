@@ -32,11 +32,17 @@ const Container = styled.div`
   }
 
   ${mobile()} {
+    left: ${({ page }) => page * 100}vw;
+
     align-items: center;
     padding-left: 5vw;
     padding-right: 5vw;
 
     top: 75vh;
+
+    border: 1px solid black;
+    height: 30vh;
+    z-index: 100;
   }
 `
 
