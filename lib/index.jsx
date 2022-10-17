@@ -23,6 +23,7 @@ const Root = () => {
       <Provider value={client}>
         <RecoilRoot>
           <App />
+
           <CookieConsent />
         </RecoilRoot>
       </Provider>
