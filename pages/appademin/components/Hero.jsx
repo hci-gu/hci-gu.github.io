@@ -1,14 +1,13 @@
 import { Button } from 'antd'
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import {
   desktop,
   tablet,
   renderRichText,
   largeLaptop,
-} from '../../../utils/layout'
+} from '../../../lib/utils/layout'
 import HeroBackground from './HeroBackground'
-import Link from '../../../components/Link'
 
 const Container = styled.div``
 
@@ -137,8 +136,7 @@ const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
         <Image src="/img/assets/hero-phone.png">
           <Phone src="/img/assets/hero-phone.png" />
           <span>
-            App utvecklad av Appademin, läs mer{' '}
-            <Link to="/wfh-movement">här</Link>.
+            App utvecklad av Appademin, läs mer <a to="/wfh-movement">här</a>.
           </span>
         </Image>
       </Content>

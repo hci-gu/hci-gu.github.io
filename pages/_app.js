@@ -14,7 +14,7 @@ function Layout({ children }) {
   return (
     <>
       <Menu />
-      <main style={{ zIndex: 10 }}>{children}</main>
+      <main>{children}</main>
     </>
   )
 }

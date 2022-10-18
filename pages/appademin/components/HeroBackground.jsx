@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { tablet } from '../../../utils/layout'
+import styled from '@emotion/styled'
+import { tablet } from '../../../lib/utils/layout'
 
 const Root = styled.div`
   position: absolute;

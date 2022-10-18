@@ -1,8 +1,7 @@
-import { Card } from 'antd'
-import Avatar from 'antd/lib/avatar/avatar'
+import { Avatar, Text, Button, Paper } from '@mantine/core'
 import React from 'react'
-import styled from 'styled-components'
-import { mobile, renderRichText, tablet } from '../utils/layout'
+import styled from '@emotion/styled'
+import { mobile, renderRichText, tablet } from '../lib/utils/layout'
 
 const Background = styled.div`
   position: absolute;
@@ -77,28 +76,26 @@ const PersonContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  > strong {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 18px;
+  }
   > span {
     text-align: center;
     font-size: 14px;
-
-    :nth-child(2) {
-      font-weight: bold;
-      font-size: 18px;
-    }
   }
 `
 
 const Person = ({ name, role, image, website }) => {
   return (
-    <PersonContainer>
-      <a href={website}>
-        <Avatar size={56} src={image.url}></Avatar>
-      </a>
-      <a href={website}>
-        <span>{name}</span>
-      </a>
-      <span>{role}</span>
-    </PersonContainer>
+    <a href={website}>
+      <PersonContainer>
+        <Avatar size={56} radius={56} src={image.url} mx="auto" />
+        <strong>{name}</strong>
+        <span>{role}</span>
+      </PersonContainer>
+    </a>
   )
 }
 
@@ -109,7 +106,9 @@ const Team = ({ title, subtitle, description, membersCollection }) => {
       <h2>{title}</h2>
       <span>{subtitle}</span>
       <Description>
-        <Card>{renderRichText(description)}</Card>
+        <Paper radius="md" withBorder p="lg">
+          {renderRichText(description)}
+        </Paper>
       </Description>
       <People>
         {membersCollection.items.map((p, i) => (

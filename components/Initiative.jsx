@@ -1,8 +1,7 @@
 import React from 'react'
-import { useRecoilValue } from 'recoil'
-import styled from 'styled-components'
-import { localeAtom } from '../state'
-import { mobile, renderRichText, smallLaptop } from '../utils/layout'
+import styled from '@emotion/styled'
+import { useLocale } from '../lib/state'
+import { mobile, renderRichText, smallLaptop } from '../lib/utils/layout'
 
 const Container = styled.div`
   margin-bottom: 50px;
@@ -178,7 +177,7 @@ const Initiative = ({
   image,
   description,
 }) => {
-  const locale = useRecoilValue(localeAtom)
+  const [locale] = useLocale()
 
   return (
     <Container align={align}>

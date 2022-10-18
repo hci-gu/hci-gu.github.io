@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { mobile, renderRichText } from '../utils/layout'
+import styled from '@emotion/styled'
+import { mobile, renderRichText } from '../lib/utils/layout'
 
 const Container = styled.div`
   margin: 25px auto;
@@ -18,6 +18,11 @@ const Container = styled.div`
       line-height: 50px;
       text-align: center;
     }
+  }
+
+  * a {
+    color: #00acee;
+    text-decoration: underline;
   }
 `
 

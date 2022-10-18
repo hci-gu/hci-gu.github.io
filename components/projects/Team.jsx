@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from '../../components/Link'
 import { mobile, tablet } from '../../utils/layout'
 
 const Container = styled.div`
@@ -27,13 +26,13 @@ const textForTeamMember = ({ name, twitter, website }, i, length) => {
     <span key={`Team_${name}`}>
       {i > 0 && `, `}
       {i === length - 1 && ` and `}
-      {!twitter && <Link href={website}>{name}</Link>}
+      {!twitter && <a href={website}>{name}</a>}
       {twitter && (
         <>
           {name} (
-          <Link href={`https://twitter.com/${twitter}`} twitter>
+          <a href={`https://twitter.com/${twitter}`} twitter>
             {twitter}
-          </Link>
+          </a>
           )
         </>
       )}

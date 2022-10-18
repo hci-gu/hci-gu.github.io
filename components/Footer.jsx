@@ -1,9 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import styled from 'styled-components'
-import { footerContentSelector } from '../state'
-import { useUpdatePageTypeOnNavigation } from '../utils/hooks'
-import { renderRichText, tablet } from '../utils/layout'
+import styled from '@emotion/styled'
+import { renderRichText, tablet } from '../lib/utils/layout'
 
 const Container = styled.div`
   border-top: 2px solid black;
@@ -50,17 +48,12 @@ const Content = styled.div`
   }
 `
 
-const Footer = () => {
-  const footerContent = useRecoilValue(footerContentSelector)
-  useUpdatePageTypeOnNavigation()
-
+const Footer = ({ title, content }) => {
   return (
     <Container>
       <Content>
-        <h2>{footerContent && footerContent.title}</h2>
-        {footerContent &&
-          footerContent.content &&
-          renderRichText(footerContent.content)}
+        <h2>{title}</h2>
+        {renderRichText(content)}
       </Content>
     </Container>
   )

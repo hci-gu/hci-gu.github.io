@@ -1,9 +1,8 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import Head from 'next/head'
 
 const Meta = ({ name, description, shareImage, link }) => {
   return (
-    <Helmet>
+    <Head>
       <title>{name}</title>
       <meta name="title" content={name} />
       <meta name="description" content={description} />
@@ -19,7 +18,7 @@ const Meta = ({ name, description, shareImage, link }) => {
       <meta property="twitter:title" content={name} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={shareImage} />
-    </Helmet>
+    </Head>
   )
 }
 

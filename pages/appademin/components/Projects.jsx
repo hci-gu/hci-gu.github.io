@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import {
   desktop,
   laptop,
@@ -7,9 +6,9 @@ import {
   renderRichText,
   smallLaptop,
   tablet,
-} from '../../../utils/layout'
+} from '../../../lib/utils/layout'
 import { ArrowRightOutlined } from '@ant-design/icons'
-import { Carousel } from 'antd'
+import { Carousel } from '@mantine/carousel'
 
 const Container = styled.div``
 
@@ -41,7 +40,7 @@ const ProjectContainer = styled.div`
   height: 425px;
   padding: 40px 48px;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 60% 40%;
 
   > div {
     width: 100%;
@@ -74,38 +73,30 @@ const ProjectContainer = styled.div`
 `
 
 const ImageContainer = styled.div`
-  justify-self: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   > img {
-    position: absolute;
-    ${({ device }) => device === 'phone' && `top: -35%;`}
-    width: 110%;
-    ${({ device }) => device === 'phone' && `width: 120%;`}
+    width: 90%;
     height: auto;
 
-    ${smallLaptop()} {
-      ${({ device }) => device === 'phone' && `top: -15%;`}
-    }
-    ${tablet()} {
-      ${({ device }) => device === 'phone' && `top: 0;`}
-    }
     ${mobile()} {
-      margin-top: 10%;
       ${({ device }) =>
         device === 'phone' &&
         `
         top: 0;
         margin-top: 0;
-        height: 100%;
+        height: 90%;
         object-fit: cover;
         object-position: top;
         border-bottom: 1px solid black;
       `}
-      position: inherit;
-      left: 5%;
-      width: 90%;
+      ${({ device }) =>
+        device === 'laptop' &&
+        `
+        width: auto;
+        height: 80%;
+      `}
     }
   }
 `
@@ -132,9 +123,11 @@ const Projects = ({ title, projects }) => {
     <Container>
       <h2>{title}</h2>
       <CarouselContainer>
-        <Carousel dotPosition="bottom" dots={{ className: 'carousel-dots' }}>
+        <Carousel withIndicators loop withControls={false}>
           {projects.map((project, i) => (
-            <Project key={`Project_${i}`} {...project} />
+            <Carousel.Slide key={`Project_${i}`}>
+              <Project {...project} />
+            </Carousel.Slide>
           ))}
         </Carousel>
       </CarouselContainer>

@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import styled from '@emotion/styled'
 import { useCMSQuery, withCMSClient } from '../lib/utils/cms'
 import { INDEX_QUERY } from '../lib/utils/queries'
@@ -11,14 +9,19 @@ import {
   tablet,
   smallLaptop,
 } from '../lib/utils/layout'
-import CanvasRoot from '../lib/canvas'
-import { useRef } from 'react'
 import Phone from '../lib/canvas/components/Phone'
-import { Bounds, Center, Torus, useAspect } from '@react-three/drei'
+import { useAspect } from '@react-three/drei'
 import { Box, Flex } from '@react-three/flex'
 import { useThree } from '@react-three/fiber'
 
+import LandingSection from '../components/LandingSection'
+import Education from '../components/Education'
+import Team from '../components/Team'
+import ProjectShowcase from '../components/ProjectShowcase'
+import Initiative from '../components/Initiative'
+
 const Container = styled.div`
+  font-family: 'Manrope';
   ${mobile()} {
     padding-top: 0;
   }
@@ -247,6 +250,49 @@ function Index({ content }) {
             </div>
             <MobilePromo />
           </Header>
+          <Initiatives>
+            {content.initiativesCollection.items &&
+              content.initiativesCollection.items.map((initiative, i) => (
+                <Initiative
+                  {...initiative}
+                  align={i % 2 === 0 ? 'left' : 'right'}
+                  key={`Initiative_${i}`}
+                />
+              ))}
+          </Initiatives>
+
+          {content.coursesCollection.items && (
+            <Education
+              title={content.educationTitle}
+              description={content.educationDescription}
+              courses={content.coursesCollection.items}
+            />
+          )}
+          <Projects>
+            <h1>{content.projectsTitle}</h1>
+            <div>
+              {content.projectsCollection.items &&
+                content.projectsCollection.items.map((p, i) => (
+                  <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
+                ))}
+            </div>
+          </Projects>
+          <Projects>
+            <h1>{content.oldProjectsTitle}</h1>
+            <div>
+              {content.oldProjectsCollection.items &&
+                content.oldProjectsCollection.items.map((p, i) => (
+                  <ProjectShowcase {...p} key={`OldProjectShowcase_${i}`} />
+                ))}
+            </div>
+          </Projects>
+
+          {content.team && <Team {...content.team} />}
+          <div>
+            {content.sectionsCollection.items.map((section, i) => (
+              <LandingSection {...section} key={`Section_${i}`} />
+            ))}
+          </div>
         </Content>
       </Container>
     </>

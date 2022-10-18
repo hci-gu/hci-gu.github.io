@@ -1,13 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import {
-  laptop,
-  laptopMedium,
-  mobile,
-  renderRichText,
-  smallLaptop,
-  tablet,
-} from '../utils/layout'
+import styled from '@emotion/styled'
+import { laptopMedium, renderRichText, smallLaptop } from '../lib/utils/layout'
 
 const Container = styled.div`
   width: 540px;
