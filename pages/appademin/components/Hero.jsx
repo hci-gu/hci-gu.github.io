@@ -128,7 +128,7 @@ const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
       <Content>
         <TextContent>
           <Title>{title}</Title>
-          <Description>{renderRichText(introduction)}</Description>
+          <Description>{renderRichText(introduction ?? {})}</Description>
           <a href={callToActionHref}>
             <CTAButton>{callToAction}</CTAButton>
           </a>

@@ -124,7 +124,7 @@ const Projects = ({ title, projects }) => {
       <h2>{title}</h2>
       <CarouselContainer>
         <Carousel withIndicators loop withControls={false}>
-          {projects.map((project, i) => (
+          {projects?.map((project, i) => (
             <Carousel.Slide key={`Project_${i}`}>
               <Project {...project} />
             </Carousel.Slide>

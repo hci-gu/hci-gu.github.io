@@ -84,7 +84,9 @@ const Features = ({ title, featuresCollection }) => {
   return (
     <Container>
       <h2>{title}</h2>
-      <Grid>{featuresCollection.items.map((props) => featureItem(props))}</Grid>
+      <Grid>
+        {featuresCollection?.items.map((props) => featureItem(props))}
+      </Grid>
     </Container>
   )
 }

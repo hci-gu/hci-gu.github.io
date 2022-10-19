@@ -94,7 +94,7 @@ const StepsContainer = ({ title, featuresCollection }) => {
       <h2>{title}</h2>
       <Steps>
         <Line />
-        {featuresCollection.items.map((f) => (
+        {featuresCollection?.items.map((f) => (
           <Step key={`Step_${f.title}`}>
             <Dot>
               <div />
