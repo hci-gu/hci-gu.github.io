@@ -1,4 +1,3 @@
-import { createGetInitialProps } from '@mantine/next'
 import { css, Global } from '@emotion/react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
@@ -27,17 +26,12 @@ export const globalStyles = (
   />
 )
 
-const getInitialProps = createGetInitialProps()
-
 export default class _Document extends Document {
-  static getInitialProps = getInitialProps
-
   render() {
     return (
       <Html>
         {globalStyles}
         <Head>
-          <title>HCI Division @ GU</title>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"

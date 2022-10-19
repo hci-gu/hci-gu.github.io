@@ -103,7 +103,6 @@ const ImageContainer = styled.div`
 `
 
 const Project = ({ title, description, device, link, image }) => {
-  console.log(image)
   return (
     <ProjectContainer>
       <div>
