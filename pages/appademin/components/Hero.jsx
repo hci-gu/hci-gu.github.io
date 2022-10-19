@@ -8,6 +8,7 @@ import {
   largeLaptop,
 } from '../../../lib/utils/layout'
 import HeroBackground from './HeroBackground'
+import Image from 'next/future/image'
 
 const Container = styled.div``
 
@@ -87,7 +88,7 @@ const CTAButton = styled(Button)`
   border: none;
 `
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,7 +109,7 @@ const Image = styled.div`
   }
 `
 
-const Phone = styled.img`
+const Phone = styled(Image)`
   height: 850px;
   width: auto;
 
@@ -133,12 +134,12 @@ const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
             <CTAButton>{callToAction}</CTAButton>
           </a>
         </TextContent>
-        <Image src="/img/assets/hero-phone.png">
-          <Phone src="/img/assets/hero-phone.png" />
+        <ImageContainer>
+          <Phone src="/img/assets/hero-phone.png" height={640} width={300} />
           <span>
             App utvecklad av Appademin, läs mer <a to="/wfh-movement">här</a>.
           </span>
-        </Image>
+        </ImageContainer>
       </Content>
     </Container>
   )

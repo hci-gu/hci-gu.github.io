@@ -3,6 +3,7 @@ import { NativeSelect, Header } from '@mantine/core'
 import styled from '@emotion/styled'
 
 import { availableLocales, useLocale } from '../lib/state'
+import Image from 'next/future/image'
 
 const CustomHeader = styled(Header)`
   display: flex;
@@ -20,7 +21,12 @@ const Menu = () => {
   return (
     <CustomHeader height={80} mb={40} p={8}>
       <Link href="/">
-        <img src="/img/gu_logo.png" alt="Gothenburg university logotype"></img>
+        <Image
+          src="/img/gu_logo.png"
+          alt="Gothenburg university logotype"
+          width={85}
+          height={80}
+        />
       </Link>
       <div>
         <NativeSelect

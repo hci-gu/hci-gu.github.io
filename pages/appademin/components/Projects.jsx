@@ -9,6 +9,7 @@ import {
 } from '../../../lib/utils/layout'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { Carousel } from '@mantine/carousel'
+import Image from 'next/future/image'
 
 const Container = styled.div``
 
@@ -102,6 +103,7 @@ const ImageContainer = styled.div`
 `
 
 const Project = ({ title, description, device, link, image }) => {
+  console.log(image)
   return (
     <ProjectContainer>
       <div>
@@ -112,7 +114,7 @@ const Project = ({ title, description, device, link, image }) => {
         </a>
       </div>
       <ImageContainer device={device}>
-        <img src={image.url}></img>
+        <Image src={image.url} width={250} height={250} />
       </ImageContainer>
     </ProjectContainer>
   )

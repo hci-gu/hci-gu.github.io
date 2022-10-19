@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { mobile, renderRichText, tablet } from '../../../lib/utils/layout'
+import Image from 'next/future/image'
 
 const Container = styled.div`
   > h1 {
@@ -64,13 +65,17 @@ const FeatureImage = styled.div`
     width: 60px;
     height: 60px;
   }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const featureItem = ({ title, description, graphic }) => {
   return (
     <Feature key={`Feature_${title}`}>
       <FeatureImage>
-        <img src={graphic.url} alt={title} />
+        <Image src={graphic.url} alt={title} width={44} height={44} />
       </FeatureImage>
       <div>
         <span>{title}</span>

@@ -2,6 +2,7 @@ import { Avatar, Text, Button, Paper } from '@mantine/core'
 import React from 'react'
 import styled from '@emotion/styled'
 import { mobile, renderRichText, tablet } from '../lib/utils/layout'
+import Image from 'next/image'
 
 const Background = styled.div`
   position: absolute;
@@ -91,7 +92,12 @@ const Person = ({ name, role, image, website }) => {
   return (
     <a href={website}>
       <PersonContainer>
-        <Avatar size={56} radius={56} src={image.url} mx="auto" />
+        <Image
+          src={image.url}
+          width={56}
+          height={56}
+          style={{ borderRadius: 56 }}
+        />
         <strong>{name}</strong>
         <span>{role}</span>
       </PersonContainer>
