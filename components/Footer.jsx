@@ -1,7 +1,12 @@
 import React from 'react'
-import { useRecoilValue } from 'recoil'
 import styled from '@emotion/styled'
 import { renderRichText, tablet } from '../lib/utils/layout'
+import { useCMSQuery, withCMSClient } from '../lib/utils/cms'
+import {
+  FOOTER_INDEX_QUERY,
+  FOOTER_APPADEMIN_QUERY,
+} from '../lib/utils/queries'
+import { useRouter } from 'next/router'
 
 const Container = styled.div`
   border-top: 2px solid black;
@@ -59,4 +64,21 @@ const Footer = ({ title, content }) => {
   )
 }
 
-export default Footer
+const queryAndIdFromPath = (path) => {
+  if (path === '/appademin') {
+    return [FOOTER_APPADEMIN_QUERY, '1e2oEtgX80ZRIyYdbacVkO']
+  }
+  return [FOOTER_INDEX_QUERY, '5BaRlonhLZbVN59DVybNWF']
+}
+
+export default withCMSClient(() => {
+  const router = useRouter()
+  const [query, id] = queryAndIdFromPath(router.route)
+  const content = useCMSQuery(query, id)
+
+  if (!content) return null
+
+  return (
+    <Footer title={content.footer.title} content={content.footer.content} />
+  )
+})

@@ -100,5 +100,5 @@ export default withCMSClient(() => {
 
   if (!content) return null
 
-  return <Appademin content={content.appademin} />
+  return <Appademin content={content} />
 })

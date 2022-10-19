@@ -1,6 +1,7 @@
 import Menu from '../components/Menu'
 import { MantineProvider } from '@mantine/core'
 import dynamic from 'next/dynamic'
+import Footer from '../components/Footer'
 
 const LCanvas = dynamic(() => import('../components/layout/canvas'), {
   ssr: false,
@@ -11,6 +12,7 @@ function Layout({ children }) {
     <>
       <Menu />
       <main>{children}</main>
+      <Footer />
     </>
   )
 }

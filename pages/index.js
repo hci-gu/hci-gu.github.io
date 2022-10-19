@@ -304,7 +304,7 @@ const LandingPage = withCMSClient(() => {
 
   if (!content) return null
 
-  return <Index content={content.webContent} />
+  return <Index content={content} />
 })
 
 const CanvasComponents = () => {
