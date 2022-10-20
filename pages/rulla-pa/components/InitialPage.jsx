@@ -1,6 +1,5 @@
 import { ArrowDownOutlined } from '@ant-design/icons'
-import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const Container = styled.div`
   > h1 {

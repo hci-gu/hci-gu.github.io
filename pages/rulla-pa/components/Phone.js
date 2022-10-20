@@ -2,18 +2,8 @@ import React, { forwardRef } from 'react'
 import { useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
-import styled from 'styled-components'
 import { Html } from './Html'
 import { getIframeUrlForPage } from '../utils'
-
-const IframeWrapper = styled.div`
-  border-radius: 36px;
-  backgroundcolor: white;
-  width: 328px;
-  height: 711px;
-  background-color: #fff;
-  overflow: hidden;
-`
 
 function Phone(props, ref) {
   const iframeRef = useRef()
@@ -21,6 +11,7 @@ function Phone(props, ref) {
   const phoneRef = useRef()
 
   useFrame(() => {
+    if (!iframeRef.current) return
     const page = Math.floor(scroll.offset * scroll.pages)
     const nextPage = getIframeUrlForPage(page)
     if (iframeRef.current.src !== nextPage) {
@@ -149,7 +140,16 @@ function Phone(props, ref) {
           position={[0.165, -0.235, 0.09]}
           distanceFactor={1.8}
         >
-          <IframeWrapper>
+          <div
+            style={{
+              borderRadius: '36px',
+              background: 'white',
+              width: '328px',
+              height: '711px',
+              backgroundColor: '#fff',
+              overflow: 'hidden',
+            }}
+          >
             <iframe
               ref={iframeRef}
               src={'https://hci-gu.github.io/sci-project/#/'}
@@ -160,7 +160,7 @@ function Phone(props, ref) {
                 height: '100%',
               }}
             ></iframe>
-          </IframeWrapper>
+          </div>
         </Html>
       </group>
     </group>

@@ -288,6 +288,7 @@ function Index({ content }) {
           </Projects>
 
           {content.team && <Team {...content.team} />}
+
           <div>
             {content.sectionsCollection.items.map((section, i) => (
               <LandingSection {...section} key={`Section_${i}`} />
@@ -327,7 +328,7 @@ const CanvasComponents = () => {
   )
 }
 
-LandingPage.r3f = (props) => {
+LandingPage.r3f = () => {
   return (
     <>
       <CanvasComponents />

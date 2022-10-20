@@ -76,22 +76,6 @@ const CanvasRoot = ({ buttonText = '' }) => {
           dpr={[1, 2]}
           shadows={false}
         >
-          {/* <OrbitControls
-            position={[0, 0, 0]}
-            enablePan={false}
-            enableZoom={false}
-            maxPolarAngle={Math.PI / 3.2}
-            minPolarAngle={Math.PI / 3.2}
-          /> */}
-          {/* <Billboard material={<MeshBasicMaterial />}>
-            <Html transform position={[billboardOffsetForScreen(), -1.5, 0]}>
-              <CanvasHtml>
-                <a href="https://ryggmargsskadecentrum.se/livsstilsapp/">
-                  <CTAButton>{buttonText}</CTAButton>
-                </a>
-              </CanvasHtml>
-            </Html>
-          </Billboard> */}
           <Environment preset="city" />
           <Suspense fallback={null}>
             <Phone />

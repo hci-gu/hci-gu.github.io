@@ -30,16 +30,13 @@ const Content = styled.div`
 `
 
 const TextContent = styled.div`
-  margin-top: 100px;
   width: 60%;
   height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
-  ${largeLaptop()} {
-    margin-top: 60px;
-  }
+  margin-top: 24px;
 
   ${tablet()} {
     width: 100%;
@@ -48,6 +45,7 @@ const TextContent = styled.div`
 `
 
 const Title = styled.h1`
+  margin: 0;
   font-size: 72px;
   font-weight: 800;
 

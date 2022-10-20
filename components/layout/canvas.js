@@ -9,17 +9,17 @@ const HideOnMobile = styled.div`
   }
 `
 
-const LCanvas = ({ children }) => {
+const LCanvas = ({ children, onlyCanvas = false }) => {
   return (
     <HideOnMobile>
       <Canvas
         mode="concurrent"
         style={{
-          pointerEvents: 'none',
+          pointerEvents: onlyCanvas ? 'auto ' : 'none',
           position: 'absolute',
           top: 0,
         }}
-        camera={{ fov: 60, position: [0, 0, -5] }}
+        camera={{ fov: 60, position: [0, 0, onlyCanvas ? 15 : -5] }}
         dpr={[1, 2]}
         shadows={false}
       >

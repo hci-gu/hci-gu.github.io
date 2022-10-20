@@ -1,21 +1,10 @@
-import Menu from '../components/Menu'
 import { MantineProvider } from '@mantine/core'
 import dynamic from 'next/dynamic'
-import Footer from '../components/Footer'
+import Layout from '../components/layout'
 
 const LCanvas = dynamic(() => import('../components/layout/canvas'), {
   ssr: false,
 })
-
-function Layout({ children }) {
-  return (
-    <>
-      <Menu />
-      <main>{children}</main>
-      <Footer />
-    </>
-  )
-}
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -26,9 +15,13 @@ function MyApp({ Component, pageProps }) {
         colorScheme: 'light',
       }}
     >
-      <Layout>
+      <Layout page={Component}>
         <Component {...pageProps} />
-        {Component?.r3f && <LCanvas>{Component.r3f(pageProps)}</LCanvas>}
+        {Component?.r3f && (
+          <LCanvas onlyCanvas={Component.onlyCanvas}>
+            {Component.r3f(pageProps)}
+          </LCanvas>
+        )}
       </Layout>
     </MantineProvider>
   )

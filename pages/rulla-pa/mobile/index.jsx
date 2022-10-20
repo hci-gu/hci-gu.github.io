@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Carousel } from 'antd'
 
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import Phone from './components/Phone'
 import texts from '../texts'
 

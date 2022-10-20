@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 const Container = styled.div`
   border-top: 2px solid black;
   position: relative;
-  margin-top: 200px;
+  margin-top: 100px;
   background-color: black;
   height: 500px;
 
@@ -79,6 +79,6 @@ export default withCMSClient(() => {
   if (!content) return null
 
   return (
-    <Footer title={content.footer.title} content={content.footer.content} />
+    <Footer title={content?.footer?.title} content={content?.footer?.content} />
   )
-})
+}, false)

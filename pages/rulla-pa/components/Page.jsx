@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { mobile } from '../../../utils/layout'
+import styled from '@emotion/styled'
+import { mobile } from '../../../lib/utils/layout'
 
 const Container = styled.div`
   position: absolute;
