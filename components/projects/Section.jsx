@@ -1,13 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import {
   tablet,
   mobile,
   laptop,
   smallLaptop,
   renderRichText,
-} from '../../utils/layout'
-import { useLayoutBreakpoint } from '../../utils/hooks'
+} from '../../lib/utils/layout'
+import { useLayoutBreakpoint } from '../../lib/utils/hooks'
 
 const Container = styled.div`
   margin: 0 auto;

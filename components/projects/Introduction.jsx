@@ -1,24 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
-import { mobile, tablet, smallLaptop, renderRichText } from '../../utils/layout'
-import Project from '../Project'
-import Meta from '../../components/Meta'
-import Footer from '../../components/Footer'
-import AppDownload from '../../components/projects/AppDownload'
+import styled from '@emotion/styled'
+import {
+  mobile,
+  tablet,
+  smallLaptop,
+  renderRichText,
+} from '../../lib/utils/layout'
+import AppDownload from './AppDownload'
 
 const Container = styled.div`
-  margin: 0 auto;
-  width: 75%;
-  min-height: 100vh;
-  font-family: 'Poppins';
-
-  ${tablet()} {
-    width: 100%;
-    padding: 1em;
-  }
-`
-
-const Wrapper = styled.div`
   margin-top: 40px;
   display: flex;
   justify-content: space-evenly;
@@ -99,52 +88,38 @@ const ScreenShots = styled.div`
   }
 `
 
-const Introduction = ({ name, subHeading, introduction, callToAction }) => {
+const Introduction = ({
+  name,
+  subHeading,
+  introduction,
+  callToAction,
+  introScreenshot,
+  screenshot,
+  appstore,
+  googlePlay,
+}) => {
   return (
-    <Wrapper>
+    <Container>
       <Title>
         <h1>{name}</h1>
         <h2>{subHeading}</h2>
         <div>{renderRichText(introduction)}</div>
         <AppDownload
           title={callToAction}
-          googlePlay="https://play.google.com/store/apps/details?id=com.wfhmovement.app.sfh"
-          appstore="https://apps.apple.com/us/app/id1556414814"
+          googlePlay={googlePlay}
+          appstore={appstore}
         />
       </Title>
       <ScreenShots>
+        <img src={introScreenshot} alt="screenshot of app intro"></img>
         <img
-          src="/img/sfh-movement/screenshot_intro.png"
-          alt="screenshot of app intro"
-        ></img>
-        <img
+          src={screenshot}
           alt="screenshot of app step details"
-          src="/img/sfh-movement/screenshot.png"
           style={{ width: '70%', left: '60%', top: 220 }}
         ></img>
       </ScreenShots>
-    </Wrapper>
+    </Container>
   )
 }
 
-const Landing = () => {
-  return (
-    <>
-      <Meta
-        name="SFH Movement"
-        description="Rör du dig mer eller mindre sedan du började studera hemifrån?"
-        shareImage="https://hci-gu.github.io/img/sfh-movement/share.png"
-        link="https://hci-gu.github.io/sfh-movement/"
-      />
-      <Container>
-        <Project
-          id={import.meta.env.VITE_CONTENTFUL_SFH_PROJECT_ID}
-          intro={(props) => <Introduction {...props} />}
-        />
-      </Container>
-      <Footer />
-    </>
-  )
-}
-
-export default Landing
+export default Introduction

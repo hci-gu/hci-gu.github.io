@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { useSpring, animated } from 'react-spring'
 import { Divider } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
-import { useMeasure } from '../../utils/hooks'
-import { tablet, renderRichText } from '../../utils/layout'
+import { useMeasure } from '../../lib/utils/hooks'
+import { tablet, renderRichText } from '../../lib/utils/layout'
 
 const Container = styled.div`
   margin-top: 100px;

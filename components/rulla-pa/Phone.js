@@ -3,7 +3,7 @@ import { useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import { Html } from './Html'
-import { getIframeUrlForPage } from '../utils'
+import { getIframeUrlForPage } from '../../lib/utils/rulla-pa'
 
 function Phone(props, ref) {
   const iframeRef = useRef()

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { getIframeUrlForPage } from '../../utils'
+import { getIframeUrlForPage } from '../../../../lib/utils/rulla-pa'
 
 const Container = styled.div`
   position: absolute;

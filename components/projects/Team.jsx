@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { mobile, tablet } from '../../utils/layout'
+import styled from '@emotion/styled'
+import { mobile, tablet } from '../../lib/utils/layout'
 
 const Container = styled.div`
   margin-top: 50px;
@@ -30,7 +30,10 @@ const textForTeamMember = ({ name, twitter, website }, i, length) => {
       {twitter && (
         <>
           {name} (
-          <a href={`https://twitter.com/${twitter}`} twitter>
+          <a
+            href={`https://twitter.com/${twitter}`}
+            style={{ color: '#1DA1F2' }}
+          >
             {twitter}
           </a>
           )

@@ -1,12 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
-import Section from '../components/projects/Section'
-import FAQ from '../components/projects/FAQ'
-import Articles from '../components/projects/Articles'
-import Team from '../components/projects/Team'
-import { useProject } from '../utils/cms-hooks'
+import styled from '@emotion/styled'
+import Section from './Section'
+import FAQ from './FAQ'
+import Articles from './Articles'
+import Team from './Team'
+import { tablet } from '../../lib/utils/layout'
 
-const Container = styled.div``
+const Container = styled.div`
+  margin: 0 auto;
+  width: 75%;
+  min-height: 100vh;
+  font-family: 'Poppins';
+
+  ${tablet()} {
+    width: 100%;
+    padding: 1em;
+  }
+`
 
 const Sections = ({ sections }) => {
   return (
@@ -18,13 +27,10 @@ const Sections = ({ sections }) => {
   )
 }
 
-const Project = ({ id, intro }) => {
-  const project = useProject(id)
-
-  if (!project) return <div></div>
+const Project = ({ project, intro }) => {
   return (
     <Container>
-      {intro(project)}
+      {intro()}
       <Sections sections={project.sectionsCollection.items} />
       <FAQ faq={project.faqCollection.items} />
       <Articles

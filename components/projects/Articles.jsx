@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { mobile, tablet } from '../../utils/layout'
+import styled from '@emotion/styled'
+import { mobile, tablet } from '../../lib/utils/layout'
 
 const Container = styled.div`
   margin: 0 auto;
