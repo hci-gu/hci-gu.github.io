@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { useSpring, animated } from 'react-spring'
-import { Divider } from 'antd'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'
 import { useMeasure } from '../../lib/utils/hooks'
 import { tablet, renderRichText } from '../../lib/utils/layout'
@@ -60,6 +59,11 @@ const Answer = styled(animated.div)`
   padding-bottom: 0px;
 
   overflow: hidden;
+`
+
+const Divider = styled.div`
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 `
 
 const FAQItem = ({ question, answer }) => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Carousel } from 'antd'
 
 import styled from '@emotion/styled'
 import Phone from './components/Phone'
 import texts from '../texts'
+import { Carousel } from '@mantine/carousel'
 
 const Container = styled.div`
   height: 100vh;
