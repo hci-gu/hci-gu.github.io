@@ -19,6 +19,7 @@ import Team from '../components/Team'
 import ProjectShowcase from '../components/ProjectShowcase'
 import Initiative from '../components/Initiative'
 import Phone from '../components/Phone'
+import { getCMSData } from './api/cms/[page]'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -191,7 +192,7 @@ const MobilePromo = () => {
   )
 }
 
-function Index({ content }) {
+const Index = ({ content }) => {
   return (
     <>
       <Head>
@@ -300,14 +301,6 @@ function Index({ content }) {
   )
 }
 
-const LandingPage = withCMSClient(() => {
-  const content = useCMSQuery(INDEX_QUERY, '5BaRlonhLZbVN59DVybNWF')
-
-  if (!content) return null
-
-  return <Index content={content} />
-})
-
 const CanvasComponents = () => {
   const { size } = useThree()
   const [vpWidth, vpHeight] = useAspect(size.width, size.height)
@@ -328,7 +321,7 @@ const CanvasComponents = () => {
   )
 }
 
-LandingPage.r3f = () => {
+Index.r3f = () => {
   return (
     <>
       <CanvasComponents />
@@ -336,4 +329,18 @@ LandingPage.r3f = () => {
   )
 }
 
-export default LandingPage
+export async function getServerSideProps(context) {
+  const data = await getCMSData(
+    INDEX_QUERY,
+    '5BaRlonhLZbVN59DVybNWF',
+    context.locale
+  )
+
+  return {
+    props: {
+      content: data,
+    },
+  }
+}
+
+export default Index

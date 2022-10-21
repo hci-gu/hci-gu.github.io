@@ -13,8 +13,8 @@ import Hero from '../../components/appademin/Hero'
 import StepsContainer from '../../components/appademin/Steps'
 import Features from '../../components/appademin/Features'
 import Projects from '../../components/appademin/Projects'
-import { useCMSQuery, withCMSClient } from '../../lib/utils/cms'
 import { APPADEMIN_QUERY } from '../../lib/utils/queries'
+import { getCMSData } from '../api/cms/[page]'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -95,10 +95,18 @@ const Appademin = ({ content }) => {
   )
 }
 
-export default withCMSClient(() => {
-  const content = useCMSQuery(APPADEMIN_QUERY, '1e2oEtgX80ZRIyYdbacVkO')
+export async function getServerSideProps(context) {
+  const data = await getCMSData(
+    APPADEMIN_QUERY,
+    '1e2oEtgX80ZRIyYdbacVkO',
+    context.locale
+  )
 
-  if (!content) return null
+  return {
+    props: {
+      content: data,
+    },
+  }
+}
 
-  return <Appademin content={content} />
-})
+export default Appademin
