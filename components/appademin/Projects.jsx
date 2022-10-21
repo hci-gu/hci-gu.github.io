@@ -4,9 +4,8 @@ import {
   laptop,
   mobile,
   renderRichText,
-  smallLaptop,
   tablet,
-} from '../../../lib/utils/layout'
+} from '../../lib/utils/layout'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { Carousel } from '@mantine/carousel'
 import Image from 'next/future/image'

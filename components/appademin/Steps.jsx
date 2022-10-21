@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { mobile, renderRichText } from '../../../lib/utils/layout'
-import { useLayoutBreakpoint } from '../../../lib/utils/hooks'
+import { mobile, renderRichText } from '../../lib/utils/layout'
 
 const Container = styled.div`
   > div {

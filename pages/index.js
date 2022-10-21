@@ -9,7 +9,6 @@ import {
   tablet,
   smallLaptop,
 } from '../lib/utils/layout'
-import Phone from '../lib/canvas/components/Phone'
 import { useAspect } from '@react-three/drei'
 import { Box, Flex } from '@react-three/flex'
 import { useThree } from '@react-three/fiber'
@@ -19,6 +18,7 @@ import Education from '../components/Education'
 import Team from '../components/Team'
 import ProjectShowcase from '../components/ProjectShowcase'
 import Initiative from '../components/Initiative'
+import Phone from '../components/Phone'
 
 const Container = styled.div`
   font-family: 'Manrope';

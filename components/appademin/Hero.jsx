@@ -1,4 +1,3 @@
-import { Button } from 'antd'
 import React from 'react'
 import styled from '@emotion/styled'
 import {
@@ -6,9 +5,10 @@ import {
   tablet,
   renderRichText,
   largeLaptop,
-} from '../../../lib/utils/layout'
+} from '../../lib/utils/layout'
 import HeroBackground from './HeroBackground'
 import Image from 'next/future/image'
+import { Button } from '@mantine/core'
 
 const Container = styled.div``
 

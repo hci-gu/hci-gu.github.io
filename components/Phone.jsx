@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import * as THREE from 'three'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { useFrame } from '@react-three/fiber'
 import { Html, useGLTF } from '@react-three/drei'
 
 const IframeWrapper = styled.div`
   border-radius: 36px;
-  backgroundcolor: white;
+  background: white;
   width: 328px;
   height: 711px;
   background-color: #fff;

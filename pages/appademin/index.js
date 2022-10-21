@@ -9,10 +9,10 @@ import {
 import Team from '../../components/Team'
 import Meta from '../../components/Meta'
 
-import Hero from './components/Hero'
-import StepsContainer from './components/Steps'
-import Features from './components/Features'
-import Projects from './components/Projects'
+import Hero from '../../components/appademin/Hero'
+import StepsContainer from '../../components/appademin/Steps'
+import Features from '../../components/appademin/Features'
+import Projects from '../../components/appademin/Projects'
 import { useCMSQuery, withCMSClient } from '../../lib/utils/cms'
 import { APPADEMIN_QUERY } from '../../lib/utils/queries'
 
