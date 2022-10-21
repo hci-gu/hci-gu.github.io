@@ -1,11 +1,5 @@
-import React from 'react'
 import styled from '@emotion/styled'
-import {
-  desktop,
-  tablet,
-  renderRichText,
-  largeLaptop,
-} from '../../lib/utils/layout'
+import { desktop, tablet, renderRichText } from '../../lib/utils/layout'
 import HeroBackground from './HeroBackground'
 import Image from 'next/future/image'
 import { Button } from '@mantine/core'

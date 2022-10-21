@@ -1,17 +1,14 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import {
-  Vector3,
-  Group,
-  Object3D,
-  Matrix4,
-  Camera,
-  PerspectiveCamera,
-  OrthographicCamera,
-  Raycaster,
-} from 'three'
-import { Assign } from 'utility-types'
-import { ReactThreeFiber, useFrame, useThree } from '@react-three/fiber'
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useRef,
+  forwardRef,
+  useMemo,
+} from 'react'
+import * as ReactDOM from 'react-dom'
+import { Vector3, PerspectiveCamera, OrthographicCamera } from 'three'
+import { useFrame, useThree } from '@react-three/fiber'
 
 const v1 = new Vector3()
 const v2 = new Vector3()
@@ -117,7 +114,7 @@ const getObjectCSSMatrix = ((scaleMultipliers) => {
   1,
 ])
 
-export const Html = React.forwardRef(
+export const Html = forwardRef(
   (
     {
       children,
@@ -148,15 +145,15 @@ export const Html = React.forwardRef(
     const size = useThree(({ size }) => size)
     const raycaster = useThree(({ raycaster }) => raycaster)
 
-    const [el] = React.useState(() => document.createElement(as))
-    const group = React.useRef(null)
-    const oldZoom = React.useRef(0)
-    const oldPosition = React.useRef([0, 0])
-    const transformOuterRef = React.useRef(null)
-    const transformInnerRef = React.useRef(null)
+    const [el] = useState(() => document.createElement(as))
+    const group = useRef(null)
+    const oldZoom = useRef(0)
+    const oldPosition = useRef([0, 0])
+    const transformOuterRef = useRef(null)
+    const transformInnerRef = useRef(null)
     const target = portal?.current ?? gl.domElement.parentNode
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (group.current) {
         scene.updateMatrixWorld()
         if (transform) {
@@ -176,11 +173,11 @@ export const Html = React.forwardRef(
       }
     }, [target, transform])
 
-    React.useLayoutEffect(() => {
+    useLayoutEffect(() => {
       if (wrapperClass) el.className = wrapperClass
     }, [wrapperClass])
 
-    const styles = React.useMemo(() => {
+    const styles = useMemo(() => {
       if (transform) {
         return {
           position: 'absolute',
@@ -211,7 +208,7 @@ export const Html = React.forwardRef(
       [pointerEvents]
     )
 
-    React.useLayoutEffect(() => {
+    useLayoutEffect(() => {
       if (transform) {
         ReactDOM.render(
           <div ref={transformOuterRef} style={styles}>
@@ -239,7 +236,7 @@ export const Html = React.forwardRef(
       }
     })
 
-    const visible = React.useRef(true)
+    const visible = useRef(true)
 
     useFrame(() => {
       if (group.current) {

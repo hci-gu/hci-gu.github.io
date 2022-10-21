@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { useSpring, animated } from 'react-spring'
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'

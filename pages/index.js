@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import { useCMSQuery, withCMSClient } from '../lib/utils/cms'
 import { INDEX_QUERY } from '../lib/utils/queries'
 import {
   mobile,

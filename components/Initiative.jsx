@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from '@emotion/styled'
 import { useLocale } from '../lib/state'
 import { mobile, renderRichText, smallLaptop } from '../lib/utils/layout'

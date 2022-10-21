@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from '@emotion/styled'
 import { renderRichText, tablet } from '../lib/utils/layout'
 import { useCMSQuery, withCMSClient } from '../lib/utils/cms'

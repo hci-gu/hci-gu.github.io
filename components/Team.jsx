@@ -1,5 +1,4 @@
-import { Avatar, Text, Button, Paper } from '@mantine/core'
-import React from 'react'
+import { Paper } from '@mantine/core'
 import styled from '@emotion/styled'
 import { mobile, renderRichText, tablet } from '../lib/utils/layout'
 import Image from 'next/image'
