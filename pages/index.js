@@ -173,8 +173,7 @@ const ImageBackground = styled.div`
 const FullWidthBorder = styled.div`
   position: absolute;
   bottom: 0;
-  left: -10vw;
-  width: 120vw;
+  width: 100%;
 
   border-bottom: 1px solid black;
 `

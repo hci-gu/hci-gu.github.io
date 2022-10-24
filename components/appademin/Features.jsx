@@ -45,7 +45,7 @@ const Feature = styled.div`
 
     > p {
       font-size: 16px;
-      color: rgba(24, 25, 31, 0.5);
+      color: #000;
 
       ${mobile()} {
         font-size: 14px;

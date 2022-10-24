@@ -73,9 +73,12 @@ const Step = styled.div`
     :nth-of-type(even) {
       margin-top: 1rem;
     }
+    > strong {
+      font-weight: 900;
+    }
     > p {
       margin: 0;
-      color: #00000073;
+      color: #000;
     }
   }
 
