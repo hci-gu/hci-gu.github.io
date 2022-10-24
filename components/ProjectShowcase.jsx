@@ -47,7 +47,7 @@ const ProjectShowcase = ({ title, link, image, description, tags }) => {
   return (
     <Container>
       <a href={link}>
-        <img src={image.url}></img>
+        <img src={image.url} alt={image.description}></img>
       </a>
       <Text>
         <a href={link}>

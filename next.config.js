@@ -8,4 +8,5 @@ module.exports = {
     locales: ['en-US', 'sv'],
     defaultLocale: 'en-US',
   },
+  output: 'standalone',
 }

@@ -93,6 +93,7 @@ const Person = ({ name, role, image, website }) => {
       <PersonContainer>
         <Image
           src={image.url}
+          alt={image.description}
           width={56}
           height={56}
           style={{ borderRadius: 56 }}

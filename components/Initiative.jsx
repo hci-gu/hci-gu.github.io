@@ -182,7 +182,7 @@ const Initiative = ({
     <Container align={align}>
       <ImageContainer>
         <Bubble color={color}>
-          <img src={image.url} />
+          <img src={image.url} alt={image.description} />
         </Bubble>
       </ImageContainer>
       <TextHeader>

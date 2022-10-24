@@ -127,7 +127,12 @@ const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
           </a>
         </TextContent>
         <ImageContainer>
-          <Phone src="/img/assets/hero-phone.png" height={640} width={300} />
+          <Phone
+            src="/img/assets/hero-phone.png"
+            height={640}
+            width={300}
+            alt="Phone with screenshot of WFH Movement application."
+          />
           <span>
             App utvecklad av Appademin, läs mer <a to="/wfh-movement">här</a>.
           </span>

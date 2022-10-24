@@ -76,7 +76,7 @@ const Courses = styled.div`
 const Course = ({ name, description, points, icon }) => {
   return (
     <div>
-      {icon && <img src={icon.url}></img>}
+      {icon && <img src={icon.url} alt={icon.description}></img>}
       <h2>
         <strong>{name}</strong> ({points}HP)
       </h2>

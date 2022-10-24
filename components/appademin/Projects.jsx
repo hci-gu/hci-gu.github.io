@@ -112,7 +112,12 @@ const Project = ({ title, description, device, link, image }) => {
         </a>
       </div>
       <ImageContainer device={device}>
-        <Image src={image.url} width={250} height={250} />
+        <Image
+          src={image.url}
+          alt={image.description}
+          width={250}
+          height={250}
+        />
       </ImageContainer>
     </ProjectContainer>
   )

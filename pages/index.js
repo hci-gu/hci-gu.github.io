@@ -182,7 +182,10 @@ const FullWidthBorder = styled.div`
 const MobilePromo = () => {
   return (
     <MobilePromoContainer>
-      <img src="/img/assets/landing-promo-mobile.png"></img>
+      <img
+        src="/img/assets/landing-promo-mobile.png"
+        alt="phone with WFH Movement app screenshot"
+      ></img>
       <ImageBackground>
         <div></div>
       </ImageBackground>
