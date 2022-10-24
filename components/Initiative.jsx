@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { useLocale } from '../lib/state'
+import { useRouter } from 'next/router'
 import { mobile, renderRichText, smallLaptop } from '../lib/utils/layout'
 
 const Container = styled.div`
@@ -176,7 +176,7 @@ const Initiative = ({
   image,
   description,
 }) => {
-  const [locale] = useLocale()
+  const router = useRouter()
 
   return (
     <Container align={align}>
@@ -192,7 +192,7 @@ const Initiative = ({
       <TextContainer align={align}>
         {renderRichText(description)}
         <a href={linkTo}>
-          {locale == 'en' ? 'Read more' : 'Läs mer'} <Arrow />
+          {router.locale == 'en-US' ? 'Read more' : 'Läs mer'} <Arrow />
         </a>
       </TextContainer>
     </Container>

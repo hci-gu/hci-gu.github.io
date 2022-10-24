@@ -2,9 +2,10 @@ import Link from 'next/link'
 import { NativeSelect, Header } from '@mantine/core'
 import styled from '@emotion/styled'
 
-import { availableLocales, useLocale } from '../lib/state'
+import { availableLocales } from '../lib/state'
 import Image from 'next/future/image'
 import { middleContent } from '../lib/utils/layout'
+import { useRouter } from 'next/router'
 
 const CustomHeader = styled(Header)`
   background: transparent;
@@ -21,7 +22,7 @@ const CustomHeader = styled(Header)`
 `
 
 const Menu = () => {
-  const [locale, setLocale] = useLocale()
+  const router = useRouter()
 
   return (
     <CustomHeader height={80} mb={40} p={16} withBorder={false}>
@@ -37,9 +38,15 @@ const Menu = () => {
         <div>
           <NativeSelect
             data={availableLocales}
-            value={locale}
+            value={router.locale ?? availableLocales[0].value}
             onChange={(e) => {
-              setLocale(e.target.value)
+              router.push(
+                {
+                  pathname: router.pathname,
+                },
+                undefined,
+                { locale: e.target.value }
+              )
             }}
           />
         </div>
