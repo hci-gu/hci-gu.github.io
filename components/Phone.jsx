@@ -5,11 +5,14 @@ import { useFrame } from '@react-three/fiber'
 import { Html, useGLTF } from '@react-three/drei'
 
 const IframeWrapper = styled.div`
+  position: relative;
   border-radius: 36px;
   background: white;
   width: 328px;
   height: 711px;
   background-color: #fff;
+  background-image: url('/img/projects/rulla-pa.jpg');
+  background-size: cover;
   overflow: hidden;
 `
 

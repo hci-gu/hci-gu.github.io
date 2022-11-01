@@ -3,7 +3,7 @@ import { NativeSelect, Header } from '@mantine/core'
 import styled from '@emotion/styled'
 
 import { availableLocales } from '../lib/state'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { middleContent } from '../lib/utils/layout'
 import { useRouter } from 'next/router'
 
@@ -31,7 +31,7 @@ const Menu = () => {
           <Image
             src="/img/gu_logo.png"
             alt="Gothenburg university logotype"
-            width={85}
+            width={108}
             height={80}
           />
         </Link>

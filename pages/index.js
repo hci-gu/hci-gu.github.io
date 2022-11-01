@@ -19,6 +19,7 @@ import ProjectShowcase from '../components/ProjectShowcase'
 import Initiative from '../components/Initiative'
 import Phone from '../components/Phone'
 import { getCMSData } from './api/cms/[page]'
+import { Suspense } from 'react'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -324,9 +325,9 @@ const CanvasComponents = () => {
 
 Index.r3f = () => {
   return (
-    <>
+    <Suspense>
       <CanvasComponents />
-    </>
+    </Suspense>
   )
 }
 

@@ -1,7 +1,7 @@
 import { Paper } from '@mantine/core'
 import styled from '@emotion/styled'
 import { mobile, renderRichText, tablet } from '../lib/utils/layout'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 const Background = styled.div`
   position: absolute;
@@ -54,36 +54,36 @@ const Description = styled.div`
 `
 
 const People = styled.div`
+  margin: 0 auto;
   width: 100%;
-  margin-top: 25px;
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-
-  ${tablet()} {
-    grid-gap: 16px;
-    grid-template-columns: repeat(3, auto);
-  }
-  ${mobile()} {
-    grid-template-columns: repeat(2, auto);
-  }
 `
 
 const PersonContainer = styled.div`
+  margin-top: 24px;
+  width: 15vw;
+  height: 168px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
+  text-align: center;
 
   > strong {
     margin-top: 8px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
   }
   > span {
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  ${mobile()} {
+    width: 40vw;
   }
 `
 
@@ -97,6 +97,7 @@ const Person = ({ name, role, image, website }) => {
           width={56}
           height={56}
           style={{ borderRadius: 56 }}
+          objectFit="cover"
         />
         <strong>{name}</strong>
         <span>{role}</span>

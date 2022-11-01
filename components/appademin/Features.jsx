@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { mobile, renderRichText, tablet } from '../../lib/utils/layout'
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 const Container = styled.div`
   > h1 {

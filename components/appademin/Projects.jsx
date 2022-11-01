@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {
   desktop,
+  labelForUri,
   laptop,
   mobile,
   renderRichText,
@@ -8,7 +9,7 @@ import {
 } from '../../lib/utils/layout'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import { Carousel } from '@mantine/carousel'
-import Image from 'next/future/image'
+import Image from 'next/image'
 
 const Container = styled.div``
 
@@ -59,7 +60,7 @@ const ProjectContainer = styled.div`
 
     > a {
       color: white;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 600;
     }
   }
@@ -101,14 +102,21 @@ const ImageContainer = styled.div`
   }
 `
 
-const Project = ({ title, description, device, link, image }) => {
+const Project = ({
+  title,
+  description,
+  device,
+  link,
+  linkDescription,
+  image,
+}) => {
   return (
     <ProjectContainer>
       <div>
         <h3>{title}</h3>
         {renderRichText(description)}
-        <a href={link} target="_blank">
-          Läs mer <ArrowRightOutlined />
+        <a href={link} target="_blank" aria-label={labelForUri(link)}>
+          {linkDescription ?? 'Läs mer'} <ArrowRightOutlined />
         </a>
       </div>
       <ImageContainer device={device}>

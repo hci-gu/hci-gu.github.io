@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { desktop, tablet, renderRichText } from '../../lib/utils/layout'
 import HeroBackground from './HeroBackground'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { Button } from '@mantine/core'
+import Link from 'next/link'
 
 const Container = styled.div``
 
@@ -89,11 +90,16 @@ const ImageContainer = styled.div`
     display: none;
   }
 
-  > span {
+  > a {
     font-size: 15px;
     font-weight: 200;
     margin-left: -10px;
     margin-top: -32px;
+
+    * > strong {
+      color: #1b4079;
+      font-weight: 600;
+    }
 
     ${desktop()} {
       margin-top: -28px;
@@ -133,9 +139,9 @@ const Hero = ({ title, introduction, callToAction, callToActionHref }) => {
             width={300}
             alt="Phone with screenshot of WFH Movement application."
           />
-          <span>
-            App utvecklad av Appademin, läs mer <a to="/wfh-movement">här</a>.
-          </span>
+          <Link href="/wfh-movement">
+            App utvecklad av Appademin, läs mer på /wfh-movement.
+          </Link>
         </ImageContainer>
       </Content>
     </Container>
