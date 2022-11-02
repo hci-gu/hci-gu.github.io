@@ -142,6 +142,7 @@ function Phone(props, ref) {
         >
           <div
             style={{
+              position: 'relative',
               borderRadius: '36px',
               background: 'white',
               width: '328px',

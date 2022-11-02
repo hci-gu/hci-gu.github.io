@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
-import { ScrollControls, useScroll, Scroll } from '@react-three/drei'
+import { ScrollControls, useScroll, Scroll, useAspect } from '@react-three/drei'
 import styled from '@emotion/styled'
 import Phone from '../../components/rulla-pa/Phone'
 import SmartWatch from '../../components/rulla-pa/Watch'
@@ -12,6 +12,10 @@ import texts from '../../components/rulla-pa/texts'
 import MobileLanding from '../../components/rulla-pa/mobile'
 
 const Composition = () => {
+  const { size } = useThree()
+  const [width, height] = useAspect(size.width, size.height)
+  const offset = width / 8
+  console.log(width, offset)
   const scroll = useScroll()
   const phone = useRef(null)
   const watch = useRef(null)
@@ -28,7 +32,7 @@ const Composition = () => {
     const r5 = scroll.range(7 / 8, 1 / 8)
     phone.current.position.x = THREE.MathUtils.damp(
       phone.current.position.x,
-      (3 * r1 + -7 * r1_2 + 4 * r5) * zoom,
+      (offset * r1 + -offset * 2 * r1_2 + offset * r5) * zoom,
       3,
       delta
     )
@@ -100,12 +104,6 @@ const Container = styled.div`
 `
 
 const Landing = () => {
-  //   const layout = useLayoutBreakpoint()
-
-  //   if (layout === 'mobile') {
-  //     return <MobileLanding />
-  //   }
-
   return <Container></Container>
 }
 
@@ -126,7 +124,7 @@ const CanvasComponents = () => {
               width: '100vw',
               textAlign: 'center',
               fontSize: '8vw',
-              top: '770vh',
+              top: '762.5vh',
             }}
           >
             Testa själv

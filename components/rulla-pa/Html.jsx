@@ -203,7 +203,7 @@ export const Html = forwardRef(
       }
     }, [style, center, fullscreen, size, transform])
 
-    const transformInnerStyles = React.useMemo(
+    const transformInnerStyles = useMemo(
       () => ({ position: 'absolute', pointerEvents }),
       [pointerEvents]
     )
