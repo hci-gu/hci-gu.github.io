@@ -1,5 +1,5 @@
-import { forwardRef } from 'react'
-import { useGLTF, useScroll } from '@react-three/drei'
+import { forwardRef, useEffect } from 'react'
+import { useGLTF, useScroll, Caustics } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import { Html } from './Html'
@@ -18,6 +18,32 @@ function Phone(props, ref) {
       iframeRef.current.src = nextPage
     }
   })
+
+  useEffect(() => {
+    if (!iframeRef.current) return
+
+    const listener = function (event) {
+      if (
+        event.target.tagName === 'A' &&
+        event.target.getAttribute('target') !== '_blank'
+      ) {
+        // prevent the default link behavior
+        event.preventDefault()
+        // get the href of the link
+        var href = event.target.getAttribute('href')
+        // update the iframe URL using the history API
+        iframeRef.current.contentWindow.history.pushState(null, null, href)
+      }
+    }
+    iframeRef.current.contentWindow.document.addEventListener('click', listener)
+
+    return () => {
+      iframeRef.current.contentWindow.document.removeEventListener(
+        'click',
+        listener
+      )
+    }
+  }, [iframeRef.current])
 
   const { nodes, materials } = useGLTF('/models/iphone/model.gltf')
 
@@ -152,7 +178,9 @@ function Phone(props, ref) {
             }}
           >
             <iframe
+              key={`Phone_${Math.floor(scroll.offset * scroll.pages)}`}
               ref={iframeRef}
+              onClick={(e) => console.log(e)}
               src={'https://hci-gu.github.io/sci-project/#/'}
               style={{
                 border: 'none',

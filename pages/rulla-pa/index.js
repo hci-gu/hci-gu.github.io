@@ -15,7 +15,6 @@ const Composition = () => {
   const { size } = useThree()
   const [width, height] = useAspect(size.width, size.height)
   const offset = width / 8
-  console.log(width, offset)
   const scroll = useScroll()
   const phone = useRef(null)
   const watch = useRef(null)

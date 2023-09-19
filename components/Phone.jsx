@@ -165,7 +165,7 @@ export default function Phone(props) {
         >
           <IframeWrapper>
             <iframe
-              src="https://hci-gu.github.io/sci-project/#/demo"
+              src="https://hci-gu.github.io/sci-project/#/"
               style={{
                 border: 'none',
                 background: 'none',
