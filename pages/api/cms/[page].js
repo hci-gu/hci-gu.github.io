@@ -1,5 +1,5 @@
 import { withUrqlClient, initUrqlClient } from 'next-urql'
-import { dedupExchange, cacheExchange, fetchExchange } from 'urql'
+import { cacheExchange, fetchExchange } from 'urql'
 import { INDEX_QUERY } from '../../../lib/utils/queries'
 
 const queryAndIDForPage = (page) => {
@@ -16,7 +16,7 @@ export const getCMSData = async (query, id, locale = 'en-US') => {
   const client = initUrqlClient(
     {
       url: 'https://graphql.contentful.com/content/v1/spaces/j07xal62e1un',
-      exchanges: [dedupExchange, cacheExchange, fetchExchange],
+      exchanges: [cacheExchange, fetchExchange],
       fetchOptions: () => {
         return {
           headers: {

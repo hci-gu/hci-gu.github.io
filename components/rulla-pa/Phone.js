@@ -13,35 +13,46 @@ function Phone(props, ref) {
   useFrame(() => {
     if (!iframeRef.current) return
     const page = Math.floor(scroll.offset * scroll.pages)
-    const nextPage = getIframeUrlForPage(page)
-    if (iframeRef.current.src !== nextPage) {
-      iframeRef.current.src = nextPage
+    try {
+      const nextPage = getIframeUrlForPage(page)
+      if (iframeRef.current.src !== nextPage) {
+        iframeRef.current.src = nextPage
+      }
+    } catch (e) {
+      console.log('failed to update iframe', e)
     }
   })
 
   useEffect(() => {
     if (!iframeRef.current) return
 
-    const listener = function (event) {
-      if (
-        event.target.tagName === 'A' &&
-        event.target.getAttribute('target') !== '_blank'
-      ) {
-        // prevent the default link behavior
-        event.preventDefault()
-        // get the href of the link
-        var href = event.target.getAttribute('href')
-        // update the iframe URL using the history API
-        iframeRef.current.contentWindow.history.pushState(null, null, href)
+    try {
+      const listener = function (event) {
+        if (
+          event.target.tagName === 'A' &&
+          event.target.getAttribute('target') !== '_blank'
+        ) {
+          // prevent the default link behavior
+          event.preventDefault()
+          // get the href of the link
+          var href = event.target.getAttribute('href')
+          // update the iframe URL using the history API
+          iframeRef.current.contentWindow.history.pushState(null, null, href)
+        }
       }
-    }
-    iframeRef.current.contentWindow.document.addEventListener('click', listener)
-
-    return () => {
-      iframeRef.current.contentWindow.document.removeEventListener(
+      iframeRef.current.contentWindow.document.addEventListener(
         'click',
         listener
       )
+    } catch (_) {}
+
+    return () => {
+      try {
+        iframeRef.current.contentWindow.document.removeEventListener(
+          'click',
+          listener
+        )
+      } catch (_) {}
     }
   }, [iframeRef.current])
 

@@ -20,7 +20,7 @@ const LCanvas = ({ children, onlyCanvas = false }) => {
           top: 0,
         }}
         camera={{ fov: 60, position: [0, 0, onlyCanvas ? 15 : -5] }}
-        dpr={[1, 2]}
+        dpr={1}
         shadows={false}
       >
         <Environment preset="city" />

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NativeSelect, Header } from '@mantine/core'
+import { NativeSelect } from '@mantine/core'
 import styled from '@emotion/styled'
 
 import { availableLocales } from '../lib/state'
@@ -7,7 +7,10 @@ import Image from 'next/image'
 import { middleContent } from '../lib/utils/layout'
 import { useRouter } from 'next/router'
 
-const CustomHeader = styled(Header)`
+const Header = styled.div`
+  height: 80px;
+  margin-bottom: 40px;
+  padding: 16px;
   background: transparent;
   > div {
     ${middleContent()}
@@ -25,7 +28,7 @@ const Menu = () => {
   const router = useRouter()
 
   return (
-    <CustomHeader height={80} mb={40} p={16} withBorder={false}>
+    <Header>
       <div>
         <Link href="/">
           <Image
@@ -51,7 +54,7 @@ const Menu = () => {
           />
         </div>
       </div>
-    </CustomHeader>
+    </Header>
   )
 }
 

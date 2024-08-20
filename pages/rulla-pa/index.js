@@ -7,9 +7,9 @@ import Phone from '../../components/rulla-pa/Phone'
 import SmartWatch from '../../components/rulla-pa/Watch'
 import Page from '../../components/rulla-pa/Page'
 import InitialPage from '../../components/rulla-pa/InitialPage'
-import { useLayoutBreakpoint } from '../../lib/utils/hooks'
 import texts from '../../components/rulla-pa/texts'
-import MobileLanding from '../../components/rulla-pa/mobile'
+import { Stats } from '@react-three/drei'
+import { StatsGl } from '@react-three/drei'
 
 const Composition = () => {
   const { size } = useThree()
@@ -109,7 +109,7 @@ const Landing = () => {
 const CanvasComponents = () => {
   return (
     <>
-      <ScrollControls damping={6} pages={8} distance={1.5}>
+      <ScrollControls damping={0} pages={8} distance={1.5}>
         <Composition />
         <Scroll html style={{ width: '100%', zIndex: 10 }}>
           <InitialPage />
