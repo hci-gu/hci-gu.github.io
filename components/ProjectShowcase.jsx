@@ -43,7 +43,7 @@ const Text = styled.div`
   }
 `
 
-const ProjectShowcase = ({ title, link, image, description, tags }) => {
+const ProjectShowcase = ({ title, link, image, description }) => {
   return (
     <Container>
       <a href={link}>
