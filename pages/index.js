@@ -8,18 +8,9 @@ import {
   tablet,
   smallLaptop,
 } from '../lib/utils/layout'
-import { useAspect } from '@react-three/drei'
-import { Box, Flex } from '@react-three/flex'
-import { useThree } from '@react-three/fiber'
-
-import LandingSection from '../components/LandingSection'
-import Education from '../components/Education'
-import Team from '../components/Team'
 import ProjectShowcase from '../components/ProjectShowcase'
-import Initiative from '../components/Initiative'
-import Phone from '../components/Phone'
 import { getCMSData } from './api/cms/[page]'
-import { Suspense } from 'react'
+import ProjectGrid from '../components/ProjectGrid'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -30,20 +21,6 @@ const Container = styled.div`
 
 const Content = styled.div`
   ${middleContent()}
-`
-
-const Header = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  ${smallLaptop()} {
-    grid-template-columns: 400px 1fr;
-  }
-
-  ${tablet()} {
-    grid-template-columns: 1fr;
-  }
 `
 
 const Title = styled.div`
@@ -57,6 +34,7 @@ const Title = styled.div`
 
   > h1 {
     font-weight: 900;
+    font-size: 4.5rem;
     margin: 0;
     padding: 0;
   }
@@ -69,8 +47,7 @@ const Title = styled.div`
 `
 
 const Description = styled.div`
-  width: 600px;
-  padding: 20px 0;
+  padding: 8px;
 
   > div {
     color: rgb(25, 25, 25);
@@ -93,47 +70,6 @@ const ShortDescription = styled.div`
 
   ${mobile()} {
     display: block;
-  }
-`
-
-const Projects = styled.div`
-  margin: 25px auto;
-  margin-bottom: 75px;
-  > h1 {
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 54px;
-
-    color: #18191f;
-
-    ${mobile()} {
-      text-align: center;
-      font-size: 36px;
-      line-height: 50px;
-    }
-  }
-
-  > div {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 1fr 1fr;
-
-    ${mobile()} {
-      grid-template-columns: 1fr;
-    }
-  }
-`
-
-const Initiatives = styled.div`
-  margin: 25px auto;
-  margin-bottom: 75px;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 75px;
-
-  ${mobile()} {
-    grid-row-gap: 25px;
   }
 `
 
@@ -237,97 +173,32 @@ const Index = ({ content }) => {
       </Head>
       <Container>
         <Content>
-          <Header>
+          <ProjectGrid>
             <div>
               <Title>
-                <h1>{content.title}</h1>
+                <h1>HCI@GU</h1>
               </Title>
               <Description>
                 <LongDescription>
-                  {renderRichText(content.introduction)}
+                  {renderRichText(content.shortIntroduction)}
                 </LongDescription>
                 <ShortDescription>
                   {renderRichText(content.shortIntroduction)}
                 </ShortDescription>
               </Description>
             </div>
-            <MobilePromo />
-          </Header>
-          <Initiatives>
-            {content.initiativesCollection.items &&
-              content.initiativesCollection.items.map((initiative, i) => (
-                <Initiative
-                  {...initiative}
-                  align={i % 2 === 0 ? 'left' : 'right'}
-                  key={`Initiative_${i}`}
-                />
+            {content.projectsCollection.items &&
+              content.projectsCollection.items.map((p, i) => (
+                <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
               ))}
-          </Initiatives>
-
-          {content.coursesCollection.items && (
-            <Education
-              title={content.educationTitle}
-              description={content.educationDescription}
-              courses={content.coursesCollection.items}
-            />
-          )}
-          <Projects>
-            <h1>{content.projectsTitle}</h1>
-            <div>
-              {content.projectsCollection.items &&
-                content.projectsCollection.items.map((p, i) => (
-                  <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
-                ))}
-            </div>
-          </Projects>
-          <Projects>
-            <h1>{content.oldProjectsTitle}</h1>
-            <div>
-              {content.oldProjectsCollection.items &&
-                content.oldProjectsCollection.items.map((p, i) => (
-                  <ProjectShowcase {...p} key={`OldProjectShowcase_${i}`} />
-                ))}
-            </div>
-          </Projects>
-
-          {content.team && <Team {...content.team} />}
-
-          <div>
-            {content.sectionsCollection.items.map((section, i) => (
-              <LandingSection {...section} key={`Section_${i}`} />
-            ))}
-          </div>
+            {content.projectsCollection.items &&
+              content.projectsCollection.items.map((p, i) => (
+                <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
+              ))}
+          </ProjectGrid>
         </Content>
       </Container>
     </>
-  )
-}
-
-const CanvasComponents = () => {
-  const { size } = useThree()
-  const [vpWidth, vpHeight] = useAspect(size.width, size.height)
-
-  return (
-    <Flex
-      flexDirection="row"
-      size={[vpWidth, vpHeight, 0]}
-      position={[-vpWidth / 2, vpHeight / 2, 0]}
-      justify="space-between"
-      alignItems="center"
-    >
-      <Box centerAnchor>
-        <Phone position={[vpWidth / 6, 0, 0]} />
-      </Box>
-      <Box centerAnchor></Box>
-    </Flex>
-  )
-}
-
-Index.r3f = () => {
-  return (
-    <Suspense>
-      <CanvasComponents />
-    </Suspense>
   )
 }
 

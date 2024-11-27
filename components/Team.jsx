@@ -8,7 +8,6 @@ const Background = styled.div`
   width: 100vw;
   height: 100%;
   z-index: -1;
-  background-color: #f4f5f7;
 `
 
 const Container = styled.div`

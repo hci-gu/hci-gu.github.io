@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { laptopMedium, renderRichText, smallLaptop } from '../lib/utils/layout'
 
 const Container = styled.div`
-  width: 540px;
+  width: 280px;
 
   display: flex;
   flex-direction: column;
@@ -11,20 +11,14 @@ const Container = styled.div`
     width: 100%;
     height: auto;
   }
-
-  ${laptopMedium()} {
-    width: 450px;
-  }
-  ${smallLaptop()} {
-    width: 100%;
-    height: auto;
-  }
 `
 
 const Text = styled.div`
-  margin-top: 10px;
+  margin-top: 4px;
   display: flex;
   flex-direction: column;
+  max-height: 120px;
+  overflow: hidden;
 
   a > h3 {
     font-size: 24px;
@@ -37,6 +31,7 @@ const Text = styled.div`
   }
 
   > p {
+    margin: 0;
     font-size: 16px;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.5);
