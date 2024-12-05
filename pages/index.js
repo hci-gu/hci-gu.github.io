@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import { INDEX_QUERY } from '../lib/utils/queries'
+import { INDEX_QUERY, PROJECTS_QUERY } from '../lib/utils/queries'
 import {
   mobile,
   middleContent,
@@ -11,6 +11,7 @@ import {
 import ProjectShowcase from '../components/ProjectShowcase'
 import { getCMSData } from './api/cms/[page]'
 import ProjectGrid from '../components/ProjectGrid'
+import { Masonry } from 'react-plock'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -28,6 +29,7 @@ const Title = styled.div`
   max-width: 1400px;
   font-size: 32px;
   line-height: 80px;
+  text-align: center;
 
   font-weight: 900;
   color: #22223b;
@@ -131,6 +133,9 @@ const MobilePromo = () => {
 }
 
 const Index = ({ content }) => {
+  console.log(content)
+  const projects = [{ intro: '' }, ...content.projects]
+
   return (
     <>
       <Head>
@@ -173,29 +178,37 @@ const Index = ({ content }) => {
       </Head>
       <Container>
         <Content>
-          <ProjectGrid>
-            <div>
-              <Title>
-                <h1>HCI@GU</h1>
-              </Title>
-              <Description>
-                <LongDescription>
-                  {renderRichText(content.shortIntroduction)}
-                </LongDescription>
-                <ShortDescription>
-                  {renderRichText(content.shortIntroduction)}
-                </ShortDescription>
-              </Description>
-            </div>
-            {content.projectsCollection.items &&
-              content.projectsCollection.items.map((p, i) => (
-                <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
-              ))}
-            {content.projectsCollection.items &&
-              content.projectsCollection.items.map((p, i) => (
-                <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
-              ))}
-          </ProjectGrid>
+          {content.projects && content.projects.length && (
+            <Masonry
+              items={projects}
+              config={{
+                columns: [1, 2, 3],
+                gap: [24, 12, 24],
+                media: [640, 768, 1024],
+              }}
+              render={(project, idx) => {
+                const index = projects.indexOf(project)
+                if (index === 0) {
+                  return (
+                    <div key={idx}>
+                      <Title>
+                        <h1>HCI@GU</h1>
+                      </Title>
+                      <Description>
+                        <LongDescription>
+                          {renderRichText(content.shortIntroduction)}
+                        </LongDescription>
+                        <ShortDescription>
+                          {renderRichText(content.shortIntroduction)}
+                        </ShortDescription>
+                      </Description>
+                    </div>
+                  )
+                }
+                return <ProjectShowcase {...project} key={idx} />
+              }}
+            />
+          )}
         </Content>
       </Container>
     </>
@@ -208,10 +221,14 @@ export async function getServerSideProps(context) {
     '5BaRlonhLZbVN59DVybNWF',
     context.locale
   )
+  const projects = await getCMSData(PROJECTS_QUERY, context.locale)
 
   return {
     props: {
-      content: data,
+      content: {
+        ...data,
+        projects: projects.items,
+      },
     },
   }
 }

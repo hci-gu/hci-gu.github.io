@@ -28,7 +28,7 @@ export const getCMSData = async (query, id, locale = 'en-US') => {
     false
   )
 
-  const { data } = await client
+  const { data, error } = await client
     .query(query, {
       id,
       locale,
