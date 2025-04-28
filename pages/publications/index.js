@@ -1,7 +1,4 @@
 import styled from '@emotion/styled'
-import axios from 'axios'
-import { INDEX_QUERY } from '../../lib/utils/queries'
-import { getCMSData } from '../api/cms/[page]'
 import { middleContent, mobile } from '../../lib/utils/layout'
 
 const Container = styled.div`
@@ -15,13 +12,23 @@ const Content = styled.div`
   ${middleContent()}
 `
 
+const ReadMore = styled.div`
+  display: flex;
+  justify-content: center;
+
+  > a {
+    text-decoration: underline;
+    color: black;
+  }
+`
+
 const Publicationlist = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `
 
-const PublicationContainer = styled.div`
+const PublicationContainer = styled.a`
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 8px 16px;
   border-radius: 8px;
@@ -58,7 +65,9 @@ const mdiAuthorIds = [83530, 85192, 899627, 1159229, 1092337]
 
 const Publication = ({ publication }) => {
   return (
-    <PublicationContainer>
+    <PublicationContainer
+      href={`https://gup.ub.gu.se/publication/${publication.id}`}
+    >
       <h2>{publication.title}</h2>
       <h3>{publication.sourcetitle}</h3>
 
@@ -94,6 +103,11 @@ export default function ({ publications }) {
             <Publication key={publication.id} publication={publication} />
           ))}
         </Publicationlist>
+        <ReadMore>
+          <a href="https://gup.ub.gu.se/publications/list?department_id=&person_id=83530%3B85192%3B899627%3B1159229%3B1092337">
+            <h3>See all</h3>
+          </a>
+        </ReadMore>
       </Content>
     </Container>
   )

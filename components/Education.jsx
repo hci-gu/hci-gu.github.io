@@ -65,6 +65,7 @@ const Courses = styled.div`
 
     > img {
       margin: 8px;
+      max-height: 36px;
     }
   }
 

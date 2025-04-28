@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NativeSelect } from '@mantine/core'
+import { Drawer, NativeSelect } from '@mantine/core'
 import styled from '@emotion/styled'
 
 import { availableLocales } from '../lib/state'
@@ -8,6 +8,7 @@ import { isMobile, middleContent, mobile, tablet } from '../lib/utils/layout'
 import { useRouter } from 'next/router'
 import { useAtomValue } from 'jotai'
 import { MenuOutlined } from '@ant-design/icons'
+import { useDisclosure } from '@mantine/hooks'
 
 const Header = styled.div`
   /* height: 80px; */
@@ -38,12 +39,30 @@ const MobileMenu = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
 
   ${mobile()} {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
   }
+`
+
+const MobileMenuContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+`
+
+const MobileMenuLink = styled.a`
+  ${({ isActive }) => isActive && `font-weight: bold;`}
+
+  text-decoration: underline;
 `
 
 const GULogo = styled(Link)`
@@ -75,6 +94,13 @@ const StyledLink = styled.a`
 `
 
 const routes = [
+  {
+    href: '/',
+    label: {
+      en: 'Home',
+      sv: 'Hem',
+    },
+  },
   {
     href: '/appademin',
     label: {
@@ -113,13 +139,15 @@ const routes = [
 ]
 
 const Menu = () => {
+  const [opened, { open, close }] = useDisclosure(false)
+
   const router = useRouter()
   const locale = router.locale === 'sv' ? 'sv' : 'en'
 
   return (
     <Header>
       <>
-        <GULogo href="/">
+        <GULogo href="https://gu.se" target="_blank">
           <Image
             src="/img/gu_logo.svg"
             alt="Gothenburg university logotype"
@@ -127,9 +155,26 @@ const Menu = () => {
             height={38}
           />
         </GULogo>
-        <MobileMenu>
+        <MobileMenu onClick={open}>
           <MenuOutlined />
         </MobileMenu>
+        <Drawer
+          opened={opened}
+          onClose={close}
+          title={locale == 'sv' ? 'Sidor' : 'Pages'}
+        >
+          <MobileMenuContent>
+            {routes.map((route) => (
+              <MobileMenuLink
+                isActive={route.href === router.asPath}
+                onClick={() => close()}
+                href={route.href}
+              >
+                {route.label[locale]}
+              </MobileMenuLink>
+            ))}
+          </MobileMenuContent>
+        </Drawer>
       </>
       <Links>
         {routes.map((route) => (

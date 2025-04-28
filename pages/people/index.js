@@ -18,7 +18,9 @@ const Content = styled.div`
 export default function ({ content }) {
   return (
     <Container>
-      <Content>{content.team && <Team {...content.team} />}</Content>
+      <Content>
+        <Team {...content.team} />
+      </Content>
     </Container>
   )
 }

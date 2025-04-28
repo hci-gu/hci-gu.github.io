@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import { INDEX_QUERY, PROJECTS_QUERY } from '../lib/utils/queries'
+import { INDEX_QUERY, PROJECTS_QUERY, TAGS_QUERY } from '../lib/utils/queries'
 import {
   mobile,
   middleContent,
@@ -10,8 +10,10 @@ import {
 } from '../lib/utils/layout'
 import ProjectShowcase from '../components/ProjectShowcase'
 import { getCMSData } from './api/cms/[page]'
-import ProjectGrid from '../components/ProjectGrid'
 import { Masonry } from 'react-plock'
+import Tags from '../components/Tags'
+import { useAtomValue } from 'jotai'
+import { selectedTagsAtom } from '../lib/state'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -37,14 +39,43 @@ const Title = styled.div`
   > h1 {
     font-weight: 900;
     font-size: 4.5rem;
+    letter-spacing: 0.2rem;
     margin: 0;
     padding: 0;
+  }
+  > h3 {
+    margin: 0;
+    line-height: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 300;
+  }
+
+  ${smallLaptop()} {
+    > h1 {
+      font-size: 3.5rem;
+    }
+  }
+
+  ${tablet()} {
+    > h1 {
+      font-size: 3rem;
+    }
+    > h3 {
+      margin: 0 auto;
+      width: 75%;
+    }
   }
 
   ${mobile()} {
     font-size: 1rem;
     line-height: 2rem;
     text-align: center;
+
+    > h3 {
+      margin-top: 12px;
+      font-size: 1rem;
+      line-height: 1rem;
+    }
   }
 `
 
@@ -75,66 +106,15 @@ const ShortDescription = styled.div`
   }
 `
 
-const MobilePromoContainer = styled.div`
-  position: relative;
-  display: none;
-  width: 100%;
-
-  ${mobile()} {
-    display: flex;
-  }
-
-  > img {
-    width: 150px;
-    margin: 0 auto;
-  }
-`
-
-const ImageBackground = styled.div`
-  overflow: hidden;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 200px;
-
-  > div {
-    position: absolute;
-    z-index: -1;
-    bottom: -50vw;
-    left: calc(50% - 37.5vw);
-    width: 75vw;
-    height: 75vw;
-    border-radius: 50%;
-    background-color: #96e2e6;
-  }
-`
-
-const FullWidthBorder = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-
-  border-bottom: 1px solid black;
-`
-
-const MobilePromo = () => {
-  return (
-    <MobilePromoContainer>
-      <img
-        src="/img/assets/landing-promo-mobile.png"
-        alt="phone with WFH Movement app screenshot"
-      ></img>
-      <ImageBackground>
-        <div></div>
-      </ImageBackground>
-      <FullWidthBorder />
-    </MobilePromoContainer>
-  )
-}
-
 const Index = ({ content }) => {
-  console.log(content)
   const projects = [{ intro: '' }, ...content.projects]
+  const selectedTags = useAtomValue(selectedTagsAtom)
+
+  const projectsFiltered = projects.filter((project) => {
+    if (!project.tags) return true
+    if (selectedTags.length === 0) return true
+    return project.tags.some((tag) => selectedTags.includes(tag))
+  })
 
   return (
     <>
@@ -143,72 +123,53 @@ const Index = ({ content }) => {
         <meta name="title" content="Division of Human-Computer Interaction" />
         <meta
           name="description"
-          content="Division of Human-Computer Interaction at Gothenburg University"
+          content="Human-Computer Interaction at Gothenburg University"
         />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="hci-gu.github.io" />
-        <meta
-          property="og:title"
-          content="Division of Human-Computer Interaction"
-        />
+        <meta property="og:title" content="HCI@GU" />
         <meta
           property="og:description"
-          content="Division of Human-Computer Interaction at Gothenburg University"
-        />
-        <meta
-          property="og:image"
-          content="https://hci-gu.github.io/img/share.png"
-        />
-
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://hci-gu.github.io/wfh-movement/"
-        />
-        <meta property="twitter:title" content="WFH movement" />
-        <meta
-          property="twitter:description"
-          content="Compare your movement patterns before and after working from home."
-        />
-        <meta
-          property="twitter:image"
-          content="https://hci-gu.github.io/img/wfh-movement/share.png"
+          content="Human-Computer Interaction at Gothenburg University"
         />
       </Head>
       <Container>
         <Content>
-          {content.projects && content.projects.length && (
-            <Masonry
-              items={projects}
-              config={{
-                columns: [1, 2, 3],
-                gap: [24, 12, 24],
-                media: [640, 768, 1024],
-              }}
-              render={(project, idx) => {
-                const index = projects.indexOf(project)
-                if (index === 0) {
-                  return (
-                    <div key={idx}>
-                      <Title>
-                        <h1>HCI@GU</h1>
-                      </Title>
-                      <Description>
-                        <LongDescription>
-                          {renderRichText(content.shortIntroduction)}
-                        </LongDescription>
-                        <ShortDescription>
-                          {renderRichText(content.shortIntroduction)}
-                        </ShortDescription>
-                      </Description>
-                    </div>
-                  )
-                }
-                return <ProjectShowcase {...project} key={idx} />
-              }}
-            />
-          )}
+          <Masonry
+            items={projectsFiltered}
+            config={{
+              columns: [1, 2, 3],
+              gap: [24, 12, 24],
+              media: [640, 768, 1024],
+            }}
+            render={(project, idx) => {
+              const index = projects.indexOf(project)
+              if (index === 0) {
+                return (
+                  <div key={idx}>
+                    <Title>
+                      <h1>HCI@GU</h1>
+                      <h3>
+                        Human-Computer Interaction at the Department of Applied
+                        IT, University of Gothenburg
+                      </h3>
+                    </Title>
+                    <Description>
+                      <LongDescription>
+                        {renderRichText(content.shortIntroduction)}
+                      </LongDescription>
+                      <ShortDescription>
+                        {renderRichText(content.shortIntroduction)}
+                      </ShortDescription>
+                    </Description>
+                    <Tags tags={content.tags} controls />
+                  </div>
+                )
+              }
+              return <ProjectShowcase {...project} key={idx} />
+            }}
+          />
         </Content>
       </Container>
     </>
@@ -221,13 +182,27 @@ export async function getServerSideProps(context) {
     '5BaRlonhLZbVN59DVybNWF',
     context.locale
   )
-  const projects = await getCMSData(PROJECTS_QUERY, context.locale)
+  const tags = new Set()
+  const projects = data.projectsCollection.items.map((p) => {
+    p.tags = p.tagsCollection.items.map((t) => t.name)
+    delete p.tagsCollection
+
+    return p
+  })
+  projects.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  projects.forEach((p) => {
+    p.tags.forEach((t) => {
+      tags.add(t)
+    })
+  })
 
   return {
     props: {
       content: {
         ...data,
-        projects: projects.items,
+        projects,
+        tags: Array.from(tags),
       },
     },
   }

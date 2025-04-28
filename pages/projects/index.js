@@ -1,9 +1,13 @@
 import styled from '@emotion/styled'
-import { INDEX_QUERY } from '../../lib/utils/queries'
+import { INDEX_QUERY, PROJECTS_QUERY } from '../../lib/utils/queries'
 import { getCMSData } from '../api/cms/[page]'
 import { middleContent, mobile } from '../../lib/utils/layout'
 import ProjectShowcase from '../../components/ProjectShowcase'
-import ProjectGrid from '../../components/ProjectGrid'
+import { Masonry } from 'react-plock'
+import Tags from '../../components/Tags'
+import { Space } from '@mantine/core'
+import { useAtomValue } from 'jotai'
+import { selectedTagsAtom } from '../../lib/state'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -16,52 +20,29 @@ const Content = styled.div`
   ${middleContent()}
 `
 
-const Projects = styled.div`
-  margin: 25px auto;
-  margin-bottom: 75px;
-  > h1 {
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 54px;
-
-    color: #18191f;
-
-    ${mobile()} {
-      text-align: center;
-      font-size: 36px;
-      line-height: 50px;
-    }
-  }
-
-  > div {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 1fr 1fr;
-
-    ${mobile()} {
-      grid-template-columns: 1fr;
-    }
-  }
-`
-
 export default function ({ content }) {
+  const selectedTags = useAtomValue(selectedTagsAtom)
+  const filteredProjects = content.projects.filter((project) => {
+    if (selectedTags.length === 0) return true
+    return project.tags.some((tag) => selectedTags.includes(tag))
+  })
+
   return (
     <Container>
       <Content>
-        <h1>{content.projectsTitle}</h1>
-        <ProjectGrid>
-          {content.projectsCollection.items &&
-            content.projectsCollection.items.map((p, i) => (
-              <ProjectShowcase {...p} key={`ProjectShowcase_${i}`} />
-            ))}
-        </ProjectGrid>
-        <h1>{content.oldProjectsTitle}</h1>
-        <ProjectGrid>
-          {content.oldProjectsCollection.items &&
-            content.oldProjectsCollection.items.map((p, i) => (
-              <ProjectShowcase {...p} key={`OldProjectShowcase_${i}`} />
-            ))}
-        </ProjectGrid>
+        <Tags tags={content.tags} controls />
+        <Space h="md" />
+        <Masonry
+          items={filteredProjects}
+          config={{
+            columns: [1, 2, 3],
+            gap: [24, 12, 24],
+            media: [640, 768, 1024],
+          }}
+          render={(p, idx) => (
+            <ProjectShowcase {...p} key={`ProjectShowcase_${idx}`} />
+          )}
+        />
       </Content>
     </Container>
   )
@@ -73,10 +54,24 @@ export async function getServerSideProps(context) {
     '5BaRlonhLZbVN59DVybNWF',
     context.locale
   )
+  const tags = new Set()
+  const projects = data.projectsCollection.items.map((p) => {
+    p.tags = p.tagsCollection.items.map((t) => t.name)
+    delete p.tagsCollection
+
+    return p
+  })
+  projects.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  projects.forEach((p) => {
+    p.tags.forEach((t) => {
+      tags.add(t)
+    })
+  })
 
   return {
     props: {
-      content: data,
+      content: { ...data, projects, tags: Array.from(tags) },
     },
   }
 }

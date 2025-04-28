@@ -1,6 +1,12 @@
 import { Paper } from '@mantine/core'
 import styled from '@emotion/styled'
-import { mobile, renderRichText, tablet } from '../lib/utils/layout'
+import {
+  laptop,
+  mobile,
+  renderRichText,
+  smallLaptop,
+  tablet,
+} from '../lib/utils/layout'
 import Image from 'next/legacy/image'
 
 const Background = styled.div`
@@ -34,90 +40,137 @@ const Container = styled.div`
   }
 `
 
-const Description = styled.div`
-  width: 70%;
+const People = styled.div`
+  margin: 64px auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 
-  p {
-    margin: 24px 64px;
-    font-size: 18px;
-
-    ${tablet()} {
-      margin: 8px 16px;
-      font-size: 14px;
-    }
-  }
-
-  ${tablet()} {
-    width: 100%;
+  ${laptop()} {
+    grid-template-columns: repeat(1, 1fr);
   }
 `
 
-const People = styled.div`
-  margin: 0 auto;
-  width: 100%;
+const ProfileContainer = styled(Paper)`
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  height: 440px;
+
+  ${laptop()} {
+    height: auto;
+  }
+
+  ${mobile()} {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  > p {
+    width: 100%;
+    height: 100%;
+    margin-left: 116px;
+
+    ${mobile()} {
+      margin-left: 0;
+      padding: 0 16px;
+      margin-top: 64px;
+    }
+  }
 `
 
 const PersonContainer = styled.div`
-  margin-top: 24px;
-  width: 15vw;
+  position: absolute;
+  /* background-color: white; */
+  top: -30px;
+  left: 12px;
+  width: 100px;
   height: 168px;
   display: flex;
   flex-direction: column;
   justify-content: baseline;
-  align-items: center;
-  text-align: center;
+  align-items: start;
+  text-align: start;
+
+  ${mobile()} {
+    left: auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  > div {
+    position: relative;
+    border-radius: 56px;
+    padding: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    z-index: 10;
+  }
 
   > strong {
-    margin-top: 8px;
     font-weight: bold;
     font-size: 16px;
   }
   > span {
-    text-align: center;
     font-size: 13px;
   }
 
   ${mobile()} {
-    width: 40vw;
+    width: 80vw;
   }
 `
 
-const Person = ({ name, role, image, website }) => {
+const BorderHider = styled.div`
+  position: absolute;
+  top: 40%;
+  left: -5%;
+  width: 110%;
+  height: 65%;
+  background-color: white;
+  z-index: -1;
+`
+
+const Person = ({ name, role, description, image, website }) => {
   return (
     <a href={website}>
-      <PersonContainer>
-        <Image
-          src={image.url}
-          alt={image.description}
-          width={56}
-          height={56}
-          style={{ borderRadius: 56 }}
-          objectFit="cover"
-        />
-        <strong>{name}</strong>
-        <span>{role}</span>
-      </PersonContainer>
+      <ProfileContainer radius="md" withBorder p="lg">
+        <PersonContainer>
+          <div>
+            <Image
+              src={image.url}
+              alt={image.description}
+              width={56}
+              height={56}
+              style={{
+                borderRadius: 56,
+              }}
+              objectFit="cover"
+            />
+            <BorderHider />
+          </div>
+          <strong>{name}</strong>
+          <span>{role}</span>
+        </PersonContainer>
+        {description && <p>{renderRichText(description)}</p>}
+      </ProfileContainer>
     </a>
   )
 }
 
 const Team = ({ title, subtitle, description, membersCollection }) => {
+  const shuffledMembers = [...membersCollection.items].sort(
+    () => Math.random() - 0.5
+  )
   return (
     <Container>
       <Background />
       <h2>{title}</h2>
-      <span>{subtitle}</span>
-      <Description>
-        <Paper radius="md" withBorder p="lg">
-          {renderRichText(description)}
-        </Paper>
-      </Description>
       <People>
-        {membersCollection.items.map((p, i) => (
+        {shuffledMembers.map((p, i) => (
           <Person {...p} key={`Person_${i}`} />
         ))}
       </People>
