@@ -12,7 +12,12 @@ const queryAndIDForPage = (page) => {
   return []
 }
 
-export const getCMSData = async (query, id, locale = 'en-US') => {
+export const getCMSData = async (
+  query,
+  identifier,
+  locale = 'en-US',
+  key = 'id'
+) => {
   const client = initUrqlClient(
     {
       url: 'https://graphql.contentful.com/content/v1/spaces/j07xal62e1un',
@@ -27,16 +32,19 @@ export const getCMSData = async (query, id, locale = 'en-US') => {
     },
     false
   )
-
-  const { data } = await client
+  const { data, error } = await client
     .query(query, {
-      id,
+      [key]: identifier,
       locale,
     })
     .toPromise()
 
-  const key = Object.keys(data)[0]
-  return data[key]
+  if (error) {
+    console.error('Error fetching data from Contentful:', error)
+    return null
+  }
+
+  return data[Object.keys(data)[0]]
 }
 
 export default async function handler(req, res) {

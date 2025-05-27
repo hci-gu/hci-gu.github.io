@@ -1,4 +1,4 @@
-import { css, Global } from '@emotion/react'
+import { Global, css } from '@emotion/react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 export const globalStyles = (
