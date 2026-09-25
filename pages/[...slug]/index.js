@@ -1,6 +1,6 @@
+import { getCMSData, getFooter, REVALIDATE_SECONDS } from '../../lib/server/cms'
 import styled from '@emotion/styled'
 import { INDEX_QUERY, TEXT_PAGE_QUERY } from '../../lib/utils/queries'
-import { getCMSData } from '../api/cms/[page]'
 import { middleContent, mobile, renderRichText } from '../../lib/utils/layout'
 import Team from '../../components/Team'
 import TextPage from '../../components/TextPage'
@@ -24,8 +24,8 @@ export default function ({ content }) {
   )
 }
 
-export async function getServerSideProps(context) {
-  const { slug } = context.query
+export async function getStaticProps(context) {
+  const { slug } = context.params
 
   const data = await getCMSData(
     TEXT_PAGE_QUERY,
@@ -37,6 +37,7 @@ export async function getServerSideProps(context) {
   if (data.items.length === 0) {
     return {
       notFound: true,
+      revalidate: REVALIDATE_SECONDS,
     }
   }
 
@@ -45,8 +46,15 @@ export async function getServerSideProps(context) {
   const { content } = item
 
   return {
+    revalidate: REVALIDATE_SECONDS,
     props: {
+      footer: await getFooter(context.locale),
       content,
     },
   }
+}
+
+// Generate CMS routes on first request, then cache each path and locale.
+export async function getStaticPaths() {
+  return { paths: [], fallback: 'blocking' }
 }

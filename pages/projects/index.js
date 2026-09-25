@@ -1,6 +1,6 @@
+import { getCMSData, REVALIDATE_SECONDS } from '../../lib/server/cms'
 import styled from '@emotion/styled'
 import { INDEX_QUERY, PROJECTS_QUERY } from '../../lib/utils/queries'
-import { getCMSData } from '../api/cms/[page]'
 import { middleContent, mobile } from '../../lib/utils/layout'
 import ProjectShowcase from '../../components/ProjectShowcase'
 import { Masonry } from 'react-plock'
@@ -48,7 +48,7 @@ export default function ({ content }) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const data = await getCMSData(
     INDEX_QUERY,
     '5BaRlonhLZbVN59DVybNWF',
@@ -70,7 +70,9 @@ export async function getServerSideProps(context) {
   })
 
   return {
+    revalidate: REVALIDATE_SECONDS,
     props: {
+      footer: data.footer ?? null,
       content: { ...data, projects, tags: Array.from(tags) },
     },
   }

@@ -1,7 +1,7 @@
 import Menu from '../Menu'
 import Footer from '../Footer'
 
-export default function Layout({ children, page }) {
+export default function Layout({ children, page, footer }) {
   if (page.layout) {
     return page.layout(children)
   }
@@ -9,7 +9,7 @@ export default function Layout({ children, page }) {
     <>
       <Menu />
       <main>{children}</main>
-      <Footer />
+      {footer && <Footer {...footer} />}
     </>
   )
 }

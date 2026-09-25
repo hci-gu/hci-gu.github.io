@@ -1,5 +1,5 @@
 import TextPage from '../../components/TextPage'
-import { useCMSQuery, withCMSClient } from '../../lib/utils/cms'
+import { getCMSPageProps } from '../../lib/server/cms'
 
 const TEXT_PAGE_QUERY = `
 query($id:String!, $locale: String!) {
@@ -12,10 +12,10 @@ query($id:String!, $locale: String!) {
 }
 `
 
-export default withCMSClient(() => {
-  const content = useCMSQuery(TEXT_PAGE_QUERY, 'xDlmZr4IMSVdoR9kPsU9R')
-
-  if (!content) return null
-
+export default function Page({ content }) {
   return <TextPage page={content} />
-})
+}
+
+export async function getStaticProps(context) {
+  return getCMSPageProps(context, TEXT_PAGE_QUERY, 'xDlmZr4IMSVdoR9kPsU9R')
+}

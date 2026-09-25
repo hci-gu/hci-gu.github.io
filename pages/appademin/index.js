@@ -1,3 +1,4 @@
+import { getCMSData, getFooter, REVALIDATE_SECONDS } from '../../lib/server/cms'
 import styled from '@emotion/styled'
 import {
   mobile,
@@ -14,7 +15,6 @@ import StepsContainer from '../../components/appademin/Steps'
 import Features from '../../components/appademin/Features'
 import Projects from '../../components/appademin/Projects'
 import { APPADEMIN_QUERY } from '../../lib/utils/queries'
-import { getCMSData } from '../api/cms/[page]'
 
 const Container = styled.div`
   font-family: 'Manrope';
@@ -95,7 +95,7 @@ const Appademin = ({ content }) => {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const data = await getCMSData(
     APPADEMIN_QUERY,
     '1e2oEtgX80ZRIyYdbacVkO',
@@ -103,7 +103,9 @@ export async function getServerSideProps(context) {
   )
 
   return {
+    revalidate: REVALIDATE_SECONDS,
     props: {
+      footer: await getFooter(context.locale, 'appademin'),
       content: data,
     },
   }
