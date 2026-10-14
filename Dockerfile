@@ -22,7 +22,12 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN pnpm run build
+# Provide the CMS token to static generation without baking it into an image layer.
+RUN --mount=type=secret,id=contentful_access_token \
+    if [ -f /run/secrets/contentful_access_token ]; then \
+      export CONTENTFUL_ACCESS_TOKEN="$(cat /run/secrets/contentful_access_token)"; \
+    fi; \
+    pnpm run build
 
 # If using npm comment out above and use below instead
 # RUN npm run build

@@ -1,7 +1,7 @@
+import { getCMSData, REVALIDATE_SECONDS } from '../../lib/server/cms'
 import styled from '@emotion/styled'
 import Education from '../../components/Education'
 import { INDEX_QUERY } from '../../lib/utils/queries'
-import { getCMSData } from '../api/cms/[page]'
 import { middleContent, mobile } from '../../lib/utils/layout'
 
 const Container = styled.div`
@@ -31,7 +31,7 @@ export default function ({ content }) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const data = await getCMSData(
     INDEX_QUERY,
     '5BaRlonhLZbVN59DVybNWF',
@@ -39,7 +39,9 @@ export async function getServerSideProps(context) {
   )
 
   return {
+    revalidate: REVALIDATE_SECONDS,
     props: {
+      footer: data.footer ?? null,
       content: data,
     },
   }

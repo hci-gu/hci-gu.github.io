@@ -1,3 +1,4 @@
+import { getFooter, REVALIDATE_SECONDS } from '../../lib/server/cms'
 import styled from '@emotion/styled'
 import { middleContent, mobile } from '../../lib/utils/layout'
 
@@ -113,7 +114,7 @@ export default function ({ publications }) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const response = await fetch(
     'https://gup-server.ub.gu.se/v1/public_publication_lists?locale=sv&page=1&sort_by=pubyear&publication_id=&person_id=83530%3B85192%3B899627%3B1159229%3B1092337&department_id=&faculty_id=&serie_id=&project_id=&publication_type=&ref_value=&start_year=&end_year=&only_artistic=false',
     {
@@ -122,10 +123,15 @@ export async function getServerSideProps(context) {
       },
     }
   )
+  if (!response.ok) {
+    throw new Error(`Publication request failed (${response.status})`)
+  }
   const data = await response.json()
 
   return {
+    revalidate: REVALIDATE_SECONDS,
     props: {
+      footer: await getFooter(context.locale),
       publications: data.publications,
     },
   }

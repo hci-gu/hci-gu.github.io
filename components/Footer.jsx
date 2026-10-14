@@ -1,11 +1,5 @@
 import styled from '@emotion/styled'
 import { renderRichText, tablet } from '../lib/utils/layout'
-import { useCMSQuery, withCMSClient } from '../lib/utils/cms'
-import {
-  FOOTER_INDEX_QUERY,
-  FOOTER_APPADEMIN_QUERY,
-} from '../lib/utils/queries'
-import { useRouter } from 'next/router'
 import Image from 'next/legacy/image'
 
 const Container = styled.div`
@@ -69,27 +63,11 @@ const Footer = ({ title, content, children }) => {
       <Image
         layout="fill"
         objectFit="cover"
-        src="https://api.mapbox.com/styles/v1/sebastianait/ckeixhcr42fz519ocbrn46crk/static/pin-l+fff(11.9357634,57.7066293)/11.931968,57.706721,12.5,0,30/1000x250@2x?&access_token=pk.eyJ1Ijoic2ViYXN0aWFuYWl0IiwiYSI6ImNrZWlvaXlhMTI3dm8ycm1peHlwOW0yNGMifQ.hXGRGr7WQWwyrvMfUaNiCQ"
+        src="/img/footer-map.png"
+        alt="Map showing the department location in Gothenburg"
       />
     </Container>
   )
 }
 
-const queryAndIdFromPath = (path) => {
-  if (path === '/appademin') {
-    return [FOOTER_APPADEMIN_QUERY, '1e2oEtgX80ZRIyYdbacVkO']
-  }
-  return [FOOTER_INDEX_QUERY, '5BaRlonhLZbVN59DVybNWF']
-}
-
-export default withCMSClient(() => {
-  const router = useRouter()
-  const [query, id] = queryAndIdFromPath(router.route)
-  const content = useCMSQuery(query, id)
-
-  if (!content) return null
-
-  return (
-    <Footer title={content?.footer?.title} content={content?.footer?.content} />
-  )
-}, false)
+export default Footer

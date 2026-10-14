@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         colorScheme: 'light',
       }}
     >
-      <Layout page={Component}>
+      <Layout page={Component} footer={pageProps.footer}>
         <Component {...pageProps} />
         {Component?.r3f && (
           <LCanvas onlyCanvas={Component.onlyCanvas}>
